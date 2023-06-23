@@ -44,8 +44,21 @@
 6. 3분 내에 수신한 인증번호를 입력하고 인증하기 버튼을 누른다
 7. 회원가입이 성공적으로 마치면 자동으로 로그인되어 홈 화면으로 돌아간다
 
-## 3. USER
+## 3. USER / HOST
 
-## 4. HOST
+### USE CASE 1 - 회원 탈퇴
+### USE CASE 2 - 버스킹 참여
+### USE CASE 3 - 버스킹 참여 취소
+### USE CASE 4 - 버스킹 생성
+### USE CASE 5 - 버스킹 생성 취소
+### USE CASE 6 - 버스킹 종료
+### USE CASE 7 - 같은 버스킹에 참여 중인 USER 조회
+### USE CASE 8 - HOST 검색
+### USE CASE 9 - HOST 구독
 
-## 3. ADMIN
+## 4. ADMIN
+
+### USE CASE 1 - 유저 목록 조회
+### USE CASE 2 - 유저 목록 검색
+### USE CASE 3 - 공지사항 등록
+
