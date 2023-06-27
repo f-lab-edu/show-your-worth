@@ -3,6 +3,7 @@
 1. [프로젝트 개요](#-프로젝트-개요)
 2. [프로젝트 기술 스택](#-프로젝트-기술-스택)
 3. [Use Case / 유저 시나리오](#-use-case--유저-시나리오)
+4. [Flow Chart](#-flow-chart)
 
 # 📜 프로젝트 개요
 
@@ -186,3 +187,61 @@
 6. 공지사항 우측에 보내기 버튼을 누른다
 7. 모든 `USER`에게 공지사항이 전송된다
 
+# 🎞️ Flow Chart
+
+## 1. COMMON
+
+### 버스킹 조회
+
+![버스킹 조회](https://www.planttext.com/api/plantuml/png/b99DJy9048Rl-ol66noCqICSvEf5pnekJQpGGDkaBV7Qa4eGJ8J8TnO2IHL9UcWG8qI8_wSx6_-2MsZylCXXDvkTcMVUl3Flhsyfqv8Cgw3coOwLbLKP95N9I8IOEKK3GpTbyGmp24bWSyWRD-p1mwMD_HbUTG2hBczT9qMGTyl0kmqscM6x1ZYssQq3l4wnIfD4qoqP32MJjHB0EmuEF43guAB3xfSGp7rqRQHBDg9H1I6NMIKlnxwWKU0m3ee9iLFPZ1E0nARDkk4QnviKiEXXRu83yUVMiUfjm6ajy2awBgjHO5C7AoulBZxr2TQ5RkH29EpjYZYlBB4lz9UUUNEMrivqNOKZRU-aO2MZN90oagA55MnSnfulYC3f473auw3-x-838GkmL0jyc_LNW4CgG3XT6xDbTtP7sQ0JlCo_rqQ3sDW3xCaEfgk_aFsVAhOdoTev4MSpjMCz_diXq0bjRsDhnegFmkymdwJ4BHRl0m00__y30000)
+
+### 버스킹 검색
+
+![버스킹 검색](https://www.planttext.com/api/plantuml/png/H511Ji9G4Dt_KuoxadW2MCZ62sZSiI7neurG4eeBTmX_8Q2HHe8b-IKrGK4YIO5AC3PwdyxyU0K7JNGpC-_DPDwy-Nh_pBlrOgr-NYcBdVgfh4WeLkoJeX3kcUr0hUfABhSJGcJJPODQRJ2jEPZB69_cEIOf-aXN8L1tJK43S3QbaG8ADSwUWKOUgSNFL5SpO5u1-Ztiz0iEJPGPj8767WKRmAMYpjWqtoY8kUTFCKYOJrS9a3ysVVMBIIVue0jE-lg2QuKzdmOnq5fZ-CWoTWcieyFzWxqCi1S7h0lfPWH0bjUaYuZkUs266c-7Pd25D_uk2qKRKi4Vn6QSHknYSertuVzDO3pD3d92bbq9bbFD2EaSsoMnJKBaEV83lm400F__0m00)
+
+## 2. GUEST
+
+### 회원가입
+
+![회원가입](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8N5rYOYylgzVAEDtEtABpjcm6atYnlK7ZRl3Ocx-sidZUp9xpQqF1cNgirK9Lxg6jmo9jPAnMG9HGyNVG3mXNUzky1AYbABKXDBE6oUZEr1MZGwobJ580gNYzOQWsLKIZFoCn9rK18lzhKy6RPN4s5p685ZJTDQu26lzxM0JHO4s7MwvqjhpSqlDxKyNR63kp6eQZ0Oo8E3xpkxdpTikJDl1OqJo34iTiAboR3IXG_pTq1r0wrtEhDWfQtCwUWUHVc9g0qM35K-lM6EM_Q5bgZ2wFfWWKwiX9a9qFO2c-wbxpjMG5oCufJttGlUBDfhJLSM04cFhFbzU8Ue7XgNWeNbmEG12Ol00000F__0m00)
+
+## 3. USER/HOST
+
+### 로그인
+
+![로그인](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PVLwPylhXNDURT_nPkuEXJVDZM-Rvm3vCNblfYvuEwNdzR8rR_Oql9cxvKth38KttKlUJkkq1cbQtW4KKtZRDmCajRn1uMtpsfWyk3b09KMf1Qc99LnMdYxw0U4AR-Qrlbwmr1eggb2UaPcJgl5cpeAtirQyQTcey6fJmvkcDPeAcSKA6Y1BUbPeWYn1E6jco-l5FK1JK_DIkBWSW2JGQm00003__mC0)
+
+### 회원탈퇴
+
+![회원탈퇴](https://www.planttext.com/api/plantuml/png/R931IiD048Rl-nJZBRcAf_RI1_4IS6iNarIo4V5MJSH0WtW914qaWbeF2g5DCUB1zydEu2iuGGKBNdQ6tOz_ljdFzu-H3fqWFF9SiHLEf2V1yTI-8uG-K3u4KosvxGaX1kQkw5vRB5lA2i3ebA9Ys5yl4YmReCkS2ovcGD7Bha_NATvSKPJGHGCOLnIL30VoK3gX01YOjzZKCxDCA6y1RyzDzJ3yUORZYNAbjK5qona-bZOe3TPtZ_DxIfzi5jWSzUkbnc1jx-2ywEguzsCpSvPtRGrOnM1MwsxzR0Flx8Dr8hNTI_sJ19GrM76WTBK4ov_-0R7Ap8etJrEEPSBVKsFH5o56VFAdVW400F__0m00)
+
+### 버스킹 참여
+
+![버스킹 참여](https://www.planttext.com/api/plantuml/png/R971IiD048Rl-nJZhNq5Ux0NmPjWzTPBm5I3pHQQUl0ckeUQ1jf2Ooqa4Y5M1G-rhP1YmFV9pE8hE3MLMl2ok_pp_xFVx7vzV9QTbj5idTjriTKwDMqJ3DiwCOHmpYm9pOPZyd7f46AREW7Tzu4Y1NZNGtS0zAJqxGrGtASmgKgSAd9ZVRK0Kf6-3aiS-gD5FixceBlfKgT9GYe4Bcit1Mmh72lMhHeKLgLiSedkuquHc4j2uS9qYWBWDqZgBPkz0_aUZhcXMNTCACZ6XgKJQ-yPA9nJ4AsTyjYgCO0UjK6F1lZ2rHGV0i2kHxxA9hrDZFoYVp66hwlHOJsbxWVyJgMbPM-_SaZ3NZRrGFjpx2pWgB9x07dVgio1E93y15PSl0bHvfM_v1i00F__0m00)
+
+### 버스킹 참여 취소
+
+![버스킹 참여 취소](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PVLcUSlRQPqARvPCV3DtXyBhJIrlkfQyRTgfyAPbmTlckTP05KXY2wQ-thn5uMt_7g1uPfg2nfiDEzvCNwFmPlkADsqzK2tscWf0E_CKD2fJYpMv51IiO8emR6XQ-sR176kkrBoKp3Gk4CN5vG0aWSu60000__y30000)
+
+### 버스킹 생성
+
+![버스킹 생성](https://www.planttext.com/api/plantuml/png/J8z13i5G48RtxnHZnnLOS9KcNcXeAst5ljv2a21OL1wfH5B4eiH6IDp7JECAfeZOJ2R_zqtop_DwhtY-uVfjgoboVbrQ4WpBh1b2U0tJ1jVn9A-P8KGHJuhwcpIu04KQzpkWrOJKiSI8WWF52d1wnFKIC1a11cTQ_2ckR4d35m156cXEMOWerc-NaqUYVkv7XKxTR4h8KpJ7U8nh3THTCYyNmFGWRpk5hD9-Iolr9LcHDEn16ivmToPzouvmDAIvUYHZfjAk2b7XoU--0000__y30000)
+
+### 버스킹 생성 취소
+
+![버스킹 생성 취소](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8N5rYOYylgJVFSDoqRtqwTe_1wKykRhYLlctOgl6bPyBPvhZLG5abimTJNcxSelEtV0nJFJ5FGW6XKUBDznPks7djD1Q3fUGeQbQd5cbmA2jYDXHZnfcdjcmLphC6gDknuCtqDI5Lei6lGc-aJNctgYSb3qW4sNE7Dr9xNo_Oel9suuqqtK6DgNafc6j1nRsTsABoTEUNroYrlvknvlH1eLN_FcwajhpPC03eHg8YBom580hqE0000__y30000)
+
+### 버스킹 종료
+
+![버스킹 종료](https://www.planttext.com/api/plantuml/png/R971IW9H58RtzobEEtq5NUIc5oZQkHdmQeDw1SSMxMIyWPcWufWPCv4bYE1YB96YWTx7SowzGcVKeiBDuLxk_t__EUT-ldzad9fLhPsNI-AWTYRB4gooNR24S8gsWch5aNoC5KBaAzMY04XH8o2zC0CVQAhDpHNGf4V1QrRXiwRMnBXlGFh1D8BqnW9MmRBLN-EFCgk-6TV-EjI0qpO-jNT6gN92f7vH7o_v4MWunrKTJ2TA2s7d8V5VSPW47aL1ua8woKsmE-SOmFu2nm5Ws05qbtGt0xhlSKTfriISxGrefFT066CyZMFV33GDks2y2FkyWfMt3kinGPOS2GbLsObFJuwEUHh0bmYeUSjHJMnvUsmgP-V5jiP6aJAZ9fYHXxCb-H470dRQDD3hiClpRdQIuSe_zWK00F__0m00)
+
+### 같은 버스킹에 참여 중인 USER 조회
+![같은 버스킹에 참여 중인 USER 조회](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PVLcUSlRQPqAhpVqAxpPiEFDz3KARvPCV3DtHqpUwqqjRxgMl6tQgV1cmTJNcxSelEtVOmtIWQnC8JJODIWcx-sKbjSBvxoTsgBmUjNArmldWjI1P1GG4czQ5hnjHaX0pGJP-tRAdjUJvoYydJZdJVSSe8BKl1GkBWSW2VG00000__y30000)
+
+### HOST 검색
+
+![HOST 검색](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PVLgKyERvaw5jyrh5TwqB7ZRFDSQAEZX7noYy6RkbjVBMXGW2a2YRwTkUTszK-5rT-VhbYLlvhMycGkKtT3mPdcB0aJ3mWrlP_K0LQRcfN1nEG19e0i00000__y30000)
+
+### HOST 구독
+
+![HOST 구독](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PVLgKyERvaw5jyrh5TwqB7ZRFDSQAEZX7noYy6RkbjVBMXGW2a2YRwTkUTszK-5rT-VhbYLlvhMycGkKtT3mPdcB0aJ3mWrlP_K0LQRcfN1nEG19e0i00000__y30000)
