@@ -237,3 +237,7 @@
 
 ### 같은 버스킹에 참여 중인 USER 조회
 ![같은 버스킹에 참여 중인 USER 조회](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PVLcUSlRQPqAhpVqAxpPiEFDz3KARvPCV3DtHqpUwqqjRxgMl6tQgV1cmTJNcxSelEtVOmtIWQnC8JJODIWcx-sKbjSBvxoTsgBmUjNArmldWjI1P1GG4czQ5hnjHaX0pGJP-tRAdjUJvoYydJZdJVSSe8BKl1GkBWSW2VG00000__y30000)
+
+### HOST 검색
+
+![HOST 검색](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PVLgKyERvaw5jyrh5TwqB7ZRFDSQAEZX7noYy6RkbjVBMXGW2a2YRwTkUTszK-5rT-VhbYLlvhMycGkKtT3mPdcB0aJ3mWrlP_K0LQRcfN1nEG19e0i00000__y30000)
