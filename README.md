@@ -19,7 +19,7 @@
 `USER`는 가입회원으로 `버스킹` 조회, 검색, 참여, 개설, 후기 작성, `HOST` 검색 등 서비스를 이용할 수 있습니다. 
 `HOST`는 `버스킹`을 한 번 개설한 적이 있는 `USER`로, `HOST` 검색 시 노출됩니다.
 `ADMIN`은 관리자로, 서비스를 관리합니다.
-룸
+
 # 🖥️ 프로젝트 기술 스택
 
 (TODO)
@@ -204,3 +204,9 @@
 ### 회원가입
 
 ![회원가입](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8N5rYOYylgzVAEDtEtABpjcm6atYnlK7ZRl3Ocx-sidZUp9xpQqF1cNgirK9Lxg6jmo9jPAnMG9HGyNVG3mXNUzky1AYbABKXDBE6oUZEr1MZGwobJ580gNYzOQWsLKIZFoCn9rK18lzhKy6RPN4s5p685ZJTDQu26lzxM0JHO4s7MwvqjhpSqlDxKyNR63kp6eQZ0Oo8E3xpkxdpTikJDl1OqJo34iTiAboR3IXG_pTq1r0wrtEhDWfQtCwUWUHVc9g0qM35K-lM6EM_Q5bgZ2wFfWWKwiX9a9qFO2c-wbxpjMG5oCufJttGlUBDfhJLSM04cFhFbzU8Ue7XgNWeNbmEG12Ol00000F__0m00)
+
+## 3. USER/HOST
+
+### 로그인
+
+![로그인](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PVLwPylhXNDURT_nPkuEXJVDZM-Rvm3vCNblfYvuEwNdzR8rR_Oql9cxvKth38KttKlUJkkq1cbQtW4KKtZRDmCajRn1uMtpsfWyk3b09KMf1Qc99LnMdYxw0U4AR-Qrlbwmr1eggb2UaPcJgl5cpeAtirQyQTcey6fJmvkcDPeAcSKA6Y1BUbPeWYn1E6jco-l5FK1JK_DIkBWSW2JGQm00003__mC0)
