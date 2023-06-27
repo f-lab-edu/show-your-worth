@@ -188,3 +188,8 @@
 7. 모든 `USER`에게 공지사항이 전송된다
 
 # 🎞️ Flow Chart
+
+## 버스킹 조회
+
+![버스킹 조회](https://www.planttext.com/api/plantuml/png/b99DJy9048Rl-ol66noCqICSvEf5pnekJQpGGDkaBV7Qa4eGJ8J8TnO2IHL9UcWG8qI8_wSx6_-2MsZylCXXDvkTcMVUl3Flhsyfqv8Cgw3coOwLbLKP95N9I8IOEKK3GpTbyGmp24bWSyWRD-p1mwMD_HbUTG2hBczT9qMGTyl0kmqscM6x1ZYssQq3l4wnIfD4qoqP32MJjHB0EmuEF43guAB3xfSGp7rqRQHBDg9H1I6NMIKlnxwWKU0m3ee9iLFPZ1E0nARDkk4QnviKiEXXRu83yUVMiUfjm6ajy2awBgjHO5C7AoulBZxr2TQ5RkH29EpjYZYlBB4lz9UUUNEMrivqNOKZRU-aO2MZN90oagA55MnSnfulYC3f473auw3-x-838GkmL0jyc_LNW4CgG3XT6xDbTtP7sQ0JlCo_rqQ3sDW3xCaEfgk_aFsVAhOdoTev4MSpjMCz_diXq0bjRsDhnegFmkymdwJ4BHRl0m00__y30000)
+
