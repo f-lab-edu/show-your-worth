@@ -222,3 +222,8 @@
 ### 버스킹 참여 취소
 
 ![버스킹 참여 취소](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PVLcUSlRQPqARvPCV3DtXyBhJIrlkfQyRTgfyAPbmTlckTP05KXY2wQ-thn5uMt_7g1uPfg2nfiDEzvCNwFmPlkADsqzK2tscWf0E_CKD2fJYpMv51IiO8emR6XQ-sR176kkrBoKp3Gk4CN5vG0aWSu60000__y30000)
+
+### 버스킹 생성
+
+![버스킹 생성](https://www.planttext.com/api/plantuml/png/J8z13i5G48RtxnHZnnLOS9KcNcXeAst5ljv2a21OL1wfH5B4eiH6IDp7JECAfeZOJ2R_zqtop_DwhtY-uVfjgoboVbrQ4WpBh1b2U0tJ1jVn9A-P8KGHJuhwcpIu04KQzpkWrOJKiSI8WWF52d1wnFKIC1a11cTQ_2ckR4d35m156cXEMOWerc-NaqUYVkv7XKxTR4h8KpJ7U8nh3THTCYyNmFGWRpk5hD9-Iolr9LcHDEn16ivmToPzouvmDAIvUYHZfjAk2b7XoU--0000__y30000)
+
