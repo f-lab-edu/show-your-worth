@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1be973c4-3805-4238-9e06-a17d17f13f59" name="Changes" comment="DOCS : FLOW CHART">
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/texturized/muus/MuusApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/texturized/muus/MuusApplicationTests.java" afterDir="false" />
-    </list>
+    <list default="true" id="1be973c4-3805-4238-9e06-a17d17f13f59" name="Changes" comment="CHORE : application.yaml 설정&#10;&#10;- 프로파일 세분화(local, dev, prod)&#10;- local 빌드 설정" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,6 +49,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/redgem92/Desktop/project/public/show-your-worth",
     "node.js.detected.package.eslint": "true",
@@ -69,13 +61,17 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "Debugger_Data_Views_Java",
+    "spring.configuration.checksum": "0596b0aba6f2fb82b4942bbe4c514724",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="MuusApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="µ'us [local]" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" value="local" />
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="muus.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.texturized.muus.MuusApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.texturized.muus.Main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -90,6 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1687420804914</updated>
       <workItem from="1687420806601" duration="43918000" />
+      <workItem from="1687920522594" duration="3583000" />
     </task>
     <task id="LOCAL-00001" summary="DOCS : 프로젝트 개요">
       <created>1687495140275</created>
@@ -315,7 +312,35 @@
       <option name="project" value="LOCAL" />
       <updated>1687867874427</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Initial Commit - Project">
+      <created>1687920601917</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1687920601917</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Initial Commit - Project">
+      <created>1687920676441</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1687920676441</updated>
+    </task>
+    <task id="LOCAL-00035" summary="CHORE : Spring Boot 버전 2.6.15">
+      <created>1687920702619</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1687920702619</updated>
+    </task>
+    <task id="LOCAL-00036" summary="CHORE : application.yaml 설정&#10;&#10;- 프로파일 세분화(local, dev, prod)&#10;- local 빌드 설정">
+      <created>1687930807787</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1687930807787</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,10 +359,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="DOCS : USE CASE - USER" />
-    <MESSAGE value="DOCS : USE CASE - ADMIN" />
-    <MESSAGE value="DOCS : USE CASE - 목차 작성" />
-    <MESSAGE value="DOCS : USE CASE - 모임 조회 상세화" />
     <MESSAGE value="DOCS : USE CASE - 회원가입&#10;&#10;- 3단 page 방식 회원가입 CASE 작성&#10;- 아이디와 비밀번호 구별 및 정책 추가&#10;- 닉네임 정책 추가" />
     <MESSAGE value="DOCS : FLOW CHART - 목차 추가" />
     <MESSAGE value="DOCS : FLOW CHART - 버스킹 조회 추가&#10;&#10;- 모임 -&gt; 버스킹으로 네이밍 변경" />
@@ -359,7 +380,11 @@
     <MESSAGE value="DOCS : FLOW CHART - HOST 검색" />
     <MESSAGE value="DOCS : FLOW CHART - HOST 구독" />
     <MESSAGE value="DOCS : USE CASE - HOST 구독 누락 내용 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="DOCS : USE CASE - HOST 구독 누락 내용 추가" />
+    <MESSAGE value="CHORE" />
+    <MESSAGE value="Initial Commit - Project" />
+    <MESSAGE value="CHORE : Spring Boot 버전 2.6.15" />
+    <MESSAGE value="CHORE : application.yaml 설정&#10;&#10;- 프로파일 세분화(local, dev, prod)&#10;- local 빌드 설정" />
+    <option name="LAST_COMMIT_MESSAGE" value="CHORE : application.yaml 설정&#10;&#10;- 프로파일 세분화(local, dev, prod)&#10;- local 빌드 설정" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

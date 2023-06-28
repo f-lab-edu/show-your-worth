@@ -1,0 +1,44 @@
+spring:
+  profiles:
+    group:
+      local: local
+      dev: dev
+      prod: prod
+
+---
+
+# Common Data
+server:
+  port: 10023
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+---
+
+# Local Profile
+spring:
+  config:
+    activate:
+      on-profile: local
+
+---
+
+# Development Profile
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+---
+
+# Production Profile
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+---
