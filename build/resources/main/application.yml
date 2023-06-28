@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    group:
+      local : "common,local"
+      dev : "common,dev"
+      prod : "common,prod"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "common"
+
+server:
+  port: 10023

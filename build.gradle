@@ -34,6 +34,27 @@ dependencies {
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
 }
 
+// 프로젝트 단위 변수 설정
+ext {
+	profile = (!project.hasProperty('profile') || !profile) ? 'local' : profile
+}
+
+// 리소스 폴더 저장
+sourceSets {
+	main {
+		resources {
+			srcDirs "src/main/resources", "src/main/resources-env/${profile}"
+		}
+	}
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks {
+	processResources {
+		duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.INCLUDE
+	}
+}
+

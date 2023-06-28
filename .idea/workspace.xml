@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1be973c4-3805-4238-9e06-a17d17f13f59" name="Changes" comment="CHORE : application.yaml 설정&#10;&#10;- 프로파일 세분화(local, dev, prod)&#10;- local 빌드 설정" />
+    <list default="true" id="1be973c4-3805-4238-9e06-a17d17f13f59" name="Changes" comment="CHORE : 환경 별 프로파일 분리" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +18,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand />
@@ -51,7 +54,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/redgem92/Desktop/project/public/show-your-worth",
+    "last_opened_file_path": "/Users/redgem92/Desktop/project/public/show-your-worth/src/main/resources-env/prod",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -60,12 +63,44 @@
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "Debugger_Data_Views_Java",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "spring.configuration.checksum": "0596b0aba6f2fb82b4942bbe4c514724",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources-env/prod" />
+      <recent name="$PROJECT_DIR$/src/main/resources-env/local" />
+      <recent name="$PROJECT_DIR$/src/main" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources-env" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.µ'us [local]">
+    <configuration name="µ'us [local]" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootRun" />
+          </list>
+        </option>
+        <option name="vmOptions" value="--args='--spring.profiles.active=local'" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
     <configuration name="µ'us [local]" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <option name="ACTIVE_PROFILES" value="local" />
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
@@ -76,6 +111,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Gradle.µ'us [local]" />
+      <item itemvalue="Spring Boot.µ'us [local]" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -86,7 +125,7 @@
       <option name="presentableId" value="Default" />
       <updated>1687420804914</updated>
       <workItem from="1687420806601" duration="43918000" />
-      <workItem from="1687920522594" duration="3583000" />
+      <workItem from="1687920522594" duration="12422000" />
     </task>
     <task id="LOCAL-00001" summary="DOCS : 프로젝트 개요">
       <created>1687495140275</created>
@@ -340,7 +379,28 @@
       <option name="project" value="LOCAL" />
       <updated>1687930807787</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="CHORE : application.yaml 설정&#10;&#10;- 프로파일 세분화(local, dev, prod)&#10;- local 빌드 설정">
+      <created>1687930823104</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1687930823104</updated>
+    </task>
+    <task id="LOCAL-00038" summary="CHORE : 환경 별 프로파일 분리">
+      <created>1687962824520</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1687962824520</updated>
+    </task>
+    <task id="LOCAL-00039" summary="CHORE : 환경 별 프로파일 분리">
+      <created>1687962829782</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1687962829782</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,7 +419,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="DOCS : USE CASE - 회원가입&#10;&#10;- 3단 page 방식 회원가입 CASE 작성&#10;- 아이디와 비밀번호 구별 및 정책 추가&#10;- 닉네임 정책 추가" />
     <MESSAGE value="DOCS : FLOW CHART - 목차 추가" />
     <MESSAGE value="DOCS : FLOW CHART - 버스킹 조회 추가&#10;&#10;- 모임 -&gt; 버스킹으로 네이밍 변경" />
     <MESSAGE value="DOCS : USE CASE - 모임 -&gt; 버스킹 변경" />
@@ -384,7 +443,8 @@
     <MESSAGE value="Initial Commit - Project" />
     <MESSAGE value="CHORE : Spring Boot 버전 2.6.15" />
     <MESSAGE value="CHORE : application.yaml 설정&#10;&#10;- 프로파일 세분화(local, dev, prod)&#10;- local 빌드 설정" />
-    <option name="LAST_COMMIT_MESSAGE" value="CHORE : application.yaml 설정&#10;&#10;- 프로파일 세분화(local, dev, prod)&#10;- local 빌드 설정" />
+    <MESSAGE value="CHORE : 환경 별 프로파일 분리" />
+    <option name="LAST_COMMIT_MESSAGE" value="CHORE : 환경 별 프로파일 분리" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
