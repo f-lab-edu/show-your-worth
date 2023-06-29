@@ -26,7 +26,7 @@
 2. Spring Boot 2.6.15
 3. MyBatis 2.3.1
 4. JPA 2.6.15
-5. MySQL
+5. MySQL 8.0.33
 6. Gradle
 7. IntelliJ
 
