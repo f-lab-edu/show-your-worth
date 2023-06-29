@@ -2,3 +2,5 @@ spring:
   config:
     activate:
       on-profile: "dev"
+
+test: dev
