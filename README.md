@@ -252,3 +252,6 @@
 
 ![HOST 구독](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PVLgKyERvaw5jyrh5TwqB7ZRFDSQAEZX7noYy6RkbjVBMXGW2a2YRwTkUTszK-5rT-VhbYLlvhMycGkKtT3mPdcB0aJ3mWrlP_K0LQRcfN1nEG19e0i00000__y30000)
 
+### 유저 목록 조회 / 검색
+
+![유저 목록 조회](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PUNeuklff_1gSykR1LCLNY-SyshxZZTpTrW3PLvjQdZJtAdmjdcjmfkM1M-Rvu84tywSyxf_fiAR9HE1gXH2Wrs355vlw5Vmy0yEKNYpSCFRMJqWLM_cRdczh4K1OW9OszGjhxjtAhpkxdpTikJDl9OtSu6o6nhUB6_1PKPgNWeNbmEG1Fe20000__y30000)
