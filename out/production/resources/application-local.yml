@@ -1,6 +1,0 @@
-spring:
-  config:
-    activate:
-      on-profile: "local"
-
-test: local
