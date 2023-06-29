@@ -11,9 +11,10 @@ spring:
   config:
     activate:
       on-profile: "common"
+  jpa:
+    hibernate:
+      ddl-auto: none
 
 server:
   port: 10023
 
-common: common
-test: common
