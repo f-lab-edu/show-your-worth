@@ -22,7 +22,13 @@
 
 # 🖥️ 프로젝트 기술 스택
 
-(TODO)
+1. JDK 17
+2. Spring Boot 2.6.15
+3. MyBatis 2.3.1
+4. JPA 2.6.15
+5. MySQL
+6. Gradle
+7. IntelliJ
 
 # 🎭 Use Case / 유저 시나리오
 
@@ -245,3 +251,4 @@
 ### HOST 구독
 
 ![HOST 구독](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PVLgKyERvaw5jyrh5TwqB7ZRFDSQAEZX7noYy6RkbjVBMXGW2a2YRwTkUTszK-5rT-VhbYLlvhMycGkKtT3mPdcB0aJ3mWrlP_K0LQRcfN1nEG19e0i00000__y30000)
+
