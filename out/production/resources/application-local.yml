@@ -2,5 +2,14 @@ spring:
   config:
     activate:
       on-profile: "local"
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/muus-test
+    username: redgem92
+  devtools:
+    add-properties: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
 
-test: local
