@@ -4,7 +4,7 @@
 2. [프로젝트 기술 스택](#-프로젝트-기술-스택)
 3. [Use Case / 유저 시나리오](#-use-case--유저-시나리오)
 4. [Flow Chart](#-flow-chart)
-5. [Git Branch Strategy (#-git-branch-strategy)
+5. [Git Branch Strategy](#-git-branch-strategy)
 
 # 📜 프로젝트 개요
 
