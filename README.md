@@ -4,7 +4,8 @@
 2. [프로젝트 기술 스택](#-프로젝트-기술-스택)
 3. [Use Case / 유저 시나리오](#-use-case--유저-시나리오)
 4. [Flow Chart](#-flow-chart)
-5. [Git Branch Strategy](#-git-branch-strategy)
+5. [기능 구조도](#-기능-구조도)
+6. [Git Branch Strategy](#-git-branch-strategy)
 
 # 📜 프로젝트 개요
 
@@ -260,6 +261,10 @@
 ### 공지사항 등록
 
 ![공지사항 등록](https://www.planttext.com/api/plantuml/png/X9B1IiD054NtynNFNVeBPc45Doxq2zmKJ3NOfD3KXRjIeoWLBPYWBKcPW5fRAWHRjL31_ybxmL_m9KQbZU9ccBbppt3lpBpFtefMlLIhxniLiLJVrGmDIeQ-KnB2sjDDg5KjZQU9GuZbrRMDzKs8nZP95p3mefSf-LELT-BE2SGT1mSJ87-25vr4ZCPFr6zGSnIx3q2sZ0_zBNDEZC-lsSxhFwbd9meR6PpVxHsXl6LPBuD2TwVKyW13Zuw3bG9m6HEK0yqg2805JjhiKOLMiJJ5hAQ6JmsmAQdlGUALhfedPpSOjfWqj_NoOfnVsgJ1KWPmEC301mecr1lzas-UoChdN3zwxDhKTUYg3UY4wBz2TXdVHREuEBp7Imby07K7r6ip4JsUBJpA5vHGGXHvvC_n0G00__y30000)
+
+# 📑 기능 구조도
+
+[WIKI - 기능 구조도](https://github.com/f-lab-edu/show-your-worth/wiki/04.-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%EC%A1%B0%EB%8F%84)를 참고하시면 됩니다.
 
 # 🌲 Git Branch Strategy
 
