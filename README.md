@@ -263,4 +263,4 @@
 
 # 🌲 Git Branch Strategy
 
-https://github.com/f-lab-edu/show-your-worth/assets/11500877/68605232-e78f-4ff3-88cb-9cbbba9943c0
+![](https://github.com/f-lab-edu/show-your-worth/assets/11500877/68605232-e78f-4ff3-88cb-9cbbba9943c0)
