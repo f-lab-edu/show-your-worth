@@ -4,6 +4,7 @@
 2. [프로젝트 기술 스택](#-프로젝트-기술-스택)
 3. [Use Case / 유저 시나리오](#-use-case--유저-시나리오)
 4. [Flow Chart](#-flow-chart)
+5. [Git Branch Strategy (#-git-branch-strategy)
 
 # 📜 프로젝트 개요
 
@@ -250,7 +251,7 @@
 
 ### HOST 구독
 
-![HOST 구독](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PVLgKyERvaw5jyrh5TwqB7ZRFDSQAEZX7noYy6RkbjVBMXGW2a2YRwTkUTszK-5rT-VhbYLlvhMycGkKtT3mPdcB0aJ3mWrlP_K0LQRcfN1nEG19e0i00000__y30000)
+🌲HOST 구독](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8NLt5sPfv2KNvnAf09Ki75PVLgKyERvaw5jyrh5TwqB7ZRFDSQAEZX7noYy6RkbjVBMXGW2a2YRwTkUTszK-5rT-VhbYLlvhMycGkKtT3mPdcB0aJ3mWrlP_K0LQRcfN1nEG19e0i00000__y30000)
 
 ### 유저 목록 조회 / 검색
 
@@ -259,3 +260,7 @@
 ### 공지사항 등록
 
 ![공지사항 등록](https://www.planttext.com/api/plantuml/png/X9B1IiD054NtynNFNVeBPc45Doxq2zmKJ3NOfD3KXRjIeoWLBPYWBKcPW5fRAWHRjL31_ybxmL_m9KQbZU9ccBbppt3lpBpFtefMlLIhxniLiLJVrGmDIeQ-KnB2sjDDg5KjZQU9GuZbrRMDzKs8nZP95p3mefSf-LELT-BE2SGT1mSJ87-25vr4ZCPFr6zGSnIx3q2sZ0_zBNDEZC-lsSxhFwbd9meR6PpVxHsXl6LPBuD2TwVKyW13Zuw3bG9m6HEK0yqg2805JjhiKOLMiJJ5hAQ6JmsmAQdlGUALhfedPpSOjfWqj_NoOfnVsgJ1KWPmEC301mecr1lzas-UoChdN3zwxDhKTUYg3UY4wBz2TXdVHREuEBp7Imby07K7r6ip4JsUBJpA5vHGGXHvvC_n0G00__y30000)
+
+# 🌲 Git Branch Strategy
+
+https://github.com/f-lab-edu/show-your-worth/assets/11500877/68605232-e78f-4ff3-88cb-9cbbba9943c0
