@@ -9,8 +9,7 @@
 7. [Git Branch Strategy](#-git-branch-strategy)
 
 # 📜 프로젝트 개요
-
-> *Show your worth! 당신의 가치를 보여주세요.*
+![header](https://capsule-render.vercel.app/api?type=rect&color=transparent&height=200&section=header&text=Show%20your%20worth!&desc=당신의%20가치를%20보여주세요.&descAlign=70&descAlignY=70&fontSize=70&fontColor=703ee5&animation=fadeIn)
 
 본 프로젝트는 `버스킹` 서비스를 제공하는 시스템을 개발합니다. 
 `버스킹` 서비스는 기본적으로 `HOST`가 지도에 `버스킹` 장소와 날짜를 지정하면, 서비스 이용자 모두가 볼 수 있게 합니다.
