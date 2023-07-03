@@ -24,13 +24,13 @@
 
 # 🖥 프로젝트 기술 스택
 
-1. <img src="https://img.shields.io/badge/-Java%2017-007396?style=flat&logo=java&logoColor=white" />
-2. ![Spring Boot](https://img.shields.io/badge/-Spring%20Boot%202.6.15-6DB33F?logo=spring%20boot&logoColor=white)
-3. ![MyBatis](https://img.shields.io/badge/-MyBatis%202.3.1-000000?logo=&logoColor=white)
-4. ![Spring Data JPA](https://img.shields.io/badge/-Spring%20Data%20JPA-6DB33F?logo=&logoColor=white)
-5. ![MySQL](https://img.shields.io/badge/-MySQL%208.0.33-4479A1?logo=mysql&logoColor=white)
-6. ![Gradle](https://img.shields.io/badge/-Gradle-02303A?logo=gradle&logoColor=white)
-7. ![IntelliJ](https://img.shields.io/badge/-IntelliJ-000000?logo=intellijidea&logoColor=white)
+- <img src="https://img.shields.io/badge/Java-17-007396?style=flat&logo=java&logoColor=007396" />
+- ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.6.15-6DB33F?logo=spring%20boot&logoColor=6DB33F)
+- ![MyBatis](https://img.shields.io/badge/MyBatis-2.3.1-000000?logo=&logoColor=000000)
+- ![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA--6DB33F?logo=&logoColor=6DB33F)
+- ![MySQL](https://img.shields.io/badge/MySQL-8.0.33-4479A1?logo=mysql&logoColor=4479A1)
+- ![Gradle](https://img.shields.io/badge/Gradle-7.4-02303A?logo=gradle&logoColor=02303A)
+- ![IntelliJ](https://img.shields.io/badge/IntelliJ-2023.1-000000?logo=intellijidea&logoColor=000000)
 
 # 🎭 Use Case / 유저 시나리오
 
