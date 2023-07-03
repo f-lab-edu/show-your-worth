@@ -25,13 +25,13 @@
 
 # 🖥 프로젝트 기술 스택
 
-1. JDK 17
-2. Spring Boot 2.6.15
-3. MyBatis 2.3.1
-4. JPA 2.6.15
-5. MySQL 8.0.33
-6. Gradle
-7. IntelliJ
+1. <img src="https://img.shields.io/badge/-Java%2017-007396?style=flat&logo=java&logoColor=white" />
+2. ![Spring Boot](https://img.shields.io/badge/-Spring%20Boot%202.6.15-6DB33F?logo=spring%20boot&logoColor=white)
+3. ![MyBatis](https://img.shields.io/badge/-MyBatis%202.3.1-000000?logo=&logoColor=white)
+4. ![Spring Data JPA](https://img.shields.io/badge/-Spring%20Data%20JPA-6DB33F?logo=&logoColor=white)
+5. ![MySQL](https://img.shields.io/badge/-MySQL%208.0.33-4479A1?logo=mysql&logoColor=white)
+6. ![Gradle](https://img.shields.io/badge/-Gradle-02303A?logo=gradle&logoColor=white)
+7. ![IntelliJ](https://img.shields.io/badge/-IntelliJ-000000?logo=intellijidea&logoColor=white)
 
 # 🎭 Use Case / 유저 시나리오
 
