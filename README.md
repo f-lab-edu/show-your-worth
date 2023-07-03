@@ -5,7 +5,8 @@
 3. [Use Case / 유저 시나리오](#-use-case--유저-시나리오)
 4. [Flow Chart](#-flow-chart)
 5. [기능 구조도](#-기능-구조도)
-6. [Git Branch Strategy](#-git-branch-strategy)
+6. [메뉴 구조도](#-메뉴-구조도)
+7. [Git Branch Strategy](#-git-branch-strategy)
 
 # 📜 프로젝트 개요
 
@@ -265,6 +266,10 @@
 # 📑 기능 구조도
 
 [WIKI - 기능 구조도](https://github.com/f-lab-edu/show-your-worth/wiki/04.-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%EC%A1%B0%EB%8F%84)를 참고하시면 됩니다.
+
+# 📱 메뉴 구조도
+
+![μ'us - 메뉴 구조도-1](https://github.com/f-lab-edu/show-your-worth/assets/11500877/a1a5ed05-f605-4737-88f1-774243d14b98)
 
 # 🌲 Git Branch Strategy
 
