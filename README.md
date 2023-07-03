@@ -269,7 +269,7 @@
 
 # 📱 메뉴 구조도
 
-![μ'us - 메뉴 구조도-1](https://github.com/f-lab-edu/show-your-worth/assets/11500877/a1a5ed05-f605-4737-88f1-774243d14b98)
+![μ'us - 메뉴 구조도-1](https://github.com/f-lab-edu/show-your-worth/assets/11500877/ce70a849-be99-47ef-abea-3c30544fe0da)
 
 # 🌲 Git Branch Strategy
 
