@@ -82,13 +82,14 @@
 ### USE CASE 4 - 버스킹 생성
 
 1. 홈 화면에 있는 + 버튼을 누른다
-2. 제목을 적는다
-3. 사진을 등록하고 내용을 적는다(Opt.)
-4. 시작 날짜 및 시간을 적는다
-5. 생성 버튼을 누르면 정말 생성하겠는지 응답한다
+2. 지도를 움직여 생성할 위치를 선택한다
+3. 제목을 적는다
+4. 사진을 등록하고 내용을 적는다(Opt.)
+5. 시작 날짜 및 시간을 적는다
+6. 생성 버튼을 누르면 정말 생성하겠는지 응답한다
    - 취소를 누르면 4번 흐름으로 이동한다
    - 확인을 누르면 6번 흐름으로 이동한다
-6. 홈 화면으로 돌아가고 생성한 버스킹이 표시된다
+7. 홈 화면으로 돌아가고 생성한 버스킹이 표시된다
 
 ### USE CASE 6 - 버스킹 종료(자동)
 
@@ -158,7 +159,7 @@
 
 ### 버스킹 생성
 
-![버스킹 생성](https://www.planttext.com/api/plantuml/png/J8z13i5G48RtxnHZnnLOS9KcNcXeAst5ljv2a21OL1wfH5B4eiH6IDp7JECAfeZOJ2R_zqtop_DwhtY-uVfjgoboVbrQ4WpBh1b2U0tJ1jVn9A-P8KGHJuhwcpIu04KQzpkWrOJKiSI8WWF52d1wnFKIC1a11cTQ_2ckR4d35m156cXEMOWerc-NaqUYVkv7XKxTR4h8KpJ7U8nh3THTCYyNmFGWRpk5hD9-Iolr9LcHDEn16ivmToPzouvmDAIvUYHZfjAk2b7XoU--0000__y30000)
+![버스킹 생성]([https://www.planttext.com/api/plantuml/png/J8z13i5G48RtxnHZnnLOS9KcNcXeAst5ljv2a21OL1wfH5B4eiH6IDp7JECAfeZOJ2R_zqtop_DwhtY-uVfjgoboVbrQ4WpBh1b2U0tJ1jVn9A-P8KGHJuhwcpIu04KQzpkWrOJKiSI8WWF52d1wnFKIC1a11cTQ_2ckR4d35m156cXEMOWerc-NaqUYVkv7XKxTR4h8KpJ7U8nh3THTCYyNmFGWRpk5hD9-Iolr9LcHDEn16ivmToPzouvmDAIvUYHZfjAk2b7XoU--0000__y30000](https://www.planttext.com/api/plantuml/png/L93FIiD04CRl-nJZBNc5zc0lle3Y0mHSRB199Oc8Dqdtu3z8YrQiR4eAXTZY8PM2BGg-JsQ2h-2iX5elo-mtttxpc_t--6g5aHD4Prv7x4HjwKbmFFVO4I8ySNq8kg7aqZY4Q1mUxEq3JdJvlg9qrMG5tnJTJAju3THBIIs0L5RrKcu5ybGwaG1e0EMNc2WWhMZzP6wK3Pkr0SxRRaTQbAlgyHfeEk1WsAJksk26O5t8q1R_fsKQvpEWyO276X2ANpa3y7w1anImI03Z9JrlMVw0w5QpoeQCSlthPQKirCQxZGOMqsBUvxNh7MielsiRfFaBZLNTCI3Lw0ggqGFEbgG_pIDCxcYeogBFNUaV2T7Yax_x1m00__y30000))
 
 ### 버스킹 종료
 
