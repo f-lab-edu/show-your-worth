@@ -179,7 +179,7 @@
 
 ![μ'us - 메뉴 구조도-1](https://github.com/f-lab-edu/show-your-worth/assets/11500877/2318b8d3-6243-48a2-ac63-d3e1184cbcf6)
 
-# 📑 ERD
+# 📄 ERD
 
 ![μ'us - ERD](https://github.com/f-lab-edu/show-your-worth/assets/11500877/a79ead74-efa0-4eff-9576-9dfc468595ad)
 
