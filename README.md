@@ -6,7 +6,8 @@
 4. [Flow Chart](#-flow-chart)
 5. [기능 구조도](#-기능-구조도)
 6. [메뉴 구조도](#-메뉴-구조도)
-7. [Git Branch Strategy](#-git-branch-strategy)
+7. [ERD](#-erd)
+8. [Git Branch Strategy](#-git-branch-strategy)
 
 # 📜 프로젝트 개요
 ![header](https://capsule-render.vercel.app/api?type=rect&color=transparent&height=200&section=header&text=Show%20your%20worth!&desc=당신의%20가치를%20보여주세요.&descAlign=70&descAlignY=70&fontSize=70&fontColor=703ee5&animation=fadeIn)
@@ -177,6 +178,10 @@
 # 📱 메뉴 구조도
 
 ![μ'us - 메뉴 구조도-1](https://github.com/f-lab-edu/show-your-worth/assets/11500877/2318b8d3-6243-48a2-ac63-d3e1184cbcf6)
+
+# 📑 ERD
+
+![μ'us - ERD](https://github.com/f-lab-edu/show-your-worth/assets/11500877/a79ead74-efa0-4eff-9576-9dfc468595ad)
 
 # 🌲 Git Branch Strategy
 
