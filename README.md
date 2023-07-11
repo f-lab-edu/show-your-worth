@@ -181,7 +181,11 @@
 
 # 📄 ERD
 
-![μ'us - ERD](https://github.com/f-lab-edu/show-your-worth/assets/11500877/a840e536-c800-408f-ac72-c3c57ccff4d3)
+## 초안
+![µ'us - ERD](https://github.com/f-lab-edu/show-your-worth/assets/11500877/d9eb4221-e66d-4a7a-a179-50f4f94e3c90)
+
+## 링크
+[µ'us - ERD](https://dbdiagram.io/embed/64ace97802bd1c4a5ed8b7f3)
 
 # 🌲 Git Branch Strategy
 
