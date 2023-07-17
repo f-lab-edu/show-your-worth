@@ -1,7 +1,7 @@
 ---
 name: "\U0001F525FEATURE"
 about: Suggest a feature for this project
-title: 'SET_THE_TITLE #{issue_number}'
+title: '[FEAT] SET_THE_TITLE #{issue_number}'
 labels: feature
 assignees: f-lab-nolan
 
