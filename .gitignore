@@ -51,3 +51,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+# Macbook
+.DS_Store
