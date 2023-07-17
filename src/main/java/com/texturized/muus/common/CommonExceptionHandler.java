@@ -1,6 +1,7 @@
 package com.texturized.muus.common;
 
 import com.texturized.muus.common.error.ErrorCode;
+import com.texturized.muus.common.error.exception.BusinessException;
 import java.nio.file.AccessDeniedException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -13,8 +14,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 /**
- * @ControllerAdivce 기반 애플리케이션 예외 핸들링 클래스 ref :
- * https://github.com/cheese10yun/spring-guide/blob/master/docs/exception-guide.md#controlleradvice-%EB%AA%A8%EB%93%A0-%EC%98%88%EC%99%B8%EB%A5%BC-%ED%97%A8%EB%93%A4%EB%A7%81
+ * {@code @ControllerAdvice} 기반 애플리케이션 예외 핸들링 클래스
+ * ref : https://github.com/cheese10yun/spring-guide/blob/master/docs/exception-guide.md#controlleradvice-%EB%AA%A8%EB%93%A0-%EC%98%88%EC%99%B8%EB%A5%BC-%ED%97%A8%EB%93%A4%EB%A7%81
  */
 @ControllerAdvice
 @Slf4j
@@ -32,8 +33,8 @@ public class CommonExceptionHandler {
     }
 
     /**
-     * {@code @ModelAttribute} 으로 binding error 발생 시 BindException 이 발생해요 ref
-     * https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-modelattrib-method-args
+     * {@code @ModelAttribute} 으로 binding error 발생 시 BindException 이 발생해요
+     * ref : https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-modelattrib-method-args
      */
     @ExceptionHandler(BindException.class)
     protected ResponseEntity<ErrorResponse> handleBindException(BindException e) {
@@ -76,4 +77,17 @@ public class CommonExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.valueOf(ErrorCode.HANDLE_ACCESS_DENIED.getStatus()));
     }
 
+    @ExceptionHandler(BusinessException.class)
+    protected ResponseEntity<ErrorResponse> handleBusinessException(final BusinessException e) {
+        log.error("handleEntityNotFoundException", e);
+        final ErrorCode errorCode = e.getErrorCode();
+        final ErrorResponse response = ErrorResponse.of(ErrorCode.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(response, HttpStatus.valueOf(errorCode.getStatus()));
+    }
+    @ExceptionHandler(Exception.class)
+    protected ResponseEntity<ErrorResponse> handleException(Exception e) {
+        log.error("handleEntityNotFoundException", e);
+        final ErrorResponse response = ErrorResponse.of(ErrorCode.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
