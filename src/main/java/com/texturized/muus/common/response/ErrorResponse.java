@@ -1,4 +1,4 @@
-package com.texturized.muus.common;
+package com.texturized.muus.common.response;
 
 import com.texturized.muus.common.error.ErrorCode;
 import java.util.ArrayList;

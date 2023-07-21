@@ -2,6 +2,7 @@ package com.texturized.muus.common;
 
 import com.texturized.muus.common.error.ErrorCode;
 import com.texturized.muus.common.error.exception.BusinessException;
+import com.texturized.muus.common.response.ErrorResponse;
 import java.nio.file.AccessDeniedException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
