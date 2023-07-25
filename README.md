@@ -27,6 +27,7 @@
 
 - <img src="https://img.shields.io/badge/Java-17-007396?style=flat&logo=java&logoColor=007396" />
 - ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.6.15-6DB33F?logo=spring%20boot&logoColor=6DB33F)
+- ![Swagger](https://img.shields.io/badge/Swagger-1.6.11-85EA2D?logo=swagger&logoColor=85EA2D)
 - ![MyBatis](https://img.shields.io/badge/MyBatis-2.3.1-000000?logo=&logoColor=000000)
 - ![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-2.6.15-6DB33F?logo=&logoColor=6DB33F)
 - ![MySQL](https://img.shields.io/badge/MySQL-8.0.33-4479A1?logo=mysql&logoColor=4479A1)
