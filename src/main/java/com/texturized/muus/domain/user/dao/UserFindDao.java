@@ -12,10 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserFindDao {
 
-    private final UserRepository memberRepository;
+    private final UserRepository userRepository;
 
     public User findById(final Long id) {
-        final Optional<User> user = memberRepository.findById(id);
+        final Optional<User> user = userRepository.findById(id);
         user.orElseThrow(() -> new UserNotFoundException(id));
         return user.get();
     }
