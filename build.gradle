@@ -58,6 +58,11 @@ sourceSets {
 			srcDirs "src/main/resources", "src/main/resources-env/${profile}"
 		}
 	}
+	test {
+		resources {
+			srcDirs "src/test/resources"
+		}
+	}
 }
 
 tasks.named('test') {
@@ -66,6 +71,10 @@ tasks.named('test') {
 
 tasks {
 	processResources {
+		duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.INCLUDE
+	}
+
+	processTestResources {
 		duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.INCLUDE
 	}
 }
