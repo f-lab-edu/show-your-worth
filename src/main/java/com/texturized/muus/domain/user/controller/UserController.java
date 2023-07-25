@@ -1,6 +1,5 @@
 package com.texturized.muus.domain.user.controller;
 
-import com.texturized.muus.common.response.Existence;
 import com.texturized.muus.domain.user.dao.UserFindDao;
 import com.texturized.muus.domain.user.dto.UserResponse;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +16,7 @@ public class UserController {
     private final UserFindDao userFindDao;
 
     @GetMapping("/{id}")
-    public UserResponse getMember(@PathVariable long id) {
+    public UserResponse getUser(@PathVariable long id) {
         return new UserResponse(userFindDao.findById(id));
     }
 
