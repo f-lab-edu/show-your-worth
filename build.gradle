@@ -31,6 +31,13 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
+	// Spring Boot 2.6에서 Swagger UI 3.x 사용 불가 이슈 있어
+	// SpringDoc 으로 대체 합니다.
+	// [참고] : https://bcp0109.tistory.com/326, https://colabear754.tistory.com/99
+	/*implementation "io.springfox.springfox-swagger2:3.52.5"
+	implementation "io.springfox.springfox-swagger-ui:3.52.5"*/
+	implementation "org.springdoc:springdoc-openapi-ui:1.6.11"
+
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
