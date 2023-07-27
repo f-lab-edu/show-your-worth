@@ -17,7 +17,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public UserResponse getUser(@PathVariable long id) {
-        return new UserResponse(userFindDao.findById(id));
+        return new UserResponse(userFindDao.findById(id).get());
     }
 
 }

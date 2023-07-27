@@ -14,9 +14,9 @@ public class UserFindDao {
 
     private final UserRepository userRepository;
 
-    public User findById(final Long id) {
+    public Optional<User> findById(final Long id) {
         final Optional<User> user = userRepository.findById(id);
         user.orElseThrow(() -> new UserNotFoundException(id));
-        return user.get();
+        return user;
     }
 }
