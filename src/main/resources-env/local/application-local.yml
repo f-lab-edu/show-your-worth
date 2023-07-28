@@ -6,8 +6,6 @@ spring:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:~/muus-test
     username: redgem92
-  devtools:
-    add-properties: true
   jpa:
     database: h2
     show-sql: true
@@ -17,5 +15,11 @@ spring:
         format_sql: true
         use_sql_comments: true
         ddl-auto: create-drop
+  devtools:
+    add-properties: true
+logging:
+  level:
+    com.texturized.muus: debug
+
 
 
