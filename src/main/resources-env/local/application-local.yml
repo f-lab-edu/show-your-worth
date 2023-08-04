@@ -15,12 +15,11 @@ spring:
         format_sql: true
         use_sql_comments: true
         ddl-auto: create-drop
-
   devtools:
     add-properties: true
 logging:
   level:
-    com.texturized.muus: debug
+    kr.texturized.muus: debug
 
 
 
