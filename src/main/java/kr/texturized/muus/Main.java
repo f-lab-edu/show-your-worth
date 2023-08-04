@@ -1,4 +1,4 @@
-package com.texturized.muus;
+package kr.texturized.muus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,25 +1,26 @@
 spring:
   config:
     activate:
-      on-profile: "local"
+      on-profile: "test"
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:~/muus-test
+    url: jdbc:h2:~/muus-test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: redgem92
+    password:
   jpa:
     database: h2
+    hibernate:
+      ddl-auto: update
+    show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
-        show_sql: true
         format_sql: true
         use_sql_comments: true
         ddl-auto: create-drop
-  devtools:
-    add-properties: true
 logging:
   level:
-    kr.texturized.muus: debug
-
-
-
+    root: info
+    org:
+      hibernate:
+        type: trace

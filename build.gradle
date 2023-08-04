@@ -23,22 +23,34 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testCompileOnly 'org.projectlombok:lombok'
-	testAnnotationProcessor 'org.projectlombok:lombok'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.h2database:h2'
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.7.1'
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.7'
 	implementation 'org.hibernate.validator:hibernate-validator:6.0.21.Final'
 	implementation 'org.glassfish:jakarta.el:3.0.4'
+	implementation 'com.google.guava:guava:32.1.1-jre'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Spring Boot 2.6에서 Swagger UI 3.x 사용 불가 이슈 있어
+	// SpringDoc 으로 대체 합니다.
+	// [참고] : https://bcp0109.tistory.com/326, https://colabear754.tistory.com/99
+	/*implementation "io.springfox.springfox-swagger2:3.52.5"
+	implementation "io.springfox.springfox-swagger-ui:3.52.5"*/
+	implementation "org.springdoc:springdoc-openapi-ui:1.6.11"
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
 	testImplementation( 'org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	runtimeOnly 'com.h2database:h2'
 }
 
 // 프로젝트 단위 변수 설정
@@ -53,6 +65,11 @@ sourceSets {
 			srcDirs "src/main/resources", "src/main/resources-env/${profile}"
 		}
 	}
+	test {
+		resources {
+			srcDirs "src/test/resources"
+		}
+	}
 }
 
 tasks.named('test') {
@@ -61,6 +78,10 @@ tasks.named('test') {
 
 tasks {
 	processResources {
+		duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.INCLUDE
+	}
+
+	processTestResources {
 		duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.INCLUDE
 	}
 }

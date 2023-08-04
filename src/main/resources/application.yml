@@ -15,6 +15,11 @@ spring:
     hibernate:
       ddl-auto: none
 
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    jdbc-type-for-null: varchar
+
 server:
   port: 10023
 
