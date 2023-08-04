@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userFindDao;
-    private final UserViewService userViewFindDao;
+    private final UserService userService;
+    private final UserViewService userViewService;
 
     @GetMapping("/{id}")
     public UserResponse getUser(@PathVariable long id) {
-        return new UserResponse(userFindDao.findById(id).get());
+        return new UserResponse(userService.findById(id).get());
     }
 
     @GetMapping("")
     public void getAllUsers() {
-        System.out.println("Users : " + userViewFindDao.getList().toString());
+        System.out.println("Users : " + userViewService.getList().toString());
     }
 
 }
