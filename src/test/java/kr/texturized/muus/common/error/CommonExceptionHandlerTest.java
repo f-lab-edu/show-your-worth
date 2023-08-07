@@ -34,7 +34,7 @@ public class CommonExceptionHandlerTest extends IntegrationTest {
 
     private ResultActions requestGetUser(long memberId) throws Exception {
         return mvc.perform(post("/users/{id}", memberId)
-                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
             .andDo(print());
     }
 }
