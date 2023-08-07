@@ -65,7 +65,7 @@
    - 존재하는 닉네임이 있으면 중복 아이디 존재 메시지를 응답한다
    - 존재하는 닉네임이 없으면 사용 가능 메시지를 응답한다
 7. 닉네임 입력이 완료되고 다음을 누르면 전화번호 인증 UI가 표시된다
-8. 전화번호를 입력하고 인증 번호 발송 버튼을 누른다
+8. 이메일을 입력하고 인증 번호 발송 버튼을 누른다
 9. 3분 내에 수신한 인증번호를 입력하고 인증하기 버튼을 누른다
 10. 회원가입이 성공적으로 마치면 자동으로 로그인되어 홈 화면으로 돌아간다
 
@@ -151,7 +151,7 @@
 
 ### 회원가입
 
-![회원가입](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8N5rYOYylgzVAEDtEtABpjcm6atYnlK7ZRl3Ocx-sidZUp9xpQqF1cNgirK9Lxg6jmo9jPAnMG9HGyNVG3mXNUzky1AYbABKXDBE6oUZEr1MZGwobJ580gNYzOQWsLKIZFoCn9rK18lzhKy6RPN4s5p685ZJTDQu26lzxM0JHO4s7MwvqjhpSqlDxKyNR63kp6eQZ0Oo8E3xpkxdpTikJDl1OqJo34iTiAboR3IXG_pTq1r0wrtEhDWfQtCwUWUHVc9g0qM35K-lM6EM_Q5bgZ2wFfWWKwiX9a9qFO2c-wbxpjMG5oCufJttGlUBDfhJLSM04cFhFbzU8Ue7XgNWeNbmEG12Ol00000F__0m00)
+![회원가입](https://www.planttext.com/api/plantuml/png/UhzxlqDnIM9HIMbk3fTYIKPgRgf2OcvcUY8N5rYOYylgzVAEDtEtABpjcm6atYnlK7ZRl3Ocx-sidZUp9xpQqF1cNgirK9Lxg6jmo9jPAnMG9HGyNVG3mXNUzky1AYbABKXDBE6oUZEr1MZGwobJ580gNYzOQWsLKIZFoCn9rK18lzhKy6RPN4s5p685ZJTDQu26lzxM0JHO4s7MwvqjhpSqlDxKyNR63kp6eQZ0Oo8E3xpkxdpTikJDl1OqJo34iTiAboR3IXG_pTq1r8uUWi3mMJdbpTmzE49moSJNcxT2JNipVSthRGrG-v4aD96D0za1jV3rXZblsXPQeubYjmTP1R8_8Mo5DzrBtlQi07aKnNzlkXUysRJM6Ywi01EVsV9wSGzGF3KlXOlB0KW2qoG0003__mC0)
 
 ## 3. USER/HOST
 
@@ -178,11 +178,11 @@
 
 # 📱 메뉴 구조도
 
-![μ'us - 메뉴 구조도-1](https://github.com/f-lab-edu/show-your-worth/assets/11500877/2318b8d3-6243-48a2-ac63-d3e1184cbcf6)
+![μ'us - 메뉴 구조도-1](https://github.com/f-lab-edu/show-your-worth/assets/11500877/62d42f93-2696-4254-ac48-dae2bd39ccf1)
 
 # 📄 ERD
 
-![µ'us - ERD](https://github.com/f-lab-edu/show-your-worth/assets/11500877/d4592950-0545-46b4-b1fb-57fb473739b4)
+![µ'us - ERD](https://github.com/f-lab-edu/show-your-worth/assets/11500877/111618b0-14a8-4182-bdc0-55c718c68475)
 
 # 🌲 Git Branch Strategy
 
