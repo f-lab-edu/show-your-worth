@@ -1,4 +1,4 @@
-package kr.texturized.muus.common.resttemplate;
+package kr.texturized.muus.common.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

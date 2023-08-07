@@ -1,6 +1,6 @@
-package kr.texturized.muus.common.response;
+package kr.texturized.muus.common.error;
 
-import kr.texturized.muus.common.error.ErrorCode;
+import kr.texturized.muus.common.error.exception.ErrorCode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;

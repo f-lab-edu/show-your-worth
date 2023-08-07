@@ -1,4 +1,4 @@
-package kr.texturized.muus.common.error;
+package kr.texturized.muus.common.error.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;

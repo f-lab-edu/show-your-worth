@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import kr.texturized.muus.common.error.exception.ErrorCode;
 import kr.texturized.muus.test.IntegrationTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;

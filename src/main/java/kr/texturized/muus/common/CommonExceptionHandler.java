@@ -1,8 +1,8 @@
 package kr.texturized.muus.common;
 
-import kr.texturized.muus.common.error.ErrorCode;
+import kr.texturized.muus.common.error.exception.ErrorCode;
 import kr.texturized.muus.common.error.exception.BusinessException;
-import kr.texturized.muus.common.response.ErrorResponse;
+import kr.texturized.muus.common.error.ErrorResponse;
 import java.nio.file.AccessDeniedException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

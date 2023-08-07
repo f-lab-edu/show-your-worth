@@ -1,6 +1,5 @@
 package kr.texturized.muus.common.error.exception;
 
-import kr.texturized.muus.common.error.ErrorCode;
 import lombok.Getter;
 
 @Getter
