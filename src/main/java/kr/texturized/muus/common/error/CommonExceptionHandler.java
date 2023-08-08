@@ -1,4 +1,4 @@
-package kr.texturized.muus.common;
+package kr.texturized.muus.common.error;
 
 import kr.texturized.muus.common.error.exception.ErrorCode;
 import kr.texturized.muus.common.error.exception.BusinessException;
