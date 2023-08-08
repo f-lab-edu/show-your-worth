@@ -39,7 +39,7 @@ public class User {
     private Password password;
 
     @Embedded
-    @AttributeOverride(name = "value", column = @Column(name = "nickname", nullable = false, updatable = true, length = 15))
+    @AttributeOverride(name = "value", column = @Column(name = "nickname", nullable = false, unique = true, updatable = true, length = 15))
     private Nickname nickname;
 
     @Embedded
@@ -59,12 +59,18 @@ public class User {
     private LocalDateTime createTime;
 
     @Builder
-    public User(AccountID accountID, Password password, Nickname nickname, Email email,
-        ProfileImage profileImage) {
+    public User(
+        AccountID accountID,
+        Password password,
+        Nickname nickname,
+        Email email,
+        ProfileImage profileImage,
+        UserType userType) {
         this.accountID = accountID;
         this.password = password;
         this.nickname = nickname;
         this.email = email;
         this.profileImage = profileImage;
+        this.userType = userType;
     }
 }
