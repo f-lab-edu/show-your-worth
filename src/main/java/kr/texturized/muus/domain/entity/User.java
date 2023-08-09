@@ -1,9 +1,7 @@
 package kr.texturized.muus.domain.entity;
 
 import java.time.LocalDateTime;
-import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,7 +21,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @Table(name = "user")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@ToString(of = {"email", "nickname"})
+@ToString(of = {"nickname", "email"})
 public class User {
 
     @Id
@@ -30,25 +29,24 @@ public class User {
     @Column(name = "id", updatable = false)
     private Long id;
 
-    @Embedded
-    @AttributeOverride(name = "value", column = @Column(name = "account_id", nullable = false, unique = true, updatable = false, length = 15))
-    private AccountID accountID;
+    @NotBlank
+    @Column(name = "account_id")
+    private String accountId;
 
-    @Embedded
-    @AttributeOverride(name = "value", column = @Column(name = "password", nullable = false, updatable = true, length = 20))
-    private Password password;
+    @NotBlank
+    @Column(name = "password")
+    private String password;
 
-    @Embedded
-    @AttributeOverride(name = "value", column = @Column(name = "nickname", nullable = false, unique = true, updatable = true, length = 15))
-    private Nickname nickname;
+    @NotBlank
+    @Column(name = "nickname")
+    private String nickname;
 
-    @Embedded
-    @AttributeOverride(name = "value", column = @Column(name = "email_account", nullable = false, unique = true, updatable = false, length = 45))
-    private Email email;
+    @NotBlank
+    @Column(name = "email_account")
+    private String email;
 
-    @Embedded
-    @AttributeOverride(name = "value", column = @Column (name = "profile_image_path", nullable = true, updatable = true, length = 250))
-    private ProfileImage profileImage;
+    @Column (name = "profile_image_path")
+    private String profileImage;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "category_id", nullable = false, updatable = true)
@@ -60,13 +58,14 @@ public class User {
 
     @Builder
     public User(
-        AccountID accountID,
-        Password password,
-        Nickname nickname,
-        Email email,
-        ProfileImage profileImage,
-        UserType userType) {
-        this.accountID = accountID;
+        final String accountId,
+        final String password,
+        final String nickname,
+        final String email,
+        final String profileImage,
+        final UserType userType
+    ) {
+        this.accountId = accountId;
         this.password = password;
         this.nickname = nickname;
         this.email = email;

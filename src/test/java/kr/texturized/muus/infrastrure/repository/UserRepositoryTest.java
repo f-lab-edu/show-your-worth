@@ -2,11 +2,6 @@ package kr.texturized.muus.infrastrure.repository;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
-import kr.texturized.muus.domain.entity.AccountID;
-import kr.texturized.muus.domain.entity.Email;
-import kr.texturized.muus.domain.entity.Nickname;
-import kr.texturized.muus.domain.entity.Password;
-import kr.texturized.muus.domain.entity.ProfileImage;
 import kr.texturized.muus.domain.entity.User;
 import kr.texturized.muus.domain.entity.UserType;
 import kr.texturized.muus.infrastructure.repository.UserRepository;
@@ -25,21 +20,21 @@ public class UserRepositoryTest extends IntegrationTest {
     void whenAddDuplicatedAccountIDUserThenReturnError() {
         try {
             User user1 = User.builder()
-                .accountID(new AccountID("Overlap"))
-                .password(new Password("asdf"))
-                .nickname(new Nickname("Unoverlap"))
-                .email(new Email("unoverlapMail@naver.com"))
+                .accountId("Overlap")
+                .password("asdf")
+                .nickname("Unoverlap")
+                .email("unoverlapMail@naver.com")
                 .userType(UserType.USER)
-                .profileImage(new ProfileImage(""))
+                .profileImage("")
                 .build();
             userRepository.save(user1);
 
             User user2 = User.builder()
-                .accountID(new AccountID("Overlap"))
-                .password(new Password("asdf"))
-                .nickname(new Nickname("Unoverlap1"))
-                .email(new Email("unoverlapMail1@naver.com"))
-                .profileImage(new ProfileImage(""))
+                .accountId("Overlap")
+                .password("asdf")
+                .nickname("Unoverlap1")
+                .email("unoverlapMail1@naver.com")
+                .profileImage("")
                 .userType(UserType.USER)
                 .build();
             userRepository.save(user2);
@@ -51,21 +46,21 @@ public class UserRepositoryTest extends IntegrationTest {
     void whenAddDuplicatedNicknameUserThenReturnError() {
         try {
             User user1 = User.builder()
-                .accountID(new AccountID("unoverlap1"))
-                .password(new Password("asdf"))
-                .nickname(new Nickname("overlap"))
-                .email(new Email("unoverlapMail@naver.com"))
+                .accountId("unoverlap1")
+                .password("asdf")
+                .nickname("overlap")
+                .email("unoverlapMail@naver.com")
                 .userType(UserType.USER)
-                .profileImage(new ProfileImage(""))
+                .profileImage("")
                 .build();
             userRepository.save(user1);
 
             User user2 = User.builder()
-                .accountID(new AccountID("unoverlap2"))
-                .password(new Password("asdf"))
-                .nickname(new Nickname("overlap"))
-                .email(new Email("unoverlapMail1@naver.com"))
-                .profileImage(new ProfileImage(""))
+                .accountId("unoverlap2")
+                .password("asdf")
+                .nickname("overlap")
+                .email("unoverlapMail1@naver.com")
+                .profileImage("")
                 .userType(UserType.USER)
                 .build();
             userRepository.save(user2);
@@ -77,21 +72,21 @@ public class UserRepositoryTest extends IntegrationTest {
     void whenAddDuplicatedEmailUserThenReturnError() {
         try {
             User user1 = User.builder()
-                .accountID(new AccountID("unoverlapUser1"))
-                .password(new Password("asdf"))
-                .nickname(new Nickname("unoverlap1"))
-                .email(new Email("overlapMail@naver.com"))
+                .accountId("unoverlapUser1")
+                .password("asdf")
+                .nickname("unoverlap1")
+                .email("overlapMail@naver.com")
                 .userType(UserType.USER)
-                .profileImage(new ProfileImage(""))
+                .profileImage("")
                 .build();
             userRepository.save(user1);
 
             User user2 = User.builder()
-                .accountID(new AccountID("unoverlap2"))
-                .password(new Password("asdf"))
-                .nickname(new Nickname("unoverlapNickname2"))
-                .email(new Email("overlapMail@naver.com"))
-                .profileImage(new ProfileImage(""))
+                .accountId("unoverlap2")
+                .password("asdf")
+                .nickname("unoverlapNickname2")
+                .email("overlapMail@naver.com")
+                .profileImage("")
                 .userType(UserType.USER)
                 .build();
             userRepository.save(user2);
