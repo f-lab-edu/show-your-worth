@@ -21,20 +21,19 @@ public class UserControllerTest extends IntegrationTest {
 
     @Test
     void whenInvalidAccountIdThenReturnException() throws Exception {
-        performValidateAccountIdAndExpectError("/users/validate/account", "accountId","", ErrorCode.INVALID_INPUT_VALUE);
-        performValidateAccountIdAndExpectError("/users/validate/account", "accountId","asdfe", ErrorCode.INVALID_INPUT_VALUE);
-        performValidateAccountIdAndExpectError("/users/validate/account", "accountId","Asd12", ErrorCode.INVALID_INPUT_VALUE);
-        performValidateAccountIdAndExpectError("/users/validate/account", "accountId","asdfqwer12!", ErrorCode.INVALID_INPUT_VALUE);
-        performValidateAccountIdAndExpectError("/users/validate/account", "accountId","12!DSsaFfqwer", ErrorCode.INVALID_INPUT_VALUE);
-        performValidateAccountIdAndExpectError("/users/validate/account", "accountId","#####", ErrorCode.INVALID_INPUT_VALUE);
-        performValidateAccountIdAndExpectError("/users/validate/account", "accountId","1q2w3e4r1!", ErrorCode.INVALID_INPUT_VALUE);
-        performValidateAccountIdAndExpectError("/users/validate/account", "accountId","asdfqwerzxcvasdfqwer", ErrorCode.INVALID_INPUT_VALUE);
-        performValidateAccountIdAndExpectError("/users/validate/account", "accountId","f-lab.kr", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/account", "accountId","", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/account", "accountId","asdfe", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/account", "accountId","Asd12", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/account", "accountId","asdfqwer12!", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/account", "accountId","12!DSsaFfqwer", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/account", "accountId","#####", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/account", "accountId","1q2w3e4r1!", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/account", "accountId","asdfqwerzxcvasdfqwer", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/account", "accountId","f-lab.kr", ErrorCode.INVALID_INPUT_VALUE);
     }
 
-
     @Test
-    void whenValidAccountIdThenReturnCreated() throws Exception {
+    void whenValidAccountIdThenReturnAccepted() throws Exception {
         postValidateJsonAndExpectAccepted("/users/validate/account","accountId", "redgem92");
         postValidateJsonAndExpectAccepted("/users/validate/account","accountId", "12qewrsadf");
         postValidateJsonAndExpectAccepted("/users/validate/account","accountId", "123456789");
@@ -44,7 +43,30 @@ public class UserControllerTest extends IntegrationTest {
         postValidateJsonAndExpectAccepted("/users/validate/account","accountId", "jisuJiUS12");
     }
 
-    void performValidateAccountIdAndExpectError(
+    @Test
+    void whenInvalidPasswordThenReturnException() throws Exception {
+        postValidateJsonAndExpectError("/users/validate/password", "password","", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/password", "password","ASDFQ", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/password", "password","1!AS", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/password", "password","1q2w3e4r1!((", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/password", "password","한글도안됨ㅎ", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/password", "password","ASㅎㅁㄴㅇㄹㄴ", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/password", "password","asdfqwerasdf)-+_", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/password", "password","SDFAERGSGBSRTYRTHfdfweyro3fhefaidaosidf", ErrorCode.INVALID_INPUT_VALUE);
+    }
+
+    @Test
+    void whenValidPasswordThenReturnAccepted() throws Exception {
+        postValidateJsonAndExpectAccepted("/users/validate/password","password", "1q2w3e4r1!");
+        postValidateJsonAndExpectAccepted("/users/validate/password","password", "1234567@@#$");
+        postValidateJsonAndExpectAccepted("/users/validate/password","password", "123456789");
+        postValidateJsonAndExpectAccepted("/users/validate/password","password", "zxcvasdfewr");
+        postValidateJsonAndExpectAccepted("/users/validate/password","password", "JIsue%$#@@#%^&");
+        postValidateJsonAndExpectAccepted("/users/validate/password","password", "!@#$%^&*");
+        postValidateJsonAndExpectAccepted("/users/validate/password","password", "~!@#$%^&DSacvzxc");
+    }
+
+    void postValidateJsonAndExpectError(
         final String uri,
         final String key,
         final String value,

@@ -4,7 +4,9 @@ import javax.validation.Valid;
 import kr.texturized.muus.application.service.UserService;
 import kr.texturized.muus.application.service.UserViewService;
 import kr.texturized.muus.presentation.api.request.AccountValidRequest;
+import kr.texturized.muus.presentation.api.request.PasswordValidRequest;
 import kr.texturized.muus.presentation.api.response.AccountValidResponse;
+import kr.texturized.muus.presentation.api.response.PasswordValidResponse;
 import kr.texturized.muus.presentation.api.response.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,11 +27,15 @@ public class UserController {
     private final UserService userService;
     private final UserViewService userViewService;
 
-
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PostMapping("/validate/account")
     public AccountValidResponse validateAccount(@RequestBody @Valid final AccountValidRequest request) {
         return new AccountValidResponse("사용 가능해요.");
+    }
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PostMapping("/validate/password")
+    public PasswordValidResponse validatePassword(@RequestBody @Valid final PasswordValidRequest request) {
+        return new PasswordValidResponse("사용 가능해요.");
     }
 
     @GetMapping("/{id}")
