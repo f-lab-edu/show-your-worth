@@ -4,6 +4,7 @@ import javax.validation.Valid;
 import kr.texturized.muus.application.service.UserService;
 import kr.texturized.muus.application.service.UserViewService;
 import kr.texturized.muus.presentation.api.request.AccountValidRequest;
+import kr.texturized.muus.presentation.api.request.EmailValidRequest;
 import kr.texturized.muus.presentation.api.request.PasswordValidRequest;
 import kr.texturized.muus.presentation.api.response.AccountValidResponse;
 import kr.texturized.muus.presentation.api.response.PasswordValidResponse;
@@ -32,10 +33,17 @@ public class UserController {
     public AccountValidResponse validateAccount(@RequestBody @Valid final AccountValidRequest request) {
         return new AccountValidResponse("사용 가능해요.");
     }
+
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PostMapping("/validate/password")
     public PasswordValidResponse validatePassword(@RequestBody @Valid final PasswordValidRequest request) {
         return new PasswordValidResponse("사용 가능해요.");
+    }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PostMapping("/validate/email")
+    public String validateEmail(@RequestBody @Valid final EmailValidRequest request) {
+        return "Accepted";  // TODO: Temporary return 'accepted', it requires implement sign up with authentication
     }
 
     @GetMapping("/{id}")
