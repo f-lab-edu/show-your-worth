@@ -5,8 +5,10 @@ import kr.texturized.muus.application.service.UserService;
 import kr.texturized.muus.application.service.UserViewService;
 import kr.texturized.muus.presentation.api.request.AccountValidRequest;
 import kr.texturized.muus.presentation.api.request.EmailValidRequest;
+import kr.texturized.muus.presentation.api.request.NicknameValidRequest;
 import kr.texturized.muus.presentation.api.request.PasswordValidRequest;
 import kr.texturized.muus.presentation.api.response.AccountValidResponse;
+import kr.texturized.muus.presentation.api.response.NicknameValidResponse;
 import kr.texturized.muus.presentation.api.response.PasswordValidResponse;
 import kr.texturized.muus.presentation.api.response.UserResponse;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,6 +39,12 @@ public class UserController {
     @PostMapping("/validate/password")
     public PasswordValidResponse validatePassword(@RequestBody @Valid final PasswordValidRequest request) {
         return new PasswordValidResponse("사용 가능해요.");
+    }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PostMapping("/validate/nickname")
+    public NicknameValidResponse validateNickname(@RequestBody @Valid final NicknameValidRequest request) {
+        return new NicknameValidResponse("사용 가능해요.");
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)

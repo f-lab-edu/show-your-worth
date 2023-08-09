@@ -1,6 +1,5 @@
 package kr.texturized.muus.presentation.api;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import kr.texturized.muus.common.error.exception.ErrorCode;
@@ -13,11 +12,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 
 @Slf4j
 public class UserControllerTest extends IntegrationTest {
-
-    @Test
-    void MyBatis_기반_유저_정보_일괄_조회() throws Exception {
-        mvc.perform(get("/users"));
-    }
 
     @Test
     void whenInvalidAccountIdThenReturnException() throws Exception {
@@ -64,6 +58,33 @@ public class UserControllerTest extends IntegrationTest {
         postValidateJsonAndExpectAccepted("/users/validate/password","password", "JIsue%$#@@#%^&");
         postValidateJsonAndExpectAccepted("/users/validate/password","password", "!@#$%^&*");
         postValidateJsonAndExpectAccepted("/users/validate/password","password", "~!@#$%^&DSacvzxc");
+    }
+
+    @Test
+    void whenInvalidNicknameThenReturnException() throws Exception {
+        postValidateJsonAndExpectError("/users/validate/nickname", "nickname","", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/nickname", "nickname","a", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/nickname", "nickname","ㅎㅎㅎㅎㅎ", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/nickname", "nickname","@.@", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/nickname", "nickname","오빠라고불러다오!", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/nickname", "nickname","김미어콜베이베~베이베~", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/nickname", "nickname","kamehameha^^", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/nickname", "nickname","~崔志秀~", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/nickname", "nickname","Songoku's げんきぎょく", ErrorCode.INVALID_INPUT_VALUE);
+        postValidateJsonAndExpectError("/users/validate/nickname", "nickname","김미김미나 김미김미나 뚜두두두두", ErrorCode.INVALID_INPUT_VALUE);
+    }
+
+    @Test
+    void whenValidNicknameThenReturnAccepted() throws Exception {
+        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "MX");
+        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "MX");
+        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "F-lab");
+        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "jisus.choi");
+        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "崔志秀");
+        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "Songoku-げんきぎょく");
+        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "_--_");
+        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "im-so-sexy");
+        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "strong_minsu");
     }
 
     void postValidateJsonAndExpectError(
