@@ -3,7 +3,7 @@ package kr.texturized.muus.presentation.api.request;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
-public record PasswordValidRequest (
+public record PasswordRequest(
     @NotBlank(message = "비밀번호 입력은 필수에요.")
     @Pattern(
         regexp = "[A-Za-z\\d~!@#$%^&*]{6,20}",

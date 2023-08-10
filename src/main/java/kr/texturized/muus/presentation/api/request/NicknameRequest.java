@@ -3,7 +3,7 @@ package kr.texturized.muus.presentation.api.request;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
-public record NicknameValidRequest(
+public record NicknameRequest(
     @NotBlank(message = "닉네임 입력은 필수에요.")
     @Pattern(
         regexp = "[\\x{3041}-\\x{3096}"

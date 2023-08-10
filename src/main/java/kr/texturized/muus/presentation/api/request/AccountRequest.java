@@ -3,7 +3,7 @@ package kr.texturized.muus.presentation.api.request;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
-public record AccountValidRequest (
+public record AccountRequest(
     @NotBlank(message = "아이디 입력은 필수에요.")
     @Pattern(
         regexp = "[A-Za-z\\d]{6,15}",

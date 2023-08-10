@@ -1,6 +1,7 @@
 package kr.texturized.muus.presentation.api.response;
 
-public record PasswordValidResponse (
+public record NicknameResponse(
     String message
-){
+) {
+
 }
