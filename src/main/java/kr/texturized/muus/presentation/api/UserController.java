@@ -1,7 +1,7 @@
 package kr.texturized.muus.presentation.api;
 
 import javax.validation.Valid;
-import kr.texturized.muus.application.service.UserService;
+import kr.texturized.muus.application.service.UserSignUpService;
 import kr.texturized.muus.application.service.UserViewService;
 import kr.texturized.muus.presentation.api.request.AccountRequest;
 import kr.texturized.muus.presentation.api.request.EmailRequest;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userService;
+    private final UserSignUpService userSignUpService;
     private final UserViewService userViewService;
 
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -56,19 +56,24 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/sign-up")
-    public String signUp(
+    public UserResponse signUp(
         @RequestBody @Valid final AccountRequest accountRequest,
         @RequestBody @Valid final PasswordRequest passwordRequest,
         @RequestBody @Valid final NicknameRequest nicknameRequest,
-        @RequestBody @Valid final EmailRequest emailRequest
-        ) {
-        return "Created";
+        @RequestBody @Valid final EmailRequest emailRequest) {
+
+        return new UserResponse(userSignUpService.signUp(
+            accountRequest.accountId(),
+            passwordRequest.password(),
+            nicknameRequest.nickname(),
+            emailRequest.email()
+        ).get());
     }
 
 
     @GetMapping("/{id}")
     public UserResponse getUser(@PathVariable long id) {
-        return new UserResponse(userService.findById(id).get());
+        return new UserResponse(userSignUpService.findById(id).get());
     }
 
     @GetMapping("")

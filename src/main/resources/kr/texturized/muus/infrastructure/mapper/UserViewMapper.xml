@@ -3,6 +3,30 @@
 
 <mapper namespace="kr.texturized.muus.infrastructure.mapper.UserViewMapper">
 
+  <select id="existsByAccountId" parameterType="String" resultType="boolean">
+    select exists (
+        select *
+        from user
+        where user.account_id = #{AccountId}
+    );
+  </select>
+
+  <select id="existsByNickname" parameterType="String" resultType="boolean">
+    select exists (
+      select *
+      from user
+      where user.nickname = #{nickname}
+    );
+  </select>
+
+  <select id="existsByEmail" parameterType="String" resultType="boolean">
+    select exists (
+      select *
+      from user
+      where user.email_account = #{email}
+    );
+  </select>
+
   <select id="getList" parameterType="map" resultType="kr.texturized.muus.domain.entity.User">
     select user.id
     from user
