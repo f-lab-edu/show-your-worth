@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Slf4j
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class UserSignUpService {
 
@@ -36,6 +35,7 @@ public class UserSignUpService {
      * @return user with {@code Optional<T>} wrapper class,
      *         Optional is recommended to use for return result
      */
+    @Transactional
     public Optional<User> signUp(
         final String accountId,
         final String password,
@@ -67,6 +67,7 @@ public class UserSignUpService {
      * @return user with {@code Optional<T>} wrapper class,
      *         Optional is recommended to use for return result
      */
+    @Transactional
     public Optional<User> signIn(final String accountId, final String password) {
         Optional<User> user = Optional.ofNullable(userViewMapper.findByAccountId(accountId));
         if (user.isEmpty()) {
