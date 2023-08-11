@@ -2,7 +2,6 @@ package kr.texturized.muus.presentation.api;
 
 import javax.validation.Valid;
 import kr.texturized.muus.application.service.UserSignUpService;
-import kr.texturized.muus.application.service.UserViewService;
 import kr.texturized.muus.application.service.exception.InvalidAccountException;
 import kr.texturized.muus.presentation.api.request.AccountRequest;
 import kr.texturized.muus.presentation.api.request.EmailRequest;
@@ -20,39 +19,75 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Rest Controller for User.
+ */
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserSignUpService userSignUpService;
-    private final UserViewService userViewService;
 
+    /**
+     * API for validation of account id.
+     *
+     * @param request for account id, it validates using bean validation.
+     * @return Available response.
+     */
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PostMapping("/validate/account")
     public AccountResponse validateAccount(@RequestBody @Valid final AccountRequest request) {
         return new AccountResponse("사용 가능해요.");
     }
 
+    /**
+     * API for validation of password.
+     *
+     * @param request for password, it validates using bean validation.
+     * @return Available response.
+     */
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PostMapping("/validate/password")
     public PasswordResponse validatePassword(@RequestBody @Valid final PasswordRequest request) {
         return new PasswordResponse("사용 가능해요.");
     }
 
+    /**
+     * API for validation of nickname.
+     *
+     * @param request for nickname, it validates using bean validation.
+     * @return Available response.
+     */
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PostMapping("/validate/nickname")
     public NicknameResponse validateNickname(@RequestBody @Valid final NicknameRequest request) {
         return new NicknameResponse("사용 가능해요.");
     }
 
+    /**
+     * API for validation of email.
+     *
+     * @param request for email, it validates using bean validation.
+     * @return Available response.
+     */
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PostMapping("/validate/email")
     public String validateEmail(@RequestBody @Valid final EmailRequest request) {
-        return "Accepted";  // TODO: Temporary return 'accepted', it requires implementation of
-                            // sign up with authentication
+        // TODO: it requires implementation of sign up with authentication
+        return "Accepted";
     }
 
+
+    /**
+     * sign-up.
+     *
+     * @param accountRequest account id.
+     * @param passwordRequest password.
+     * @param nicknameRequest nickname.
+     * @param emailRequest email.
+     * @return User response with sign-up information.
+     */
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/sign-up")
     public UserResponse signUp(
@@ -69,6 +104,13 @@ public class UserController {
         ).orElseThrow(InvalidAccountException::new));
     }
 
+    /**
+     * sign-in.
+     *
+     * @param accountRequest account id.
+     * @param passwordRequest password.
+     * @return User response with sign-in information.
+     */
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/sign-in")
     public UserResponse signIn(
