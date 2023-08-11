@@ -4,9 +4,9 @@ import java.util.Optional;
 import kr.texturized.muus.application.service.exception.AlreadySignedUpEmailException;
 import kr.texturized.muus.application.service.exception.DuplicatedAccountIdException;
 import kr.texturized.muus.application.service.exception.DuplicatedNicknameException;
+import kr.texturized.muus.application.service.exception.InvalidAccountException;
 import kr.texturized.muus.domain.entity.User;
 import kr.texturized.muus.domain.entity.UserType;
-import kr.texturized.muus.domain.exception.UserNotFoundException;
 import kr.texturized.muus.infrastructure.mapper.UserViewMapper;
 import kr.texturized.muus.infrastructure.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -54,7 +54,28 @@ public class UserSignUpService {
                 .userType(UserType.USER)
             .build()));
 
-        log.info("Sign-up: {}", user.get());
+        user.ifPresent(u -> log.info("Sign-up: {}", u));
+
+        return user;
+    }
+
+    /**
+     * Sign-in logic.
+     *
+     * @param accountId id to sign in
+     * @param password password for id
+     * @return user with {@code Optional<T>} wrapper class,
+     *         Optional is recommended to use for return result
+     */
+    public Optional<User> signIn(final String accountId, final String password) {
+        Optional<User> user = Optional.ofNullable(userViewMapper.findByAccountId(accountId));
+        if (user.isEmpty()) {
+            throw new InvalidAccountException();
+        }
+        if (!user.get().getPassword().equals(password)) {
+            throw new InvalidAccountException();
+        }
+
         return user;
     }
 
@@ -89,9 +110,5 @@ public class UserSignUpService {
         if (userViewMapper.existsByEmail(email)) {
             throw new AlreadySignedUpEmailException();
         }
-    }
-
-    public Optional<User> findById(final Long id) {
-        return Optional.of(userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id)));
     }
 }

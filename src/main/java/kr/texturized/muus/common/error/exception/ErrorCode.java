@@ -19,7 +19,9 @@ public enum ErrorCode {
     // User
     DUPLICATED_ACCOUNT_ID(400, "C101", " 이미 사용중인 아이디에요"),
     DUPLICATED_NICKNAME(400, "C102", " 이미 사용중인 닉네임이에요"),
-    ALREADY_SIGNED_UP_EMAIL(400, "C103", " 이미 회원가입한 주소에요")
+    ALREADY_SIGNED_UP_EMAIL(400, "C103", " 이미 회원가입한 주소에요"),
+    INVALID_ACCOUNT(400, "C104", " 잘못된 회원정보에요")
+
     ;
 
     private final int status;

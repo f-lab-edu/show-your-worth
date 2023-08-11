@@ -3,6 +3,7 @@ package kr.texturized.muus.presentation.api;
 import javax.validation.Valid;
 import kr.texturized.muus.application.service.UserSignUpService;
 import kr.texturized.muus.application.service.UserViewService;
+import kr.texturized.muus.application.service.exception.InvalidAccountException;
 import kr.texturized.muus.presentation.api.request.AccountRequest;
 import kr.texturized.muus.presentation.api.request.EmailRequest;
 import kr.texturized.muus.presentation.api.request.NicknameRequest;
@@ -13,8 +14,6 @@ import kr.texturized.muus.presentation.api.response.PasswordResponse;
 import kr.texturized.muus.presentation.api.response.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,18 +66,20 @@ public class UserController {
             passwordRequest.password(),
             nicknameRequest.nickname(),
             emailRequest.email()
-        ).get());
+        ).orElseThrow(InvalidAccountException::new));
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/sign-in")
+    public UserResponse signIn(
+        @RequestBody final AccountRequest accountRequest,
+        @RequestBody final PasswordRequest passwordRequest
+    ) {
+        return new UserResponse(userSignUpService.signIn(
+            accountRequest.accountId(),
+            passwordRequest.password()
+        ).orElseThrow(InvalidAccountException::new));
 
-    @GetMapping("/{id}")
-    public UserResponse getUser(@PathVariable long id) {
-        return new UserResponse(userSignUpService.findById(id).get());
-    }
-
-    @GetMapping("")
-    public void getAllUsers() {
-        System.out.println("Users : " + userViewService.getList().toString());
     }
 
 }

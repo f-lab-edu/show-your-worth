@@ -27,14 +27,10 @@
     );
   </select>
 
-  <select id="getList" parameterType="map" resultType="kr.texturized.muus.domain.entity.User">
-    select user.id
+  <select id="findByAccountId" parameterType="String" resultType="kr.texturized.muus.domain.entity.User">
+    select *
     from user
-  </select>
-
-  <select id="getCount" parameterType="map" resultType="int">
-    select count(*)
-    from user
+    where user.account_id = #{accountId}
   </select>
 
 </mapper>

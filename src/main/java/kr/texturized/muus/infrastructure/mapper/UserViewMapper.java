@@ -14,6 +14,8 @@ public interface UserViewMapper {
 
     boolean existsByEmail(final String email);
 
+    User findByAccountId(final String accountId);
+
     List<User> getList(Map<String, ?> params);
 
     Integer getCount(Map<String, ?> params);
