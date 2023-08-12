@@ -35,7 +35,7 @@ public class UserController {
      * @param request for account id, it validates using bean validation.
      * @return Available response.
      */
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("/validate/account")
     public AccountResponse validateAccount(@RequestBody @Valid final AccountRequest request) {
         return new AccountResponse("사용 가능해요.");
@@ -47,7 +47,7 @@ public class UserController {
      * @param request for password, it validates using bean validation.
      * @return Available response.
      */
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("/validate/password")
     public PasswordResponse validatePassword(@RequestBody @Valid final PasswordRequest request) {
         return new PasswordResponse("사용 가능해요.");
@@ -59,7 +59,7 @@ public class UserController {
      * @param request for nickname, it validates using bean validation.
      * @return Available response.
      */
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("/validate/nickname")
     public NicknameResponse validateNickname(@RequestBody @Valid final NicknameRequest request) {
         return new NicknameResponse("사용 가능해요.");
@@ -71,7 +71,7 @@ public class UserController {
      * @param request for email, it validates using bean validation.
      * @return Available response.
      */
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("/validate/email")
     public String validateEmail(@RequestBody @Valid final EmailRequest request) {
         // TODO: it requires implementation of sign up with authentication
@@ -88,7 +88,7 @@ public class UserController {
      * @param emailRequest email.
      * @return User response with sign-up information.
      */
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("/sign-up")
     public UserResponse signUp(
         @RequestBody @Valid final AccountRequest accountRequest,
