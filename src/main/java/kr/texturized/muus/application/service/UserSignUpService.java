@@ -46,17 +46,17 @@ public class UserSignUpService {
         validateNickname(nickname);
         validateEmail(email);
 
-        Optional<User> user = Optional.of(userRepository.save(User.builder()
-                .accountId(accountId)
-                .password(password /* TODO: PasswordEncoder */)
-                .nickname(nickname)
-                .email(email)
-                .userType(UserType.USER)
-            .build()));
-
-        user.ifPresent(u -> log.info("Sign-up: {}", u));
-
-        return user;
+        return Optional.of(userRepository.save(User.builder()
+                    .accountId(accountId)
+                    .password(password /* TODO: PasswordEncoder */)
+                    .nickname(nickname)
+                    .email(email)
+                    .userType(UserType.USER)
+                .build()))
+            .map(user -> {
+                log.info("Sign up: {}", user);
+                return user;
+            });
     }
 
     /**
@@ -69,15 +69,12 @@ public class UserSignUpService {
      */
     @Transactional
     public Optional<User> signIn(final String accountId, final String password) {
-        Optional<User> user = Optional.ofNullable(userViewMapper.findByAccountId(accountId));
-        if (user.isEmpty()) {
-            throw new InvalidAccountException();
-        }
-        if (!user.get().getPassword().equals(password)) {
-            throw new InvalidAccountException();
-        }
-
-        return user;
+        return Optional.ofNullable(userViewMapper.findByAccountId(accountId))
+            .filter(user -> user.getPassword().equals(password))
+            .map(user -> {
+                log.info("Sign in: {}", user);
+                return user;
+            });
     }
 
     /**

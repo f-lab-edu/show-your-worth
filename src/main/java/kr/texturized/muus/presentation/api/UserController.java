@@ -121,7 +121,6 @@ public class UserController {
             accountRequest.accountId(),
             passwordRequest.password()
         ).orElseThrow(InvalidAccountException::new));
-
     }
 
 }
