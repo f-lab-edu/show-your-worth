@@ -27,14 +27,14 @@ public class UserControllerTest extends IntegrationTest {
     }
 
     @Test
-    void whenValidAccountIdThenReturnAccepted() throws Exception {
-        postValidateJsonAndExpectAccepted("/users/validate/account","accountId", "redgem92");
-        postValidateJsonAndExpectAccepted("/users/validate/account","accountId", "12qewrsadf");
-        postValidateJsonAndExpectAccepted("/users/validate/account","accountId", "123456789");
-        postValidateJsonAndExpectAccepted("/users/validate/account","accountId", "zxcvasdfewr");
-        postValidateJsonAndExpectAccepted("/users/validate/account","accountId", "REDGEM92");
-        postValidateJsonAndExpectAccepted("/users/validate/account","accountId", "Redgem92");
-        postValidateJsonAndExpectAccepted("/users/validate/account","accountId", "jisuJiUS12");
+    void whenValidAccountIdThenReturnOK() throws Exception {
+        postValidateJsonAndExpectOK("/users/validate/account","accountId", "redgem92");
+        postValidateJsonAndExpectOK("/users/validate/account","accountId", "12qewrsadf");
+        postValidateJsonAndExpectOK("/users/validate/account","accountId", "123456789");
+        postValidateJsonAndExpectOK("/users/validate/account","accountId", "zxcvasdfewr");
+        postValidateJsonAndExpectOK("/users/validate/account","accountId", "REDGEM92");
+        postValidateJsonAndExpectOK("/users/validate/account","accountId", "Redgem92");
+        postValidateJsonAndExpectOK("/users/validate/account","accountId", "jisuJiUS12");
     }
 
     @Test
@@ -50,14 +50,14 @@ public class UserControllerTest extends IntegrationTest {
     }
 
     @Test
-    void whenValidPasswordThenReturnAccepted() throws Exception {
-        postValidateJsonAndExpectAccepted("/users/validate/password","password", "1q2w3e4r1!");
-        postValidateJsonAndExpectAccepted("/users/validate/password","password", "1234567@@#$");
-        postValidateJsonAndExpectAccepted("/users/validate/password","password", "123456789");
-        postValidateJsonAndExpectAccepted("/users/validate/password","password", "zxcvasdfewr");
-        postValidateJsonAndExpectAccepted("/users/validate/password","password", "JIsue%$#@@#%^&");
-        postValidateJsonAndExpectAccepted("/users/validate/password","password", "!@#$%^&*");
-        postValidateJsonAndExpectAccepted("/users/validate/password","password", "~!@#$%^&DSacvzxc");
+    void whenValidPasswordThenReturnOK() throws Exception {
+        postValidateJsonAndExpectOK("/users/validate/password","password", "1q2w3e4r1!");
+        postValidateJsonAndExpectOK("/users/validate/password","password", "1234567@@#$");
+        postValidateJsonAndExpectOK("/users/validate/password","password", "123456789");
+        postValidateJsonAndExpectOK("/users/validate/password","password", "zxcvasdfewr");
+        postValidateJsonAndExpectOK("/users/validate/password","password", "JIsue%$#@@#%^&");
+        postValidateJsonAndExpectOK("/users/validate/password","password", "!@#$%^&*");
+        postValidateJsonAndExpectOK("/users/validate/password","password", "~!@#$%^&DSacvzxc");
     }
 
     @Test
@@ -75,16 +75,16 @@ public class UserControllerTest extends IntegrationTest {
     }
 
     @Test
-    void whenValidNicknameThenReturnAccepted() throws Exception {
-        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "MX");
-        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "MX");
-        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "F-lab");
-        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "jisus.choi");
-        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "崔志秀");
-        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "Songoku-げんきぎょく");
-        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "_--_");
-        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "im-so-sexy");
-        postValidateJsonAndExpectAccepted("/users/validate/nickname","nickname", "strong_minsu");
+    void whenValidNicknameThenReturnOK() throws Exception {
+        postValidateJsonAndExpectOK("/users/validate/nickname","nickname", "MX");
+        postValidateJsonAndExpectOK("/users/validate/nickname","nickname", "MX");
+        postValidateJsonAndExpectOK("/users/validate/nickname","nickname", "F-lab");
+        postValidateJsonAndExpectOK("/users/validate/nickname","nickname", "jisus.choi");
+        postValidateJsonAndExpectOK("/users/validate/nickname","nickname", "崔志秀");
+        postValidateJsonAndExpectOK("/users/validate/nickname","nickname", "Songoku-げんきぎょく");
+        postValidateJsonAndExpectOK("/users/validate/nickname","nickname", "_--_");
+        postValidateJsonAndExpectOK("/users/validate/nickname","nickname", "im-so-sexy");
+        postValidateJsonAndExpectOK("/users/validate/nickname","nickname", "strong_minsu");
     }
 
     void postValidateJsonAndExpectError(
@@ -104,13 +104,13 @@ public class UserControllerTest extends IntegrationTest {
             .andExpect(jsonPath("errors").isNotEmpty());
     }
 
-    void postValidateJsonAndExpectAccepted(final String uri, final String key, final String value)
+    void postValidateJsonAndExpectOK(final String uri, final String key, final String value)
         throws Exception {
         mvc.perform(post(uri)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"" + key + "\" : \"" + value + "\"}"))
             .andDo(print())
-            .andExpect(status().isAccepted());
+            .andExpect(status().isOk());
     }
 
 }
