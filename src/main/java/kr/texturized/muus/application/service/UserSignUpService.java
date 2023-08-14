@@ -36,7 +36,7 @@ public class UserSignUpService {
      *         Optional is recommended to use for return result
      */
     @Transactional
-    public Optional<User> signUp(
+    public User signUp(
         final String accountId,
         final String password,
         final String nickname,
@@ -56,7 +56,7 @@ public class UserSignUpService {
             .map(user -> {
                 log.info("Sign up: {}", user);
                 return user;
-            });
+            }).orElseThrow(InvalidAccountException::new);
     }
 
     /**
@@ -68,13 +68,13 @@ public class UserSignUpService {
      *         Optional is recommended to use for return result
      */
     @Transactional
-    public Optional<User> signIn(final String accountId, final String password) {
-        return Optional.ofNullable(userViewMapper.findByAccountId(accountId))
-            .filter(user -> user.getPassword().equals(password))
-            .map(user -> {
-                log.info("Sign in: {}", user);
-                return user;
-            });
+    public User signIn(final String accountId, final String password) {
+        return userViewMapper.findByAccountId(accountId)
+                .filter(user -> user.getPassword().equals(password))
+                .map(user -> {
+                    log.info("Sign in: {}", user);
+                    return user;
+            }).orElseThrow(InvalidAccountException::new);
     }
 
     /**

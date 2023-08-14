@@ -5,7 +5,7 @@
 
   <select id="existsByAccountId" parameterType="String" resultType="boolean">
     select exists (
-        select *
+        select user.id
         from user
         where user.account_id = #{AccountId}
     );
@@ -13,7 +13,7 @@
 
   <select id="existsByNickname" parameterType="String" resultType="boolean">
     select exists (
-      select *
+      select user.id
       from user
       where user.nickname = #{nickname}
     );
@@ -21,14 +21,22 @@
 
   <select id="existsByEmail" parameterType="String" resultType="boolean">
     select exists (
-      select *
+      select user.id
       from user
       where user.email_account = #{email}
     );
   </select>
 
   <select id="findByAccountId" parameterType="String" resultType="kr.texturized.muus.domain.entity.User">
-    select *
+    select
+        id,
+        account_id as accountId,
+        password as password,
+        nickname as nickname,
+        email_account as email,
+        profile_image_path as profileImage,
+        category_id as userType,
+        create_time as createTime
     from user
     where user.account_id = #{accountId}
   </select>

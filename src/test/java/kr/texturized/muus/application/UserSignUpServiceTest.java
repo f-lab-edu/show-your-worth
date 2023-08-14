@@ -72,12 +72,12 @@ public class UserSignUpServiceTest extends IntegrationTest {
 
     @Test
     void signUpThenSignInInVariableCondition() {
-        Optional<User> signUpUser = userSignUpService.signUp(
+        User signUpUser = userSignUpService.signUp(
             "redgem92",
             "wjd1xhd!",
             "vvVic",
             "redgem92@f-lab.kr");
-        assertThat(signUpUser.isEmpty()).isFalse();
+        assertThat(signUpUser).isNotNull();
 
         // No such Account
         try {
@@ -93,7 +93,7 @@ public class UserSignUpServiceTest extends IntegrationTest {
         } catch (InvalidAccountException e) {
         }
         // Sign-in successfully
-        Optional<User> signInUser = userSignUpService.signIn("redgem92", "wjd1xhd!");
-        assertThat(signInUser.get().getId()).isEqualTo(signUpUser.get().getId());
+        User signInUser = userSignUpService.signIn("redgem92", "wjd1xhd!");
+        assertThat(signInUser.getId()).isEqualTo(signUpUser.getId());
     }
 }

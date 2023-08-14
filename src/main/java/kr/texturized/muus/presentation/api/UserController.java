@@ -101,7 +101,7 @@ public class UserController {
             passwordRequest.password(),
             nicknameRequest.nickname(),
             emailRequest.email()
-        ).orElseThrow(InvalidAccountException::new));
+        ));
     }
 
     /**
@@ -120,7 +120,7 @@ public class UserController {
         return new UserResponse(userSignUpService.signIn(
             accountRequest.accountId(),
             passwordRequest.password()
-        ).orElseThrow(InvalidAccountException::new));
+        ));
     }
 
 }

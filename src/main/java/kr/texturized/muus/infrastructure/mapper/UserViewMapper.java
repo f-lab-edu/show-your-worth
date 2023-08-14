@@ -1,5 +1,6 @@
 package kr.texturized.muus.infrastructure.mapper;
 
+import java.util.Optional;
 import kr.texturized.muus.domain.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,5 +13,5 @@ public interface UserViewMapper {
 
     boolean existsByEmail(final String email);
 
-    User findByAccountId(final String accountId);
+    Optional<User> findByAccountId(final String accountId);
 }

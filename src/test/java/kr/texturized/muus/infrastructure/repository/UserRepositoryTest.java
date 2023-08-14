@@ -1,10 +1,9 @@
-package kr.texturized.muus.infrastrure.repository;
+package kr.texturized.muus.infrastructure.repository;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
 import kr.texturized.muus.domain.entity.User;
 import kr.texturized.muus.domain.entity.UserType;
-import kr.texturized.muus.infrastructure.repository.UserRepository;
 import kr.texturized.muus.test.IntegrationTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;

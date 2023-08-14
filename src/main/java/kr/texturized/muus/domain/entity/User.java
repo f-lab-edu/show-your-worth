@@ -2,6 +2,7 @@ package kr.texturized.muus.domain.entity;
 
 import java.time.LocalDateTime;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import kr.texturized.muus.infrastructure.repository.converter.type.UserTypeConverter;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -48,7 +50,15 @@ public class User {
     @Column (name = "profile_image_path")
     private String profileImage;
 
-    @Enumerated(EnumType.ORDINAL)
+    /**
+     * JPA enum Converting.
+     * ref: <a href="https://studyandwrite.tistory.com/496">
+     *          [Spring] JPA Enum Converter를 사용하여 Entity Mapping하기
+     *          (Feat. Parameter value [~] did not match expected type Error)
+     *           - 조성현 개발 컨테이너
+     *     </a>
+     */
+    @Convert(converter = UserTypeConverter.class)
     @Column(name = "category_id", nullable = false, updatable = true)
     private UserType userType;
 
