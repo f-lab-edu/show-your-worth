@@ -67,7 +67,7 @@ public class UserSignUpService {
      * @return user with {@code Optional<T>} wrapper class,
      *         Optional is recommended to use for return result
      */
-    @Transactional
+    @Transactional(readOnly = true)
     public User signIn(final String accountId, final String password) {
         return userViewMapper.findByAccountId(accountId)
                 .filter(user -> user.getPassword().equals(password))
