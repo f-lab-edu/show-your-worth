@@ -9,6 +9,6 @@ import kr.texturized.muus.common.error.exception.ErrorCode;
 public class UserTypeNotFoundException extends BusinessException {
 
     public UserTypeNotFoundException(int value) {
-        super("No matched value: " + value + " in UserType", ErrorCode.INTERNAL_SERVER_ERROR);
+        super("No matched value: " + value + " in UserType", ErrorCode.INVALID_TYPE_VALUE);
     }
 }
