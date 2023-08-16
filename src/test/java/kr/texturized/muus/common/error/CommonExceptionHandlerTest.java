@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import kr.texturized.muus.common.error.exception.ErrorCode;
 import kr.texturized.muus.test.IntegrationTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
@@ -33,7 +34,7 @@ public class CommonExceptionHandlerTest extends IntegrationTest {
 
     private ResultActions requestGetUser(long memberId) throws Exception {
         return mvc.perform(post("/users/{id}", memberId)
-                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .contentType(MediaType.APPLICATION_JSON_VALUE))
             .andDo(print());
     }
 }

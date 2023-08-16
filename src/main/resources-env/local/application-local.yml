@@ -8,13 +8,14 @@ spring:
     username: redgem92
   jpa:
     database: h2
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
-        show_sql: true
         format_sql: true
         use_sql_comments: true
-        ddl-auto: create-drop
   devtools:
     add-properties: true
 logging:

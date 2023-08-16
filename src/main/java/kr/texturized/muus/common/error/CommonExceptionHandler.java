@@ -1,9 +1,8 @@
-package kr.texturized.muus.common;
+package kr.texturized.muus.common.error;
 
-import kr.texturized.muus.common.error.ErrorCode;
-import kr.texturized.muus.common.error.exception.BusinessException;
-import kr.texturized.muus.common.response.ErrorResponse;
 import java.nio.file.AccessDeniedException;
+import kr.texturized.muus.common.error.exception.BusinessException;
+import kr.texturized.muus.common.error.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -82,9 +81,10 @@ public class CommonExceptionHandler {
     protected ResponseEntity<ErrorResponse> handleBusinessException(final BusinessException e) {
         log.error("handleEntityNotFoundException", e);
         final ErrorCode errorCode = e.getErrorCode();
-        final ErrorResponse response = ErrorResponse.of(ErrorCode.INTERNAL_SERVER_ERROR);
+        final ErrorResponse response = ErrorResponse.of(errorCode);
         return new ResponseEntity<>(response, HttpStatus.valueOf(errorCode.getStatus()));
     }
+
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<ErrorResponse> handleException(Exception e) {
         log.error("handleEntityNotFoundException", e);

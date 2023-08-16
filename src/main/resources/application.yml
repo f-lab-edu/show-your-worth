@@ -1,16 +1,19 @@
 spring:
   profiles:
     group:
-      local : "common,local"
-      dev : "common,dev"
-      prod : "common,prod"
+      local : "local"
+      dev : "dev"
+      prod : "prod"
 
 ---
 
 spring:
-  config:
-    activate:
-      on-profile: "common"
+  # Unnecessary and having issues:
+  #   If profile is set, then settings sibling with spring will be set lazily.
+  #   It could happens unexpected bugs by lazy setting.
+  # config:
+  #  activate:
+  #    on-profile: "common"
   jpa:
     hibernate:
       ddl-auto: none
@@ -19,6 +22,7 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
     jdbc-type-for-null: varchar
+  type-handlers-package: kr.texturized.muus.infrastructure.mapper.handler.type
 
 server:
   port: 10023
