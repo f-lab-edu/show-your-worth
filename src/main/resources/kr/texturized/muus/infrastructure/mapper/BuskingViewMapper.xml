@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.texturized.muus.infrastructure.mapper.BuskingViewMapper">
+  <resultMap id="buskingMapResultMap" type="kr.texturized.muus.domain.vo.BuskingMapVo">
+    <constructor>
+      <idArg column="id" javaType="Long" />
+      <arg column="latitude" javaType="Double" />
+      <arg column="longitude" javaType="Double" />
+    </constructor>
+  </resultMap>
+
+  <select id="getActiveBuskingsInMap" resultMap="buskingMapResultMap">
+    select id, latitude, longitude
+    from busking
+    where
+        (end_time is null or end_time > now())
+        and latitude between #{latitude} - #{width} * 0.5 and #{latitude} + #{width} * 0.5
+        and longitude between #{longitude} - #{height} * 0.5 and #{longitude} + #{height} * 0.5
+  </select>
+</mapper>
