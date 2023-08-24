@@ -1,9 +1,8 @@
 package kr.texturized.muus.application.service;
 
 import java.util.List;
-import kr.texturized.muus.application.service.calculator.CoordinateCalculator;
+import kr.texturized.muus.dao.BuskingFindDao;
 import kr.texturized.muus.domain.vo.BuskingMapVo;
-import kr.texturized.muus.infrastructure.mapper.BuskingViewMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class BuskingViewService {
 
-    private final CoordinateCalculator coordinateCalculator;
-    private final BuskingViewMapper buskingViewMapper;
+    private final BuskingFindDao buskingFindDao;
 
     /**
      * Get 'active' buskings list for map.
@@ -32,11 +30,6 @@ public class BuskingViewService {
         double widthMeter,
         double heightMeter
     ) {
-        return buskingViewMapper.getActiveBuskingsInMap(
-            latitude,
-            longitude,
-            coordinateCalculator.meterToLatitude(widthMeter),
-            coordinateCalculator.meterToLongitude(heightMeter)
-        );
+        return buskingFindDao.getActiveBuskingsInMap(latitude, longitude, widthMeter, heightMeter);
     }
 }
