@@ -5,8 +5,10 @@ package kr.texturized.muus.application.service.calculator;
  */
 public interface LongitudeCalculator {
 
-    double meterToLongitude(double meter);
+    double LONGITUDE_OFFSET = 111_132.92;
 
-    double longitudeToMeter(double longitude);
+    double meterToLongitude(final double meter);
+
+    double longitudeToMeter(final double longitude);
 
 }

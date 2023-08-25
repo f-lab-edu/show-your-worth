@@ -4,7 +4,9 @@ package kr.texturized.muus.application.service.calculator;
  * Latitude Calculator.
  */
 public interface LatitudeCalculator {
-    double meterToLatitude(double meter);
+    double LATITUDE_OFFSET = 111_319.9;
 
-    double latitudeToMeter(double latitude);
+    double meterToLatitude(final double meter);
+
+    double latitudeToMeter(final double latitude);
 }
