@@ -56,6 +56,9 @@ public class CoordinateCalculator implements LatitudeCalculator, LongitudeCalcul
             throw new OutOfCoordinateRangeException();
         }
 
+        // Valid Condition
+        // 33.0 < Latitude with range < 38.6
+        // 124.6 < Longitude with range < 132.0
         double width = meterToLatitude(widthMeter);
         double height = meterToLongitude(heightMeter);
         if (MIN_LATITUDE > latitude - width * 0.5
