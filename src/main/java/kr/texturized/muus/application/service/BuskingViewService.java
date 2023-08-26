@@ -25,10 +25,10 @@ public class BuskingViewService {
      * @return list of active busking information for map
      */
     public List<BuskingMapVo> getActiveBuskingsInMap(
-        double latitude,
-        double longitude,
-        double widthMeter,
-        double heightMeter
+        final double latitude,
+        final double longitude,
+        final double widthMeter,
+        final double heightMeter
     ) {
         return buskingFindDao.getActiveBuskingsInMap(latitude, longitude, widthMeter, heightMeter);
     }
