@@ -1,4 +1,4 @@
-package kr.texturized.muus.application.service.calculator;
+package kr.texturized.muus.common.coordinate;
 
 /**
  * Longitude Calculator.

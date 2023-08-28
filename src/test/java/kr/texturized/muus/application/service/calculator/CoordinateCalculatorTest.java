@@ -1,9 +1,8 @@
 package kr.texturized.muus.application.service.calculator;
 
 
-import static org.assertj.core.api.Assertions.*;
-
 import kr.texturized.muus.application.service.exception.OutOfCoordinateRangeException;
+import kr.texturized.muus.common.coordinate.CoordinateCalculator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

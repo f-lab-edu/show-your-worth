@@ -1,7 +1,7 @@
 package kr.texturized.muus.dao;
 
 import java.util.List;
-import kr.texturized.muus.application.service.calculator.CoordinateCalculator;
+import kr.texturized.muus.common.coordinate.CoordinateCalculator;
 import kr.texturized.muus.domain.vo.BuskingMapVo;
 import kr.texturized.muus.infrastructure.mapper.BuskingViewMapper;
 import lombok.RequiredArgsConstructor;

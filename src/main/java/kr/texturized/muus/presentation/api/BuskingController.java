@@ -4,7 +4,7 @@ import static java.util.stream.Collectors.*;
 
 import java.util.List;
 import kr.texturized.muus.application.service.BuskingViewService;
-import kr.texturized.muus.application.service.calculator.RangeChecker;
+import kr.texturized.muus.common.coordinate.RangeChecker;
 import kr.texturized.muus.domain.vo.BuskingMapVo;
 import kr.texturized.muus.presentation.api.response.BuskingsInMapResponse;
 import lombok.RequiredArgsConstructor;
