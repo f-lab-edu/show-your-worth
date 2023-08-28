@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
 
 class CoordinateCalculatorTest {
 
-    @FunctionalInterface
-    static interface QuadFunction<T> {
-        void get(T a, T b, T c, T d);
-    }
-
     private final CoordinateCalculator calculator = new CoordinateCalculator();
+
+    /**
+     * This test is for calculation of latitude/longitude for each meter.
+     * Let it leave for easy caculation.
+     */
     @Test
     void calculateCoordinate() {
         double latitude = calculator.meterToLatitude(1_000_000.0);
