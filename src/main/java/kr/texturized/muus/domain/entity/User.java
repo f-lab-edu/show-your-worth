@@ -44,7 +44,7 @@ public class User {
     private String nickname;
 
     @NotBlank
-    @Column(name = "email_account")
+    @Column(name = "email_account", unique = true)
     private String email;
 
     @Column (name = "profile_image_path")
