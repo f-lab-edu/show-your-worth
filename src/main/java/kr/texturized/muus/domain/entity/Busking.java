@@ -3,13 +3,7 @@ package kr.texturized.muus.domain.entity;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
@@ -27,17 +21,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @Table(name = "busking")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@ToString(of = {"host", "title", "createTime"})
-public class Busking {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false)
-    private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "host_id", nullable = false, updatable = false)
-    private User host;
+public class Busking extends Post {
 
     private Double latitude;
     private Double longitude;
@@ -79,7 +63,7 @@ public class Busking {
         final LocalDateTime managedEndTime,
         final LocalDateTime endTime
     ) {
-        this.host = host;
+        super(host);
         this.latitude = latitude;
         this.longitude = longitude;
         this.title = title;
@@ -87,5 +71,14 @@ public class Busking {
         this.managedStartTime = managedStartTime;
         this.managedEndTime = managedEndTime;
         this.endTime = endTime;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Busking(host=%s, title=%s, createTime=%s",
+            host,
+            title,
+            createTime
+        );
     }
 }
