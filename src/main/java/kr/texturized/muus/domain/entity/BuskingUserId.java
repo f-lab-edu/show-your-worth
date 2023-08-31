@@ -8,14 +8,18 @@ import lombok.RequiredArgsConstructor;
 /**
  * Composite-id class for BuskingUser.
  */
-@RequiredArgsConstructor
 public class BuskingUserId implements Serializable {
 
     @Column(name = "busking_id")
-    private final Long buskingId;
+    private Long buskingId;
 
     @Column(name = "user_id")
-    private final Long userId;
+    private Long userId;
+
+    public BuskingUserId(final Long buskingId, final Long userId) {
+        this.buskingId = buskingId;
+        this.userId = userId;
+    }
 
     @Override
     public boolean equals(Object o) {
