@@ -27,7 +27,7 @@ public enum UserType {
 
     public static UserType fromKey(int key) {
         return Arrays.stream(UserType.values())
-            .filter(type -> type.getValue() == key)
+            .filter(type -> type.value == key)
             .findAny()
             .orElseThrow(() -> new UserTypeNotFoundException(key));
     }

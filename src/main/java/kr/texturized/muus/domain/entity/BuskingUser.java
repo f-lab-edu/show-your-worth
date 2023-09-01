@@ -8,6 +8,7 @@ import javax.persistence.MapsId;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -30,6 +31,7 @@ public class BuskingUser {
     @JoinColumn(name = "busking_id", nullable = false)
     private Busking busking;
 
+    @Builder
     public BuskingUser(final BuskingUserId id, final Busking busking) {
         this.id = id;
         this.busking = busking;

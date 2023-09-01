@@ -3,19 +3,23 @@ package kr.texturized.muus.domain.entity;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
-import lombok.RequiredArgsConstructor;
+import javax.validation.constraints.NotBlank;
+import lombok.Builder;
 
 /**
  * Composite-id class for BuskingUser.
  */
 public class BuskingUserId implements Serializable {
 
+    @NotBlank
     @Column(name = "busking_id")
     private Long buskingId;
 
+    @NotBlank
     @Column(name = "user_id")
     private Long userId;
 
+    @Builder
     public BuskingUserId(final Long buskingId, final Long userId) {
         this.buskingId = buskingId;
         this.userId = userId;
@@ -30,7 +34,8 @@ public class BuskingUserId implements Serializable {
             return false;
         }
         if (o instanceof BuskingUserId id) {
-            return (this.buskingId == id.buskingId && this.userId == id.userId);
+            return (this.buskingId.compareTo(id.buskingId) == 0
+                && this.userId.compareTo(id.userId) == 0);
         }
         return false;
     }
