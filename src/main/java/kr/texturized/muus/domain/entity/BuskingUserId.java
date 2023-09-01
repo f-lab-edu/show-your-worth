@@ -13,11 +13,11 @@ public class BuskingUserId implements Serializable {
 
     @NotBlank
     @Column(name = "busking_id")
-    private Long buskingId;
+    private final Long buskingId;
 
     @NotBlank
     @Column(name = "user_id")
-    private Long userId;
+    private final Long userId;
 
     @Builder
     public BuskingUserId(final Long buskingId, final Long userId) {
