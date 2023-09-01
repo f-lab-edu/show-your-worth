@@ -11,7 +11,7 @@ import lombok.Getter;
  * Composite-id class for Keyword.
  */
 @Getter
-public class KeywordId implements Serializable {
+public class PostResourceId implements Serializable {
 
     @NotBlank
     @Column(name = "post_id")
@@ -22,7 +22,7 @@ public class KeywordId implements Serializable {
     private final PostCategory category;
 
     @Builder
-    public KeywordId(final Long postId, final PostCategory category) {
+    public PostResourceId(final Long postId, final PostCategory category) {
         this.postId = postId;
         this.category = category;
     }
@@ -35,7 +35,7 @@ public class KeywordId implements Serializable {
         if (o == null) {
             return false;
         }
-        if (o instanceof KeywordId id) {
+        if (o instanceof PostResourceId id) {
             return (this.postId.compareTo(id.postId) == 0
                 && this.category.compareTo(id.category) == 0);
         }

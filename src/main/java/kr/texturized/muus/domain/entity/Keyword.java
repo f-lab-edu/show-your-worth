@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
 public class Keyword {
 
     @EmbeddedId
-    private KeywordId id;
+    private PostResourceId id;
 
     @MapsId("post_id")
     @NotBlank
@@ -41,7 +41,7 @@ public class Keyword {
     private String keyword;
 
     @Builder
-    public Keyword(final KeywordId id, final String keyword) {
+    public Keyword(final PostResourceId id, final String keyword) {
         this.id = id;
         this.keyword = keyword;
     }
