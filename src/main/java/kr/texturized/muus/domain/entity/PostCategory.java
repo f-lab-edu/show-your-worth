@@ -2,10 +2,12 @@ package kr.texturized.muus.domain.entity;
 
 import java.util.Arrays;
 import kr.texturized.muus.domain.exception.PostCategoryNotFoundException;
+import lombok.Getter;
 
 /**
  * PostCategory.
  */
+@Getter
 public enum PostCategory {
 
     BUSKING(1),
@@ -25,7 +27,13 @@ public enum PostCategory {
         return fromKey(keyValue);
     }
 
-    private static PostCategory fromKey(int key) {
+    /**
+     * Integer value to enum instance.
+     *
+     * @param key index in database
+     * @return enum class mapping with key
+     */
+    public static PostCategory fromKey(int key) {
         return Arrays.stream(values())
             .filter(type -> type.value == key)
             .findAny()

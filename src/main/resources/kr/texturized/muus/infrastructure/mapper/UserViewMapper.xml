@@ -29,16 +29,30 @@
 
   <select id="findByAccountId" parameterType="String" resultType="kr.texturized.muus.domain.entity.User">
     select
-        id,
-        account_id as accountId,
-        password as password,
-        nickname as nickname,
-        email_account as email,
-        profile_image_path as profileImage,
-        category_id as userType,
-        create_time as createTime
+      id,
+      account_id as accountId,
+      password as password,
+      nickname as nickname,
+      email_account as email,
+      profile_image_path as profileImage,
+      category_id as userType,
+      create_time as createTime
     from user
     where user.account_id = #{accountId}
+  </select>
+
+  <select id="findById" parameterType="Long" resultType="kr.texturized.muus.domain.entity.User">
+    select
+      id as id,
+      account_id as accountId,
+      password as password,
+      nickname as nickname,
+      email_account as email,
+      profile_image_path as profileImage,
+      category_id as userType,
+      create_time as createTime
+    from user
+    where user.id = #{id}
   </select>
 
 </mapper>
