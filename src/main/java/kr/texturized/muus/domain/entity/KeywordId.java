@@ -4,22 +4,25 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  * Composite-id class for Keyword.
  */
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class KeywordId implements Serializable {
 
     @NotBlank
     @Column(name = "post_id")
-    private final Long postId;
+    private Long postId;
 
     @NotBlank
     @Column(name = "category_id")
-    private final PostCategory category;
+    private PostCategory category;
 
     @Builder
     public KeywordId(final Long postId, final PostCategory category) {

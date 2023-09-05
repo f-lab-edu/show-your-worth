@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * VO for busking.
- * Usage is for creation, update
+ * Usage is for creation, read and update.
  */
 public record BuskingVo(
     String title,
