@@ -3,14 +3,25 @@ package kr.texturized.muus.presentation.api;
 import static java.util.stream.Collectors.*;
 
 import java.util.List;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import kr.texturized.muus.application.service.BuskingService;
 import kr.texturized.muus.application.service.BuskingViewService;
 import kr.texturized.muus.common.coordinate.RangeChecker;
+import kr.texturized.muus.domain.entity.User;
 import kr.texturized.muus.domain.vo.BuskingMapVo;
+import kr.texturized.muus.domain.vo.BuskingVo;
+import kr.texturized.muus.domain.vo.CreateBuskingVo;
+import kr.texturized.muus.presentation.api.request.BuskingRequest;
 import kr.texturized.muus.presentation.api.response.BuskingsInMapResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,8 +29,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class BuskingController {
 
-    private final BuskingViewService buskingViewService;
     private final RangeChecker rangeChecker;
+    private final BuskingViewService buskingViewService;
+    private final BuskingService buskingService;
 
     /**
      * Get busking list to show in map.<br>
@@ -51,5 +63,34 @@ public class BuskingController {
 
     private BuskingsInMapResponse dto(BuskingMapVo vo) {
         return new BuskingsInMapResponse(vo.id(), vo.latitude(), vo.longitude());
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/{userId}")
+    public Long createBusking(
+        @RequestParam final Long userId,
+        @Valid @RequestBody final BuskingRequest request
+    ) {
+        rangeChecker.validateRange(request.latitude(), request.longitude(), 0.0, 0.0);
+        return buskingService.create(userId, dto(request));
+    }
+
+    /**
+     * Request to Creation Vo.
+     *
+     * @param request request
+     * @return Vo for busking creation
+     */
+    private CreateBuskingVo dto(final BuskingRequest request) {
+        return new CreateBuskingVo(
+            request.title(),
+            request.imageFiles(),
+            request.latitude(),
+            request.longitude(),
+            request.keywords(),
+            request.description(),
+            request.managedStartTime(),
+            request.managedEndTime()
+        );
     }
 }
