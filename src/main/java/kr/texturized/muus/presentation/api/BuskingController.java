@@ -4,13 +4,10 @@ import static java.util.stream.Collectors.*;
 
 import java.util.List;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import kr.texturized.muus.application.service.BuskingService;
 import kr.texturized.muus.application.service.BuskingViewService;
 import kr.texturized.muus.common.coordinate.RangeChecker;
-import kr.texturized.muus.domain.entity.User;
 import kr.texturized.muus.domain.vo.BuskingMapVo;
-import kr.texturized.muus.domain.vo.BuskingVo;
 import kr.texturized.muus.domain.vo.CreateBuskingVo;
 import kr.texturized.muus.presentation.api.request.BuskingRequest;
 import kr.texturized.muus.presentation.api.response.BuskingsInMapResponse;
@@ -61,10 +58,6 @@ public class BuskingController {
             .collect(toList());
     }
 
-    private BuskingsInMapResponse dto(BuskingMapVo vo) {
-        return new BuskingsInMapResponse(vo.id(), vo.latitude(), vo.longitude());
-    }
-
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{userId}")
     public Long createBusking(
@@ -73,6 +66,16 @@ public class BuskingController {
     ) {
         rangeChecker.validateRange(request.latitude(), request.longitude(), 0.0, 0.0);
         return buskingService.create(userId, dto(request));
+    }
+
+    /**
+     * Result vo to response.
+     *
+     * @param vo List of busking in map vo
+     * @return Response of searching the list of busking in specific range of map
+     */
+    private BuskingsInMapResponse dto(final BuskingMapVo vo) {
+        return new BuskingsInMapResponse(vo.id(), vo.latitude(), vo.longitude());
     }
 
     /**
