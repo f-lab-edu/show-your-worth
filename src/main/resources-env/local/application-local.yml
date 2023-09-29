@@ -18,9 +18,16 @@ spring:
         use_sql_comments: true
   devtools:
     add-properties: true
+cloud:
+  credentials:
+    access-key: ${NCP_ACCESS_KEY}
+    secret-key: ${NCP_SECRET_KEY}
+  storage:
+    endpoint: https://kr.object.ncloudstorage.com
+    region:
+      static: kr-standard
+    bucket-name: ${NCP_OBJECT_STORAGE_BUCKET_NAME}
 logging:
   level:
     kr.texturized.muus: debug
-
-
 

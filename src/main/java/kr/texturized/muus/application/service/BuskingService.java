@@ -1,6 +1,7 @@
 package kr.texturized.muus.application.service;
 
 import java.util.List;
+import kr.texturized.muus.common.storage.PostImageStorage;
 import kr.texturized.muus.dao.BuskingDao;
 import kr.texturized.muus.domain.vo.BuskingVo;
 import kr.texturized.muus.domain.vo.CreateBuskingVo;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class BuskingService {
 
     private final BuskingDao buskingDao;
+    private final PostImageStorage postImageStorage;
 
     /**
      * Create the busking.
