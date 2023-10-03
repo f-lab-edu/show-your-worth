@@ -1,5 +1,6 @@
 package kr.texturized.muus.domain.entity;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,9 +21,9 @@ import lombok.NoArgsConstructor;
  * This entity is super class for entity kinda busking, feed, etc, so keyword or image may be mapped
  * several entity.<br>
  * <br>
- * Inheritance strategy is TABLE_PER_CLASS so only extended entity create tables.
- * At this moment, notice that {@code @GeneratedValue}'s strategy is AUTO
- * (It throws exception when trying with IDENTITY<br>
+ * Inheritance strategy is JOINED. It's truly normalized strategy. It seems using a lot of join, so
+ * It looks like not a good performance, but it's not that so in real. It's more effective because
+ * of the lack of wasting disk.
  * <br>
  * see:
  * <a href="https://ict-nroo.tistory.com/128">
@@ -30,13 +31,14 @@ import lombok.NoArgsConstructor;
  * </a>
  */
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public abstract class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
