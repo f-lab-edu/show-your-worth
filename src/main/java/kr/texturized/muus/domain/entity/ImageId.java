@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode
-public class ImageId {
+public class ImageId implements Serializable {
 
     @NotBlank
     @Column(name = "post_id")
