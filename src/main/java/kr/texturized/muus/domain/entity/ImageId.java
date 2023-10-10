@@ -2,7 +2,9 @@ package kr.texturized.muus.domain.entity;
 
 import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.validation.constraints.NotBlank;
+import kr.texturized.muus.infrastructure.repository.converter.type.PostCategoryConverter;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -18,15 +20,14 @@ import lombok.NoArgsConstructor;
 public class ImageId implements Serializable {
 
     @NotBlank
-    @Column(name = "post_id")
     private Long postId;
 
     @NotBlank
-    @Column(name = "category_id")
+    @Convert(converter = PostCategoryConverter.class)
+    @Column(name = "category", nullable = false, updatable = false)
     private PostCategory category;
 
     @NotBlank
-    @Column(name = "upload_order")
     private Integer uploadOrder;
 
     @Builder
