@@ -15,13 +15,6 @@ import lombok.NoArgsConstructor;
  * Entity class for keyword.
  */
 @Entity
-@Table(
-    name = "keyword",
-    uniqueConstraints = {@UniqueConstraint(columnNames = {
-        "post_id",
-        "category_id"
-    })}
-)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Keyword {
