@@ -57,7 +57,6 @@ public class BuskingDao {
             .forEach(keyword -> {
                 Keyword entity = keywordRepository.save(Keyword.builder()
                         .id(new KeywordId(busking.getId(), PostCategory.BUSKING))
-                        .post(busking)
                         .keyword(keyword)
                     .build());
 
@@ -71,7 +70,6 @@ public class BuskingDao {
                         .category(PostCategory.BUSKING)
                         .uploadOrder(order)
                         .build())
-                    .post(busking)
                     .path(vo.imagePaths().get(order))
                 .build());
 

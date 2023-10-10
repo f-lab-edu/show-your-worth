@@ -3,7 +3,13 @@ package kr.texturized.muus.domain.entity;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
@@ -20,7 +26,15 @@ import org.hibernate.annotations.CreationTimestamp;
 @Table(name = "busking")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Busking extends Post {
+public class Busking {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "host_id", nullable = false, updatable = false)
+    protected User host;
 
     private Double latitude;
     private Double longitude;
@@ -62,7 +76,7 @@ public class Busking extends Post {
         final LocalDateTime managedEndTime,
         final LocalDateTime endTime
     ) {
-        super(host);
+        this.host = host;
         this.latitude = latitude;
         this.longitude = longitude;
         this.title = title;

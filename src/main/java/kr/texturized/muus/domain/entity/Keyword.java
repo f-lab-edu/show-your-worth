@@ -3,8 +3,6 @@ package kr.texturized.muus.domain.entity;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
@@ -31,11 +29,6 @@ public class Keyword {
     @EmbeddedId
     private KeywordId id;
 
-    @MapsId("post_id")
-    @NotBlank
-    @ManyToOne
-    private Post post;
-
     @NotBlank
     @Column(name = "keyword", length = 15)
     private String keyword;
@@ -43,10 +36,8 @@ public class Keyword {
     @Builder
     public Keyword(
         final KeywordId id,
-        final Post post,
         final String keyword) {
         this.id = id;
-        this.post = post;
         this.keyword = keyword;
     }
 }
