@@ -9,7 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public record BuskingRequest (
     String title,
-    List<MultipartFile> imageFiles,
     Double latitude,
     Double longitude,
     List<String> keywords,

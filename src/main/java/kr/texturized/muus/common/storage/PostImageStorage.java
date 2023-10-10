@@ -1,5 +1,9 @@
 package kr.texturized.muus.common.storage;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Optional;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -8,6 +12,16 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public interface PostImageStorage {
 
-    public String getStorageDomain();
-    public String upload(final Long userId, final MultipartFile image);
+    String upload(final MultipartFile image);
+
+    default Optional<File> convert(MultipartFile file) throws IOException {
+        File convertFile = new File(file.getOriginalFilename());
+        if (convertFile.createNewFile()) {
+            try (FileOutputStream fos = new FileOutputStream(convertFile)) {
+                fos.write(file.getBytes());
+            }
+            return Optional.of(convertFile);
+        }
+        return Optional.empty();
+    }
 }

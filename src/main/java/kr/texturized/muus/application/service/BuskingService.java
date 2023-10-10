@@ -32,9 +32,7 @@ public class BuskingService {
     public Long create(final Long userId, final CreateBuskingVo vo) {
         return buskingDao.create(userId, dto(vo.imageFiles().stream()
                 .map(image -> {
-                    // TODO: Save image in Image Storage, then extract relative path for images
-                    log.info("Image {} is saved in {}", image.getName(), image.getName());
-                    return image.getName();
+                    return postImageStorage.upload(image);
                 })
                 .toList(),
             vo));

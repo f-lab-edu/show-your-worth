@@ -1,6 +1,6 @@
 package kr.texturized.muus.common.config;
 
-import kr.texturized.muus.common.storage.NcpObjectStorage;
+import kr.texturized.muus.ncp.NcpObjectStorage;
 import kr.texturized.muus.common.storage.PostImageStorage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +23,7 @@ public class StorageConfig {
 
     @Value("${cloud.storage.bucket-name}")
     private String bucketName;
+
     @Bean
     public PostImageStorage postImageStorage() {
         return new NcpObjectStorage(accessKey, secretKey, endPoint, region, bucketName);
