@@ -21,7 +21,7 @@ public class Image {
     private ImageId id;
 
     @NotBlank
-    @Column(name = "path", length = 250, unique = true)
+    @Column(name = "path", length = 250)
     private String path;       // Relative image path
 
 
