@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
+import kr.texturized.muus.domain.entity.fk.ImageFk;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class Image {
 
     @EmbeddedId
-    private ImageId id;
+    private ImageFk id;
 
     @NotBlank
     @Column(name = "path", length = 250)
@@ -27,7 +28,7 @@ public class Image {
 
     @Builder
     public Image(
-        final ImageId id,
+        final ImageFk id,
         final String path
     ) {
         this.id = id;

@@ -3,9 +3,8 @@ package kr.texturized.muus.domain.entity;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
+import kr.texturized.muus.domain.entity.fk.KeywordFk;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +19,7 @@ import lombok.NoArgsConstructor;
 public class Keyword {
 
     @EmbeddedId
-    private KeywordId id;
+    private KeywordFk id;
 
     @NotBlank
     @Column(name = "keyword", length = 15)
@@ -28,7 +27,7 @@ public class Keyword {
 
     @Builder
     public Keyword(
-        final KeywordId id,
+        final KeywordFk id,
         final String keyword) {
         this.id = id;
         this.keyword = keyword;

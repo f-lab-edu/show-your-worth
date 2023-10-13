@@ -1,9 +1,10 @@
-package kr.texturized.muus.domain.entity;
+package kr.texturized.muus.domain.entity.fk;
 
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.validation.constraints.NotBlank;
+import kr.texturized.muus.domain.entity.PostCategory;
 import kr.texturized.muus.infrastructure.repository.converter.type.PostCategoryConverter;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -17,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode
-public class KeywordId implements Serializable {
+public class KeywordFk implements Serializable {
 
     @NotBlank
     @Column(name = "post_id")
@@ -29,7 +30,7 @@ public class KeywordId implements Serializable {
     private PostCategory category;
 
     @Builder
-    public KeywordId(final Long postId, final PostCategory category) {
+    public KeywordFk(final Long postId, final PostCategory category) {
         this.postId = postId;
         this.category = category;
     }
