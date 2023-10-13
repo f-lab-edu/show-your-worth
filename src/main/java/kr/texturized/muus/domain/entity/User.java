@@ -20,7 +20,7 @@ import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString(of = {"nickname", "email"})
