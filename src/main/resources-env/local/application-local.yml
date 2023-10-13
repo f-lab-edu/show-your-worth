@@ -4,12 +4,12 @@ spring:
       on-profile: "local"
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:~/muus-test
+    url: jdbc:h2:mem:muus-local
     username: redgem92
   jpa:
     database: h2
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     show-sql: true
     properties:
       hibernate:
