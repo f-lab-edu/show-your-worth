@@ -2,9 +2,9 @@ package kr.texturized.muus.dao;
 
 import kr.texturized.muus.domain.entity.Busking;
 import kr.texturized.muus.domain.entity.Image;
-import kr.texturized.muus.domain.entity.ImageId;
+import kr.texturized.muus.domain.entity.fk.ImageFk;
 import kr.texturized.muus.domain.entity.Keyword;
-import kr.texturized.muus.domain.entity.KeywordId;
+import kr.texturized.muus.domain.entity.fk.KeywordFk;
 import kr.texturized.muus.domain.entity.PostCategory;
 import kr.texturized.muus.domain.entity.User;
 import kr.texturized.muus.domain.exception.UserNotFoundException;
@@ -37,7 +37,7 @@ public class BuskingDao {
      * @param vo VO for busking creation
      * @return busking ID
      */
-    public Long create(Long userId, BuskingVo vo) {
+    public Long create(final Long userId, final BuskingVo vo) {
         User user = userViewMapper.findById(userId)
             .orElseThrow(() -> new UserNotFoundException(userId));
 
@@ -56,7 +56,7 @@ public class BuskingDao {
         vo.keywords()
             .forEach(keyword -> {
                 Keyword entity = keywordRepository.save(Keyword.builder()
-                        .id(new KeywordId(busking.getId(), PostCategory.BUSKING))
+                        .id(new KeywordFk(busking.getId(), PostCategory.BUSKING))
                         .keyword(keyword)
                     .build());
 
@@ -65,7 +65,7 @@ public class BuskingDao {
 
         for (int order = 0; order < vo.imagePaths().size(); ++order) {
             Image entity = imageRepository.save(Image.builder()
-                    .id(ImageId.builder()
+                    .id(ImageFk.builder()
                         .postId(busking.getId())
                         .category(PostCategory.BUSKING)
                         .uploadOrder(order)
@@ -78,4 +78,5 @@ public class BuskingDao {
 
         return busking.getId();
     }
+
 }
