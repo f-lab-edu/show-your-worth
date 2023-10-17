@@ -2,11 +2,11 @@ package kr.texturized.muus.dao;
 
 import kr.texturized.muus.domain.entity.Busking;
 import kr.texturized.muus.domain.entity.Image;
-import kr.texturized.muus.domain.entity.fk.ImageFk;
 import kr.texturized.muus.domain.entity.Keyword;
-import kr.texturized.muus.domain.entity.fk.KeywordFk;
 import kr.texturized.muus.domain.entity.PostCategory;
 import kr.texturized.muus.domain.entity.User;
+import kr.texturized.muus.domain.entity.fk.ImageFk;
+import kr.texturized.muus.domain.entity.fk.KeywordFk;
 import kr.texturized.muus.domain.exception.UserNotFoundException;
 import kr.texturized.muus.domain.vo.BuskingVo;
 import kr.texturized.muus.infrastructure.mapper.UserViewMapper;
@@ -40,6 +40,8 @@ public class BuskingDao {
     public Long create(final Long userId, final BuskingVo vo) {
         User user = userViewMapper.findById(userId)
             .orElseThrow(() -> new UserNotFoundException(userId));
+
+        // TODO : Refactor, split logic using private method
 
         Busking busking = buskingRepository.save(Busking.builder()
                 .host(user)
