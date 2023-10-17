@@ -32,8 +32,9 @@ public class BuskingService {
      */
     @Transactional
     public Long create(final Long userId, final CreateBuskingVo vo) {
-        final List<String> uploadedPaths = uploadImagesThenGetUploadedPaths(userId, vo.imageFiles());
-        return buskingDao.create(userId, dto(uploadedPaths, vo));
+        final List<String> uploadedPaths = this.uploadImagesThenGetUploadedPaths(userId, vo.imageFiles());
+        final BuskingVo createVo = dto(uploadedPaths, vo);
+        return buskingDao.create(userId, createVo);
     }
 
     /**
