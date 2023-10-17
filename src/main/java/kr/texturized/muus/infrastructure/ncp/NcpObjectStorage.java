@@ -36,16 +36,14 @@ public class NcpObjectStorage implements PostImageStorage {
             return fileName;
         } catch (IOException e) {
             log.error("{}", e.getMessage());
-            return "";
         } catch (AmazonServiceException e) {
             log.error("Error occurred in Amazon S3 while processing the request. "
                 + "Caused By: {}", e.getMessage());
-            return "";
         } catch (SdkClientException e) {
             log.error("Error occurred in WAS while making the request or handling the response. "
                 + "Caused By: {}", e.getMessage());
-            return "";
         }
+        return "";
     }
 
     /**
