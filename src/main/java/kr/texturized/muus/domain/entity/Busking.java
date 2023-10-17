@@ -30,11 +30,11 @@ public class Busking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "host_id", nullable = false, updatable = false)
-    protected User host;
+    private User host;
 
     private Double latitude;
     private Double longitude;
