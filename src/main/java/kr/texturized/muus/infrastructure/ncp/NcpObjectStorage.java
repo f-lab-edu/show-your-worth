@@ -1,45 +1,62 @@
 package kr.texturized.muus.infrastructure.ncp;
 
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.CannedAccessControlList;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import java.io.File;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import java.io.IOException;
-import kr.texturized.muus.common.error.exception.BusinessException;
-import kr.texturized.muus.common.error.exception.ErrorCode;
 import kr.texturized.muus.common.storage.PostImageStorage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Ncp Object Storage for post images.
  */
+@Slf4j
 public class NcpObjectStorage implements PostImageStorage {
 
-    private AmazonS3Client client;
+    private final AmazonS3Client client;
 
-    private String endPoint;
-
-    private String bucketName;
+    private final String bucketName;
 
     @Override
-    public String upload(final MultipartFile image) {
+    public String upload(final Long userId, final MultipartFile image) {
         try {
-            File uploadFile = convert(image)
-                .orElseThrow(() -> new IllegalArgumentException("MultipartFile -> File conversion failed."));
+            final ObjectMetadata metadata = new ObjectMetadata();
+            metadata.setContentLength(image.getInputStream().available());
 
-            client.putObject(new PutObjectRequest(bucketName, image.getOriginalFilename(), uploadFile)
-                .withCannedAcl(CannedAccessControlList.PublicRead));
+            final String fileName = userId + "/" + getImageName(image);
 
-            return client.getUrl(bucketName, image.getOriginalFilename()).toString();
+            client.putObject(bucketName, fileName, image.getInputStream(), metadata);
+
+            return fileName;
         } catch (IOException e) {
-            throw new BusinessException(ErrorCode.INVALID_INPUT_VALUE);
+            log.error("{}", e.getMessage());
+            return "";
+        } catch (AmazonServiceException e) {
+            log.error("Error occurred in Amazon S3 while processing the request. "
+                + "Caused By: {}", e.getMessage());
+            return "";
+        } catch (SdkClientException e) {
+            log.error("Error occurred in WAS while making the request or handling the response. "
+                + "Caused By: {}", e.getMessage());
+            return "";
         }
     }
 
+    /**
+     * Constructor.
+     *
+     * @param accessKey accessKey
+     * @param secretKey secretKey
+     * @param endPoint endPoint
+     * @param region region
+     * @param bucketName bucketName
+     */
     public NcpObjectStorage(
         final String accessKey,
         final String secretKey,
@@ -52,7 +69,6 @@ public class NcpObjectStorage implements PostImageStorage {
             .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
             .withEndpointConfiguration(new EndpointConfiguration(endPoint, region))
             .build();
-        this.endPoint = endPoint;
         this.bucketName = bucketName;
     }
 

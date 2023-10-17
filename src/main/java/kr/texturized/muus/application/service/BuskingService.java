@@ -1,6 +1,7 @@
 package kr.texturized.muus.application.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import kr.texturized.muus.common.storage.PostImageStorage;
 import kr.texturized.muus.dao.BuskingDao;
 import kr.texturized.muus.domain.vo.BuskingVo;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Service for Busking Create, Update and Delete.
@@ -30,12 +32,26 @@ public class BuskingService {
      */
     @Transactional
     public Long create(final Long userId, final CreateBuskingVo vo) {
-        return buskingDao.create(userId, dto(vo.imageFiles().stream()
-                .map(image -> {
-                    return postImageStorage.upload(image);
-                })
-                .toList(),
-            vo));
+        final List<String> uploadedPaths = uploadImagesThenGetUploadedPaths(userId, vo.imageFiles());
+        return buskingDao.create(userId, dto(uploadedPaths, vo));
+    }
+
+    /**
+     * Upload and return successfully uploaded image's path.
+     *
+     * @param userId User ID for creating busking
+     * @param multipartFiles Image files for busking
+     * @return relative paths of uploaded images
+     */
+    private List<String> uploadImagesThenGetUploadedPaths(final Long userId, final List<MultipartFile> multipartFiles) {
+        return multipartFiles.stream()
+            .map(partFile -> {
+                final String uploadedPath = postImageStorage.upload(userId, partFile);
+                log.info("Image is uploaded on: {}", uploadedPath);
+                return uploadedPath;
+            })
+            .filter(path -> !path.isEmpty())
+            .collect(Collectors.toList());
     }
 
     private BuskingVo dto(final List<String> imagePaths, final CreateBuskingVo vo) {
