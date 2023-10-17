@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.Optional;
 import kr.texturized.muus.domain.entity.User;
-import kr.texturized.muus.domain.entity.UserType;
+import kr.texturized.muus.domain.entity.UserTypeEnum;
 import kr.texturized.muus.infrastructure.repository.UserRepository;
 import kr.texturized.muus.test.IntegrationTest;
 import org.junit.jupiter.api.Test;
@@ -25,7 +25,7 @@ public class UserViewMapperTest extends IntegrationTest {
                 .password("password")
                 .nickname("nickname")
                 .email("email@f-lab.kr")
-                .userType(UserType.USER)
+                .userType(UserTypeEnum.USER)
             .build());
 
         Optional<User> signIn = userViewMapper.findByAccountId("accountId");

@@ -2,18 +2,18 @@ package kr.texturized.muus.infrastructure.repository.converter.type;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-import kr.texturized.muus.domain.entity.UserType;
+import kr.texturized.muus.domain.entity.UserTypeEnum;
 
 @Converter
-public class UserTypeConverter implements AttributeConverter<UserType, Integer> {
+public class UserTypeConverter implements AttributeConverter<UserTypeEnum, Integer> {
 
     @Override
-    public Integer convertToDatabaseColumn(UserType attribute) {
+    public Integer convertToDatabaseColumn(UserTypeEnum attribute) {
         return attribute.getValue();
     }
 
     @Override
-    public UserType convertToEntityAttribute(Integer dbData) {
-        return UserType.fromKey(dbData);
+    public UserTypeEnum convertToEntityAttribute(Integer dbData) {
+        return UserTypeEnum.fromKey(dbData);
     }
 }

@@ -7,11 +7,10 @@ import java.time.Month;
 import java.util.Optional;
 import kr.texturized.muus.domain.entity.Busking;
 import kr.texturized.muus.domain.entity.User;
-import kr.texturized.muus.domain.entity.UserType;
+import kr.texturized.muus.domain.entity.UserTypeEnum;
 import kr.texturized.muus.infrastructure.mapper.UserViewMapper;
 import kr.texturized.muus.test.IntegrationTest;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.assertj.core.data.Percentage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,7 +35,7 @@ class BuskingRepositoryTest extends IntegrationTest {
                 .password("asdfqwerzxcv")
                 .nickname("HoneyFist")
                 .email("redgem92@gmail.com")
-                .userType(UserType.USER)
+                .userType(UserTypeEnum.USER)
             .build());
     }
 

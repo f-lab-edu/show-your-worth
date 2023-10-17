@@ -5,40 +5,54 @@
 
   <select id="existsByAccountId" parameterType="String" resultType="boolean">
     select exists (
-        select user.id
-        from user
-        where user.account_id = #{AccountId}
+        select users.id
+        from users
+        where users.account_id = #{AccountId}
     );
   </select>
 
   <select id="existsByNickname" parameterType="String" resultType="boolean">
     select exists (
-      select user.id
-      from user
-      where user.nickname = #{nickname}
+      select users.id
+      from users
+      where users.nickname = #{nickname}
     );
   </select>
 
   <select id="existsByEmail" parameterType="String" resultType="boolean">
     select exists (
-      select user.id
-      from user
-      where user.email_account = #{email}
+      select users.id
+      from users
+      where users.email_account = #{email}
     );
   </select>
 
   <select id="findByAccountId" parameterType="String" resultType="kr.texturized.muus.domain.entity.User">
     select
-        id,
-        account_id as accountId,
-        password as password,
-        nickname as nickname,
-        email_account as email,
-        profile_image_path as profileImage,
-        category_id as userType,
-        create_time as createTime
-    from user
-    where user.account_id = #{accountId}
+      id,
+      account_id as accountId,
+      password as password,
+      nickname as nickname,
+      email_account as email,
+      profile_image_path as profileImage,
+      category_id as userType,
+      create_time as createTime
+    from users
+    where users.account_id = #{accountId}
+  </select>
+
+  <select id="findById" parameterType="Long" resultType="kr.texturized.muus.domain.entity.User">
+    select
+      id as id,
+      account_id as accountId,
+      password as password,
+      nickname as nickname,
+      email_account as email,
+      profile_image_path as profileImage,
+      category_id as userType,
+      create_time as createTime
+    from users
+    where users.id = #{id}
   </select>
 
 </mapper>

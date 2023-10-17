@@ -8,7 +8,7 @@ import lombok.Getter;
  * UserType.
  */
 @Getter
-public enum UserType {
+public enum UserTypeEnum {
     USER(1),
     ADMIN(100)
 
@@ -16,18 +16,18 @@ public enum UserType {
 
     private final int value;
 
-    UserType(final int value) {
+    UserTypeEnum(final int value) {
         this.value = value;
     }
 
-    public static UserType fromKey(String key) {
+    public static UserTypeEnum fromKey(String key) {
         int keyValue = Integer.parseInt(key);
         return fromKey(keyValue);
     }
 
-    public static UserType fromKey(int key) {
-        return Arrays.stream(UserType.values())
-            .filter(type -> type.getValue() == key)
+    public static UserTypeEnum fromKey(int key) {
+        return Arrays.stream(UserTypeEnum.values())
+            .filter(type -> type.value == key)
             .findAny()
             .orElseThrow(() -> new UserTypeNotFoundException(key));
     }

@@ -15,6 +15,10 @@
     from busking
     where
         (end_time is null or end_time > now())
+        <!--
+          This query is for searching buskings in map based on offset coordinate.
+          That's the reason why using the number 0.5
+        -->
         and latitude between #{latitude} - #{width} * 0.5 and #{latitude} + #{width} * 0.5
         and longitude between #{longitude} - #{height} * 0.5 and #{longitude} + #{height} * 0.5
   </select>

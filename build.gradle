@@ -31,6 +31,9 @@ dependencies {
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
+	implementation platform('com.amazonaws:aws-java-sdk-bom:1.12.529')
+	implementation 'com.amazonaws:aws-java-sdk-s3'
+
 	// Spring Boot 2.6에서 Swagger UI 3.x 사용 불가 이슈 있어
 	// SpringDoc 으로 대체 합니다.
 	// [참고] : https://bcp0109.tistory.com/326, https://colabear754.tistory.com/99

@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +18,7 @@ import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString(of = {"nickname", "email"})
@@ -44,7 +42,7 @@ public class User {
     private String nickname;
 
     @NotBlank
-    @Column(name = "email_account")
+    @Column(name = "email_account", unique = true)
     private String email;
 
     @Column (name = "profile_image_path")
@@ -60,7 +58,7 @@ public class User {
      */
     @Convert(converter = UserTypeConverter.class)
     @Column(name = "category_id", nullable = false, updatable = true)
-    private UserType userType;
+    private UserTypeEnum userType;
 
     @CreationTimestamp
     @Column(name = "create_time", nullable = false, updatable = false)
@@ -73,7 +71,7 @@ public class User {
         final String nickname,
         final String email,
         final String profileImage,
-        final UserType userType
+        final UserTypeEnum userType
     ) {
         this.accountId = accountId;
         this.password = password;

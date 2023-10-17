@@ -3,17 +3,15 @@ package kr.texturized.muus.application;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.util.Optional;
 import kr.texturized.muus.application.service.UserSignUpService;
 import kr.texturized.muus.application.service.exception.AlreadySignedUpEmailException;
 import kr.texturized.muus.application.service.exception.DuplicatedAccountIdException;
 import kr.texturized.muus.application.service.exception.DuplicatedNicknameException;
 import kr.texturized.muus.application.service.exception.InvalidAccountException;
 import kr.texturized.muus.domain.entity.User;
-import kr.texturized.muus.domain.entity.UserType;
+import kr.texturized.muus.domain.entity.UserTypeEnum;
 import kr.texturized.muus.infrastructure.repository.UserRepository;
 import kr.texturized.muus.test.IntegrationTest;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +32,7 @@ public class UserSignUpServiceTest extends IntegrationTest {
                 .password("password")
                 .nickname("nickname")
                 .email("email@f-lab.kr")
-                .userType(UserType.USER)
+                .userType(UserTypeEnum.USER)
             .build());
     }
 

@@ -17,7 +17,6 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 /**
@@ -27,12 +26,10 @@ import org.hibernate.annotations.CreationTimestamp;
 @Table(name = "busking")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@ToString(of = {"host", "title", "createTime"})
 public class Busking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -87,5 +84,14 @@ public class Busking {
         this.managedStartTime = managedStartTime;
         this.managedEndTime = managedEndTime;
         this.endTime = endTime;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Busking(host=%s, title=%s, createTime=%s",
+            host,
+            title,
+            createTime
+        );
     }
 }
