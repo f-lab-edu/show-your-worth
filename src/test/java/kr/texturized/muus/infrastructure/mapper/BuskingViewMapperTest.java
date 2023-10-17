@@ -7,13 +7,12 @@ import java.time.Month;
 import java.util.List;
 import kr.texturized.muus.domain.entity.Busking;
 import kr.texturized.muus.domain.entity.User;
-import kr.texturized.muus.domain.entity.UserType;
+import kr.texturized.muus.domain.entity.UserTypeEnum;
 import kr.texturized.muus.domain.vo.BuskingMapVo;
 import kr.texturized.muus.infrastructure.repository.BuskingRepository;
 import kr.texturized.muus.infrastructure.repository.UserRepository;
 import kr.texturized.muus.test.IntegrationTest;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,7 @@ class BuskingViewMapperTest extends IntegrationTest {
                 .password("asdfqwerzxcv")
                 .nickname("HoneyFist")
                 .email("redgem92@gmail.com")
-                .userType(UserType.USER)
+                .userType(UserTypeEnum.USER)
             .build());
 
         saveBusking(

@@ -2,21 +2,21 @@ package kr.texturized.muus.infrastructure.repository.converter.type;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-import kr.texturized.muus.domain.entity.PostCategory;
+import kr.texturized.muus.domain.entity.PostCategoryEnum;
 
 /**
  * JPA Converter for PostCategory.
  */
 @Converter
-public class PostCategoryConverter implements AttributeConverter<PostCategory, Integer> {
+public class PostCategoryConverter implements AttributeConverter<PostCategoryEnum, Integer> {
 
     @Override
-    public Integer convertToDatabaseColumn(PostCategory attribute) {
+    public Integer convertToDatabaseColumn(PostCategoryEnum attribute) {
         return attribute.getValue();
     }
 
     @Override
-    public PostCategory convertToEntityAttribute(Integer dbData) {
-        return PostCategory.fromKey(dbData);
+    public PostCategoryEnum convertToEntityAttribute(Integer dbData) {
+        return PostCategoryEnum.fromKey(dbData);
     }
 }

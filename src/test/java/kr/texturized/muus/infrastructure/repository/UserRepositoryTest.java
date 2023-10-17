@@ -3,7 +3,7 @@ package kr.texturized.muus.infrastructure.repository;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import kr.texturized.muus.domain.entity.User;
-import kr.texturized.muus.domain.entity.UserType;
+import kr.texturized.muus.domain.entity.UserTypeEnum;
 import kr.texturized.muus.test.IntegrationTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .password("asdf")
                 .nickname("Unoverlap")
                 .email("unoverlapMail@naver.com")
-                .userType(UserType.USER)
+                .userType(UserTypeEnum.USER)
                 .profileImage("")
                 .build();
             userRepository.save(user1);
@@ -34,7 +34,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .nickname("Unoverlap1")
                 .email("unoverlapMail1@naver.com")
                 .profileImage("")
-                .userType(UserType.USER)
+                .userType(UserTypeEnum.USER)
                 .build();
             userRepository.save(user2);
             fail();
@@ -49,7 +49,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .password("asdf")
                 .nickname("overlap")
                 .email("unoverlapMail@naver.com")
-                .userType(UserType.USER)
+                .userType(UserTypeEnum.USER)
                 .profileImage("")
                 .build();
             userRepository.save(user1);
@@ -60,7 +60,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .nickname("overlap")
                 .email("unoverlapMail1@naver.com")
                 .profileImage("")
-                .userType(UserType.USER)
+                .userType(UserTypeEnum.USER)
                 .build();
             userRepository.save(user2);
             fail();
@@ -75,7 +75,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .password("asdf")
                 .nickname("unoverlap1")
                 .email("overlapMail@naver.com")
-                .userType(UserType.USER)
+                .userType(UserTypeEnum.USER)
                 .profileImage("")
                 .build();
             userRepository.save(user1);
@@ -86,7 +86,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .nickname("unoverlapNickname2")
                 .email("overlapMail@naver.com")
                 .profileImage("")
-                .userType(UserType.USER)
+                .userType(UserTypeEnum.USER)
                 .build();
             userRepository.save(user2);
             fail();

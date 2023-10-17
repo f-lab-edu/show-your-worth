@@ -6,7 +6,7 @@ import kr.texturized.muus.application.service.exception.DuplicatedAccountIdExcep
 import kr.texturized.muus.application.service.exception.DuplicatedNicknameException;
 import kr.texturized.muus.application.service.exception.InvalidAccountException;
 import kr.texturized.muus.domain.entity.User;
-import kr.texturized.muus.domain.entity.UserType;
+import kr.texturized.muus.domain.entity.UserTypeEnum;
 import kr.texturized.muus.infrastructure.mapper.UserViewMapper;
 import kr.texturized.muus.infrastructure.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -51,7 +51,7 @@ public class UserSignUpService {
                     .password(password /* TODO: PasswordEncoder */)
                     .nickname(nickname)
                     .email(email)
-                    .userType(UserType.USER)
+                    .userType(UserTypeEnum.USER)
                 .build()))
             .map(user -> {
                 log.info("Sign up: {}", user);

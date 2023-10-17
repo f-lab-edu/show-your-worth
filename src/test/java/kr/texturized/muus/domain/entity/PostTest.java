@@ -4,9 +4,6 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import kr.texturized.muus.infrastructure.repository.BuskingRepository;
 import kr.texturized.muus.infrastructure.repository.UserRepository;
-import kr.texturized.muus.test.IntegrationTest;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * This test is for checking logics for JPA with sub-class entity.
@@ -27,7 +24,7 @@ public class PostTest /*extends IntegrationTest*/ {
                 .password("asdfqwerzxcv")
                 .nickname("HoneyFist")
                 .email("redgem92@gmail.com")
-                .userType(UserType.USER)
+                .userType(UserTypeEnum.USER)
             .build());
 
         Busking busking = buskingRepository.save(Busking.builder()

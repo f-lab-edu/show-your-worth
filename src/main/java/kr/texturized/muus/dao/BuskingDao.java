@@ -3,7 +3,7 @@ package kr.texturized.muus.dao;
 import kr.texturized.muus.domain.entity.Busking;
 import kr.texturized.muus.domain.entity.Image;
 import kr.texturized.muus.domain.entity.Keyword;
-import kr.texturized.muus.domain.entity.PostCategory;
+import kr.texturized.muus.domain.entity.PostCategoryEnum;
 import kr.texturized.muus.domain.entity.User;
 import kr.texturized.muus.domain.entity.fk.ImageFk;
 import kr.texturized.muus.domain.entity.fk.KeywordFk;
@@ -58,7 +58,7 @@ public class BuskingDao {
         vo.keywords()
             .forEach(keyword -> {
                 Keyword entity = keywordRepository.save(Keyword.builder()
-                        .id(new KeywordFk(busking.getId(), PostCategory.BUSKING))
+                        .id(new KeywordFk(busking.getId(), PostCategoryEnum.BUSKING))
                         .keyword(keyword)
                     .build());
 
@@ -69,7 +69,7 @@ public class BuskingDao {
             Image entity = imageRepository.save(Image.builder()
                     .id(ImageFk.builder()
                         .postId(busking.getId())
-                        .category(PostCategory.BUSKING)
+                        .category(PostCategoryEnum.BUSKING)
                         .uploadOrder(order)
                         .build())
                     .path(vo.imagePaths().get(order))

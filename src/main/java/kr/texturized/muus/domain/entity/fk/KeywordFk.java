@@ -4,7 +4,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.validation.constraints.NotBlank;
-import kr.texturized.muus.domain.entity.PostCategory;
+import kr.texturized.muus.domain.entity.PostCategoryEnum;
 import kr.texturized.muus.infrastructure.repository.converter.type.PostCategoryConverter;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -27,10 +27,10 @@ public class KeywordFk implements Serializable {
     @NotBlank
     @Convert(converter = PostCategoryConverter.class)
     @Column(name = "category", nullable = false, updatable = false)
-    private PostCategory category;
+    private PostCategoryEnum category;
 
     @Builder
-    public KeywordFk(final Long postId, final PostCategory category) {
+    public KeywordFk(final Long postId, final PostCategoryEnum category) {
         this.postId = postId;
         this.category = category;
     }
