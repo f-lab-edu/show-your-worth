@@ -1,6 +1,6 @@
 package kr.texturized.muus.common.config;
 
-import kr.texturized.muus.ncp.NcpObjectStorage;
+import kr.texturized.muus.infrastructure.ncp.NcpObjectStorage;
 import kr.texturized.muus.common.storage.PostImageStorage;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package kr.texturized.muus.ncp;
+package kr.texturized.muus.infrastructure.ncp;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -12,7 +12,6 @@ import java.io.IOException;
 import kr.texturized.muus.common.error.exception.BusinessException;
 import kr.texturized.muus.common.error.exception.ErrorCode;
 import kr.texturized.muus.common.storage.PostImageStorage;
-import org.apache.http.entity.ContentType;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -56,6 +55,5 @@ public class NcpObjectStorage implements PostImageStorage {
         this.endPoint = endPoint;
         this.bucketName = bucketName;
     }
-
 
 }
