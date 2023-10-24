@@ -25,8 +25,8 @@ public class ImageFk implements Serializable {
 
     @NotBlank
     @Convert(converter = PostCategoryConverter.class)
-    @Column(name = "category", nullable = false, updatable = false)
-    private PostCategoryEnum category;
+    @Column(nullable = false, updatable = false)
+    private PostCategoryEnum postType;
 
     @NotBlank
     private Integer uploadOrder;
@@ -34,10 +34,10 @@ public class ImageFk implements Serializable {
     @Builder
     public ImageFk(
         final Long postId,
-        final PostCategoryEnum category,
+        final PostCategoryEnum postType,
         final Integer uploadOrder) {
         this.postId = postId;
-        this.category = category;
+        this.postType = postType;
         this.uploadOrder = uploadOrder;
     }
 

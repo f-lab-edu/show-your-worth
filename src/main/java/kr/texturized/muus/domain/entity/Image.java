@@ -22,7 +22,7 @@ public class Image {
     private ImageFk id;
 
     @NotBlank
-    @Column(name = "path", length = 250)
+    @Column(length = 250)
     private String path;       // Relative image path
 
 

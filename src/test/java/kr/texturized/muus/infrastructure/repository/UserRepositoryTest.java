@@ -24,7 +24,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .nickname("Unoverlap")
                 .email("unoverlapMail@naver.com")
                 .userType(UserTypeEnum.USER)
-                .profileImage("")
+                .profileImagePath("")
                 .build();
             userRepository.save(user1);
 
@@ -33,7 +33,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .password("asdf")
                 .nickname("Unoverlap1")
                 .email("unoverlapMail1@naver.com")
-                .profileImage("")
+                .profileImagePath("")
                 .userType(UserTypeEnum.USER)
                 .build();
             userRepository.save(user2);
@@ -50,7 +50,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .nickname("overlap")
                 .email("unoverlapMail@naver.com")
                 .userType(UserTypeEnum.USER)
-                .profileImage("")
+                .profileImagePath("")
                 .build();
             userRepository.save(user1);
 
@@ -59,7 +59,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .password("asdf")
                 .nickname("overlap")
                 .email("unoverlapMail1@naver.com")
-                .profileImage("")
+                .profileImagePath("")
                 .userType(UserTypeEnum.USER)
                 .build();
             userRepository.save(user2);
@@ -76,7 +76,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .nickname("unoverlap1")
                 .email("overlapMail@naver.com")
                 .userType(UserTypeEnum.USER)
-                .profileImage("")
+                .profileImagePath("")
                 .build();
             userRepository.save(user1);
 
@@ -85,7 +85,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .password("asdf")
                 .nickname("unoverlapNickname2")
                 .email("overlapMail@naver.com")
-                .profileImage("")
+                .profileImagePath("")
                 .userType(UserTypeEnum.USER)
                 .build();
             userRepository.save(user2);

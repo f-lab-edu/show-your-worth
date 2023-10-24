@@ -26,27 +26,24 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false)
+    @Column(updatable = false)
     private Long id;
 
     @NotBlank
-    @Column(name = "account_id")
+    @Column(unique = true)
     private String accountId;
 
     @NotBlank
-    @Column(name = "password")
     private String password;
 
     @NotBlank
-    @Column(name = "nickname")
     private String nickname;
 
     @NotBlank
-    @Column(name = "email_account", unique = true)
+    @Column(unique = true)
     private String email;
 
-    @Column (name = "profile_image_path")
-    private String profileImage;
+    private String profileImagePath;
 
     /**
      * JPA enum Converting.
@@ -57,11 +54,11 @@ public class User {
      *     </a>
      */
     @Convert(converter = UserTypeConverter.class)
-    @Column(name = "category_id", nullable = false, updatable = true)
+    @Column(nullable = false)
     private UserTypeEnum userType;
 
     @CreationTimestamp
-    @Column(name = "create_time", nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createTime;
 
     @Builder
@@ -70,14 +67,14 @@ public class User {
         final String password,
         final String nickname,
         final String email,
-        final String profileImage,
+        final String profileImagePath,
         final UserTypeEnum userType
     ) {
         this.accountId = accountId;
         this.password = password;
         this.nickname = nickname;
         this.email = email;
-        this.profileImage = profileImage;
+        this.profileImagePath = profileImagePath;
         this.userType = userType;
     }
 }

@@ -34,7 +34,7 @@ public class UserViewMapperTest extends IntegrationTest {
         assertThat(signIn.get().getPassword()).isEqualTo(signUp.getPassword());
         assertThat(signIn.get().getNickname()).isEqualTo(signUp.getNickname());
         assertThat(signIn.get().getUserType()).isEqualTo(signUp.getUserType());
-        assertThat(signIn.get().getProfileImage()).isEqualTo(signUp.getProfileImage());
+        assertThat(signIn.get().getProfileImagePath()).isEqualTo(signUp.getProfileImagePath());
         assertThat(signIn.get().getEmail()).isEqualTo(signUp.getEmail());
     }
 
