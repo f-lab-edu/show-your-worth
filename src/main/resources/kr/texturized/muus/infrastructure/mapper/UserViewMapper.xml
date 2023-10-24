@@ -19,21 +19,12 @@
     );
   </select>
 
-  <select id="existsByEmail" parameterType="String" resultType="boolean">
-    select exists (
-      select users.id
-      from users
-      where users.email_account = #{email}
-    );
-  </select>
-
   <select id="findByAccountId" parameterType="String" resultType="kr.texturized.muus.domain.entity.User">
     select
       id,
       account_id,
       password,
       nickname,
-      email,
       profile_image_path,
       user_type,
       create_time
@@ -47,7 +38,6 @@
       account_id,
       password,
       nickname,
-      email,
       profile_image_path,
       user_type,
       create_time as createTime

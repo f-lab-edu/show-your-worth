@@ -24,7 +24,7 @@ public class UserViewMapperTest extends IntegrationTest {
                 .accountId("accountId")
                 .password("password")
                 .nickname("nickname")
-                .email("email@f-lab.kr")
+                //.email("email@f-lab.kr")
                 .userType(UserTypeEnum.USER)
             .build());
 
@@ -35,7 +35,7 @@ public class UserViewMapperTest extends IntegrationTest {
         assertThat(signIn.get().getNickname()).isEqualTo(signUp.getNickname());
         assertThat(signIn.get().getUserType()).isEqualTo(signUp.getUserType());
         assertThat(signIn.get().getProfileImagePath()).isEqualTo(signUp.getProfileImagePath());
-        assertThat(signIn.get().getEmail()).isEqualTo(signUp.getEmail());
+        //assertThat(signIn.get().getEmail()).isEqualTo(signUp.getEmail());
     }
 
 }

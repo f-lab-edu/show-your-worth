@@ -14,8 +14,6 @@ public interface UserViewMapper {
 
     boolean existsByNickname(final String nickname);
 
-    boolean existsByEmail(final String email);
-
     Optional<User> findByAccountId(final String accountId);
 
     Optional<User> findById(final Long userId);

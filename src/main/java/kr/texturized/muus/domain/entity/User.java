@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 import kr.texturized.muus.infrastructure.repository.converter.type.UserTypeConverter;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -17,11 +16,14 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
+/**
+ * Entity for users.
+ */
 @Entity
 @Table(name = "users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@ToString(of = {"nickname", "email"})
+@ToString(of = {"nickname"})
 public class User {
 
     @Id
@@ -29,19 +31,14 @@ public class User {
     @Column(updatable = false)
     private Long id;
 
-    @NotBlank
-    @Column(unique = true)
+    @Column(unique = true, nullable = false, updatable = false)
     private String accountId;
 
-    @NotBlank
+    @Column(nullable = false)
     private String password;
 
-    @NotBlank
+    @Column(unique = true, nullable = false)
     private String nickname;
-
-    @NotBlank
-    @Column(unique = true)
-    private String email;
 
     private String profileImagePath;
 
@@ -66,14 +63,12 @@ public class User {
         final String accountId,
         final String password,
         final String nickname,
-        final String email,
         final String profileImagePath,
         final UserTypeEnum userType
     ) {
         this.accountId = accountId;
         this.password = password;
         this.nickname = nickname;
-        this.email = email;
         this.profileImagePath = profileImagePath;
         this.userType = userType;
     }

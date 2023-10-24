@@ -22,7 +22,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .accountId("Overlap")
                 .password("asdf")
                 .nickname("Unoverlap")
-                .email("unoverlapMail@naver.com")
+                //.email("unoverlapMail@naver.com")
                 .userType(UserTypeEnum.USER)
                 .profileImagePath("")
                 .build();
@@ -32,7 +32,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .accountId("Overlap")
                 .password("asdf")
                 .nickname("Unoverlap1")
-                .email("unoverlapMail1@naver.com")
+                //.email("unoverlapMail1@naver.com")
                 .profileImagePath("")
                 .userType(UserTypeEnum.USER)
                 .build();
@@ -48,7 +48,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .accountId("unoverlap1")
                 .password("asdf")
                 .nickname("overlap")
-                .email("unoverlapMail@naver.com")
+                //.email("unoverlapMail@naver.com")
                 .userType(UserTypeEnum.USER)
                 .profileImagePath("")
                 .build();
@@ -58,7 +58,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .accountId("unoverlap2")
                 .password("asdf")
                 .nickname("overlap")
-                .email("unoverlapMail1@naver.com")
+                //.email("unoverlapMail1@naver.com")
                 .profileImagePath("")
                 .userType(UserTypeEnum.USER)
                 .build();
@@ -74,7 +74,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .accountId("unoverlapUser1")
                 .password("asdf")
                 .nickname("unoverlap1")
-                .email("overlapMail@naver.com")
+                //.email("overlapMail@naver.com")
                 .userType(UserTypeEnum.USER)
                 .profileImagePath("")
                 .build();
@@ -84,7 +84,7 @@ public class UserRepositoryTest extends IntegrationTest {
                 .accountId("unoverlap2")
                 .password("asdf")
                 .nickname("unoverlapNickname2")
-                .email("overlapMail@naver.com")
+                //.email("overlapMail@naver.com")
                 .profileImagePath("")
                 .userType(UserTypeEnum.USER)
                 .build();

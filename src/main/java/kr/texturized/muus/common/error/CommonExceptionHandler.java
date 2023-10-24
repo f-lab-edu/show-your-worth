@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 /**
- * {@code @ControllerAdvice} 기반 애플리케이션 예외 핸들링 클래스
- * ref : https://github.com/cheese10yun/spring-guide/blob/master/docs/exception-guide.md#controlleradvice-%EB%AA%A8%EB%93%A0-%EC%98%88%EC%99%B8%EB%A5%BC-%ED%97%A8%EB%93%A4%EB%A7%81
+ * {@code @ControllerAdvice} 기반 애플리케이션 예외 핸들링 클래스.
+ * ref : <a href="https://github.com/cheese10yun/spring-guide/blob/master/docs/exception-guide.md#controlleradvice-%EB%AA%A8%EB%93%A0-%EC%98%88%EC%99%B8%EB%A5%BC-%ED%97%A8%EB%93%A4%EB%A7%81">Exception Guide</a>
  */
 @ControllerAdvice
 @Slf4j
@@ -34,7 +34,7 @@ public class CommonExceptionHandler {
 
     /**
      * {@code @ModelAttribute} 으로 binding error 발생 시 BindException 이 발생해요
-     * ref : https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-modelattrib-method-args
+     * ref : <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-modelattrib-method-args">Spring - @ModelAttribute</a>
      */
     @ExceptionHandler(BindException.class)
     protected ResponseEntity<ErrorResponse> handleBindException(BindException e) {
@@ -44,7 +44,7 @@ public class CommonExceptionHandler {
     }
 
     /**
-     * enum type 일치하지 않아 binding 못할 경우 발생해요 주로 {@code @RequestParam} enum 으로 binding 못할 경우 발생해요
+     * enum type 일치하지 않아 binding 못할 경우 발생해요 주로 {@code @RequestParam} enum 으로 binding 못할 경우 발생해요.
      */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     protected ResponseEntity<ErrorResponse> handleMethodArgumentTypeMismatchException(
@@ -56,7 +56,7 @@ public class CommonExceptionHandler {
     }
 
     /**
-     * 지원하지 않은 HTTP method 호출 시 발생해요
+     * 지원하지 않은 HTTP method 호출 시 발생해요.
      */
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     protected ResponseEntity<ErrorResponse> handleHttpRequestMethodNotSupportedException(
@@ -68,7 +68,7 @@ public class CommonExceptionHandler {
     }
 
     /**
-     * Authentication 객체가 필요한 권한을 보유하지 않은 경우 발생해요
+     * Authentication 객체가 필요한 권한을 보유하지 않은 경우 발생해요.
      */
     @ExceptionHandler(AccessDeniedException.class)
     protected ResponseEntity<ErrorResponse> handleAccessDeniedException(AccessDeniedException e) {
@@ -79,7 +79,7 @@ public class CommonExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     protected ResponseEntity<ErrorResponse> handleBusinessException(final BusinessException e) {
-        log.error("handleEntityNotFoundException", e);
+        log.error("handleBusinessException", e);
         final ErrorCode errorCode = e.getErrorCode();
         final ErrorResponse response = ErrorResponse.of(errorCode);
         return new ResponseEntity<>(response, HttpStatus.valueOf(errorCode.getStatus()));

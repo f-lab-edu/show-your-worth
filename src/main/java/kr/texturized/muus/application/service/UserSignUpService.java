@@ -1,12 +1,15 @@
 package kr.texturized.muus.application.service;
 
 import java.util.Optional;
-import kr.texturized.muus.application.service.exception.AlreadySignedUpEmailException;
 import kr.texturized.muus.application.service.exception.DuplicatedAccountIdException;
 import kr.texturized.muus.application.service.exception.DuplicatedNicknameException;
 import kr.texturized.muus.application.service.exception.InvalidAccountException;
 import kr.texturized.muus.domain.entity.User;
 import kr.texturized.muus.domain.entity.UserTypeEnum;
+import kr.texturized.muus.domain.vo.SignInResultVo;
+import kr.texturized.muus.domain.vo.SignInVo;
+import kr.texturized.muus.domain.vo.SignUpResultVo;
+import kr.texturized.muus.domain.vo.SignUpVo;
 import kr.texturized.muus.infrastructure.mapper.UserViewMapper;
 import kr.texturized.muus.infrastructure.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,87 +29,71 @@ public class UserSignUpService {
     private final UserViewMapper userViewMapper;
 
     /**
-     * sign up logic with total validation.
+     * Sign up logic with total validation.
      *
-     * @param accountId id to sign up
-     * @param password password to sign up
-     * @param nickname nickname to use
-     * @param email email to sign up
+     * @param vo Vo for sign-up
      * @return user with {@code Optional<T>} wrapper class,
      *         Optional is recommended to use for return result
      */
     @Transactional
-    public User signUp(
-        final String accountId,
-        final String password,
-        final String nickname,
-        final String email
-    ) {
-        validateAccountId(accountId);
-        validateNickname(nickname);
-        validateEmail(email);
+    public SignUpResultVo signUp(final SignUpVo vo) {
+        checkDuplicatedAccountId(vo.accountId());
+        checkDuplicatedNickname(vo.nickname());
 
-        return Optional.of(userRepository.save(User.builder()
-                    .accountId(accountId)
-                    .password(password /* TODO: PasswordEncoder */)
-                    .nickname(nickname)
-                    .email(email)
-                    .userType(UserTypeEnum.USER)
+        final User signUpUser = Optional.of(userRepository.save(User.builder()
+                .accountId(vo.accountId())
+                .password(vo.password() /* TODO: PasswordEncoder */)
+                .nickname(vo.nickname())
+                .userType(UserTypeEnum.USER)
                 .build()))
             .map(user -> {
                 log.info("Sign up: {}", user);
                 return user;
             }).orElseThrow(InvalidAccountException::new);
+
+        return new SignUpResultVo(signUpUser.getId());
     }
 
     /**
-     * Sign-in logic.
+     * Sign-in logic.<br>
+     * <br>
+     * NOTE: @Transactional(readOnly = true) is effective for selecting a lot of data.
+     * Simple selection such as sign-in is not good for it.
+     * It causes the overhead in transaction management.
      *
-     * @param accountId id to sign in
-     * @param password password for id
+     * @param vo Vo for sign-in
      * @return user with {@code Optional<T>} wrapper class,
-     *         Optional is recommended to use for return result
+     *      Optional is recommended to use for return result
      */
-    @Transactional(readOnly = true)
-    public User signIn(final String accountId, final String password) {
-        return userViewMapper.findByAccountId(accountId)
-                .filter(user -> user.getPassword().equals(password))
-                .map(user -> {
-                    log.info("Sign in: {}", user);
-                    return user;
+    public SignInResultVo signIn(final SignInVo vo) {
+        final User signInUser = userViewMapper.findByAccountId(vo.accountId())
+            .filter(user -> user.getPassword().equals(vo.password()))
+            .map(user -> {
+                log.info("Sign in: {}", user);
+                return user;
             }).orElseThrow(InvalidAccountException::new);
+        return new SignInResultVo(signInUser.getId());
     }
 
     /**
-     * Check whether account id is able to sign up.
+     * Check whether account id is duplicated.
      *
-     * @param accountId id to use
+     * @param accountId account to user
      */
-    public void validateAccountId(String accountId) {
+    public void checkDuplicatedAccountId(String accountId) {
         if (userViewMapper.existsByAccountId(accountId)) {
             throw new DuplicatedAccountIdException();
         }
     }
 
     /**
-     * Check whether nickname is able to use.
+     * Check whether nickname is duplicated.
      *
      * @param nickname nickname to use
      */
-    public void validateNickname(String nickname) {
+    public void checkDuplicatedNickname(String nickname) {
         if (userViewMapper.existsByNickname(nickname)) {
             throw new DuplicatedNicknameException();
-        }
-    }
-
-    /**
-     * Check whether email is able to sign up.
-     *
-     * @param email email to sign up
-     */
-    public void validateEmail(String email) {
-        if (userViewMapper.existsByEmail(email)) {
-            throw new AlreadySignedUpEmailException();
         }
     }
 }
