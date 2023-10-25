@@ -17,7 +17,7 @@ public record SignUpRequest(
     String password
 ) {
 
-    public SignUpVo dto() {
+    public SignUpVo toDto() {
         return new SignUpVo(accountId, password, nickname);
     }
 }

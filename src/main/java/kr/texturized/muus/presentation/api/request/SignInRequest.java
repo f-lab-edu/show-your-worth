@@ -10,7 +10,7 @@ public record SignInRequest(
     String password
 ) {
 
-    public SignInVo dto() {
+    public SignInVo toDto() {
         return new SignInVo(accountId, password);
     }
 }

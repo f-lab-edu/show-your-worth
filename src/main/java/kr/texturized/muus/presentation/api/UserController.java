@@ -95,7 +95,7 @@ public class UserController {
      */
     @PostMapping("/sign-up")
     public ResponseEntity<SignUpResultVo> signUp(@RequestBody @Valid final SignUpRequest request) {
-        final SignUpVo dto = request.dto();
+        final SignUpVo dto = request.toDto();
         final SignUpResultVo vo = userSignUpService.signUp(dto);
         return ResponseEntity.status(HttpStatus.OK).body(vo);
     }
@@ -112,7 +112,7 @@ public class UserController {
      */
     @PostMapping("/sign-in")
     public ResponseEntity<SignInResultVo> signIn(@RequestBody final SignInRequest request) {
-        final SignInVo dto = request.dto();
+        final SignInVo dto = request.toDto();
         final SignInResultVo vo = userSignUpService.signIn(dto);
         return ResponseEntity.status(HttpStatus.OK).body(vo);
     }
