@@ -1,6 +1,6 @@
 package kr.texturized.muus.presentation.api.request;
 
-import static kr.texturized.muus.common.util.ValidationUtils.*;
+import static kr.texturized.muus.common.util.ValidationConstants.*;
 
 import javax.validation.constraints.Pattern;
 import kr.texturized.muus.domain.vo.SignUpVo;

@@ -4,7 +4,7 @@ import javax.validation.Valid;
 import kr.texturized.muus.application.service.UserSignUpService;
 import kr.texturized.muus.common.error.exception.BusinessException;
 import kr.texturized.muus.common.error.exception.ErrorCode;
-import kr.texturized.muus.common.util.ValidationUtils;
+import kr.texturized.muus.common.util.ValidationConstants;
 import kr.texturized.muus.domain.vo.SignInResultVo;
 import kr.texturized.muus.domain.vo.SignInVo;
 import kr.texturized.muus.domain.vo.SignUpResultVo;
@@ -39,9 +39,9 @@ public class UserController {
      */
     @GetMapping("/validate/account")
     public ResponseEntity<String> validateAccount(@RequestParam final String accountId) {
-        if (null == accountId || !accountId.matches(ValidationUtils.ACCOUNT_PATTERN)) {
+        if (null == accountId || !accountId.matches(ValidationConstants.ACCOUNT_PATTERN)) {
             throw new BusinessException(
-                ValidationUtils.ACCOUNT_PATTERN_INVALID_MESSAGE,
+                ValidationConstants.ACCOUNT_PATTERN_INVALID_MESSAGE,
                 ErrorCode.INVALID_INPUT_VALUE
             );
         }
@@ -59,9 +59,9 @@ public class UserController {
      */
     @GetMapping("/validate/password")
     public ResponseEntity<String> validatePassword(@RequestParam final String password) {
-        if (null == password || !password.matches(ValidationUtils.PASSWORD_PATTERN)) {
+        if (null == password || !password.matches(ValidationConstants.PASSWORD_PATTERN)) {
             throw new BusinessException(
-                ValidationUtils.PASSWORD_PATTERN_INVALID_MESSAGE,
+                ValidationConstants.PASSWORD_PATTERN_INVALID_MESSAGE,
                 ErrorCode.INVALID_INPUT_VALUE
             );
         }
@@ -77,9 +77,9 @@ public class UserController {
      */
     @GetMapping("/validate/nickname")
     public ResponseEntity<String> validateNickname(@RequestParam final String nickname) {
-        if (null == nickname || !nickname.matches(ValidationUtils.NICKNAME_PATTERN)) {
+        if (null == nickname || !nickname.matches(ValidationConstants.NICKNAME_PATTERN)) {
             throw new BusinessException(
-                ValidationUtils.NICKNAME_PATTERN_INVALID_MESSAGE,
+                ValidationConstants.NICKNAME_PATTERN_INVALID_MESSAGE,
                 ErrorCode.INVALID_INPUT_VALUE
             );
         }
