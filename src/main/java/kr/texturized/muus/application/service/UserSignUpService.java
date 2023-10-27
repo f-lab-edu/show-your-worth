@@ -14,6 +14,7 @@ import kr.texturized.muus.infrastructure.mapper.UserViewMapper;
 import kr.texturized.muus.infrastructure.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserSignUpService {
 
+    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final UserViewMapper userViewMapper;
 
@@ -40,9 +42,10 @@ public class UserSignUpService {
         checkDuplicatedAccountId(vo.accountId());
         checkDuplicatedNickname(vo.nickname());
 
+        final String encodedPassword = passwordEncoder.encode(vo.password());
         final User signUpUser = Optional.of(userRepository.save(User.builder()
                 .accountId(vo.accountId())
-                .password(vo.password() /* TODO: PasswordEncoder */)
+                .password(encodedPassword)
                 .nickname(vo.nickname())
                 .userType(UserTypeEnum.USER)
                 .build()))
@@ -67,7 +70,7 @@ public class UserSignUpService {
      */
     public SignInResultVo signIn(final SignInVo vo) {
         final User signInUser = userViewMapper.findByAccountId(vo.accountId())
-            .filter(user -> user.getPassword().equals(vo.password()))
+            .filter(user -> passwordEncoder.matches(vo.password(), user.getPassword()))
             .map(user -> {
                 log.info("Sign in: {}", user);
                 return user;
