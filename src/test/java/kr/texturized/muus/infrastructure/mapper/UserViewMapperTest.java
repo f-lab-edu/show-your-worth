@@ -23,7 +23,7 @@ public class UserViewMapperTest extends IntegrationTest {
         User signUp = userRepository.save(User.builder()
                 .accountId("accountId")
                 .password("password")
-                .nickname("nickname")
+                .nickname("mynickname")
                 //.email("email@f-lab.kr")
                 .userType(UserTypeEnum.USER)
             .build());

@@ -67,30 +67,4 @@ public class UserRepositoryTest extends IntegrationTest {
         } catch (Exception e) {
         }
     }
-    @Test
-    void whenAddDuplicatedEmailUserThenReturnError() {
-        try {
-            User user1 = User.builder()
-                .accountId("unoverlapUser1")
-                .password("asdf")
-                .nickname("unoverlap1")
-                //.email("overlapMail@naver.com")
-                .userType(UserTypeEnum.USER)
-                .profileImagePath("")
-                .build();
-            userRepository.save(user1);
-
-            User user2 = User.builder()
-                .accountId("unoverlap2")
-                .password("asdf")
-                .nickname("unoverlapNickname2")
-                //.email("overlapMail@naver.com")
-                .profileImagePath("")
-                .userType(UserTypeEnum.USER)
-                .build();
-            userRepository.save(user2);
-            fail();
-        } catch (Exception e) {
-        }
-    }
 }
