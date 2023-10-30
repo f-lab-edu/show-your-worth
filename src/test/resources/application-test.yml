@@ -17,10 +17,13 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
         format_sql: true
         use_sql_comments: true
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
 cloud:
   credentials:
-    access-key: vtX3t87eTJRqoM1JbEh6
-    secret-key: fVO0wc0HPCYFgva1ZkKbVljOOnHmZ0ER1UsTWxjJ
+    access-key: access-test
+    secret-key: secret-test
   storage:
     endpoint: https://kr.object.ncloudstorage.com
     region:
