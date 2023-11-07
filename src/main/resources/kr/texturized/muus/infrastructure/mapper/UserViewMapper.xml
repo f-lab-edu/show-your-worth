@@ -34,7 +34,7 @@
 
   <select id="findById" parameterType="Long" resultType="kr.texturized.muus.domain.entity.User">
     select
-      id as id,
+      id,
       account_id,
       password,
       nickname,
@@ -43,6 +43,13 @@
       create_time as createTime
     from users
     where users.id = #{id}
+  </select>
+
+  <select id="findUserTypeByAccountId" parameterType="String" resultType="kr.texturized.muus.domain.entity.UserTypeEnum">
+    select
+        user_type
+    from users
+    where users.account_id = #{accountId}
   </select>
 
 </mapper>

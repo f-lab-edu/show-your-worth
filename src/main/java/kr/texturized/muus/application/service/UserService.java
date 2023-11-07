@@ -4,9 +4,10 @@ import java.util.Optional;
 import kr.texturized.muus.application.service.exception.DuplicatedAccountIdException;
 import kr.texturized.muus.application.service.exception.DuplicatedNicknameException;
 import kr.texturized.muus.application.service.exception.InvalidAccountException;
+import kr.texturized.muus.common.util.PasswordEncryptor;
 import kr.texturized.muus.domain.entity.User;
 import kr.texturized.muus.domain.entity.UserTypeEnum;
-import kr.texturized.muus.domain.vo.SignInResultVo;
+import kr.texturized.muus.domain.vo.AccountVo;
 import kr.texturized.muus.domain.vo.SignInVo;
 import kr.texturized.muus.domain.vo.SignUpResultVo;
 import kr.texturized.muus.domain.vo.SignUpVo;
@@ -14,7 +15,6 @@ import kr.texturized.muus.infrastructure.mapper.UserViewMapper;
 import kr.texturized.muus.infrastructure.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,9 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class UserSignUpService {
+public class UserService {
 
-    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final UserViewMapper userViewMapper;
 
@@ -42,7 +41,7 @@ public class UserSignUpService {
         checkDuplicatedAccountId(vo.accountId());
         checkDuplicatedNickname(vo.nickname());
 
-        final String encodedPassword = passwordEncoder.encode(vo.password());
+        final String encodedPassword = PasswordEncryptor.encrypt(vo.password());
         final User signUpUser = Optional.of(userRepository.save(User.builder()
                 .accountId(vo.accountId())
                 .password(encodedPassword)
@@ -58,24 +57,54 @@ public class UserSignUpService {
     }
 
     /**
-     * Sign-in logic.<br>
+     * Get account information matching with account id and password.<br>
      * <br>
      * NOTE: @Transactional(readOnly = true) is effective for selecting a lot of data.
      * Simple selection such as sign-in is not good for it.
      * It causes the overhead in transaction management.
      *
-     * @param vo Vo for sign-in
+     * @param vo Vo for account validation
      * @return user with {@code Optional<T>} wrapper class,
      *      Optional is recommended to use for return result
      */
-    public SignInResultVo signIn(final SignInVo vo) {
-        final User signInUser = userViewMapper.findByAccountId(vo.accountId())
-            .filter(user -> passwordEncoder.matches(vo.password(), user.getPassword()))
-            .map(user -> {
-                log.info("Sign in: {}", user);
-                return user;
-            }).orElseThrow(InvalidAccountException::new);
-        return new SignInResultVo(signInUser.getId());
+    public AccountVo getAccount(final SignInVo vo) {
+        final User signInUser = getUser(vo.accountId())
+            .filter(user -> PasswordEncryptor.matches(vo.password(), user.getPassword()))
+            .orElseThrow(InvalidAccountException::new);
+        return new AccountVo(signInUser.getAccountId(), signInUser.getUserType());
+    }
+
+    @Transactional
+    public void changePassword(
+        final String accountId,
+        final String password
+    ) {
+        final User user = getUser(accountId).orElseThrow(InvalidAccountException::new);
+
+        user.update(
+            password,
+            user.getNickname(),
+            user.getProfileImagePath()
+        );
+        userRepository.update(user);
+    }
+
+    @Transactional
+    public void changeNickname(
+        final String accountId,
+        final String nickname
+    ) {
+        final User user = getUser(accountId).orElseThrow(InvalidAccountException::new);
+        user.update(
+            user.getPassword(),
+            nickname,
+            user.getProfileImagePath()
+        );
+        userRepository.update(user);
+    }
+
+    private Optional<User> getUser(final String accountId) {
+        return userViewMapper.findByAccountId(accountId);
     }
 
     /**
@@ -98,5 +127,16 @@ public class UserSignUpService {
         if (userViewMapper.existsByNickname(nickname)) {
             throw new DuplicatedNicknameException();
         }
+    }
+
+    /**
+     * Get user type for account id.
+     *
+     * @param accountId Account ID to find user type
+     * @return User Type
+     */
+    public UserTypeEnum getAccountIdUserType(String accountId) {
+        final UserTypeEnum userType = userViewMapper.findUserTypeByAccountId(accountId);
+        return userType;
     }
 }

@@ -23,7 +23,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @Table(name = "users")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@ToString(of = {"nickname"})
+@ToString(of = {"accountId", "nickname"})
 public class User {
 
     @Id
@@ -71,5 +71,22 @@ public class User {
         this.nickname = nickname;
         this.profileImagePath = profileImagePath;
         this.userType = userType;
+    }
+
+    /**
+     * Update User Information.
+     *
+     * @param password password
+     * @param nickname nickname
+     * @param profileImagePath Profile Image Path in Storage
+     */
+    public void update(
+        final String password,
+        final String nickname,
+        final String profileImagePath
+    ) {
+        this.password = password;
+        this.nickname = nickname;
+        this.profileImagePath = profileImagePath;
     }
 }

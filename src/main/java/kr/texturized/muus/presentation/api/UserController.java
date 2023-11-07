@@ -1,20 +1,26 @@
 package kr.texturized.muus.presentation.api;
 
 import javax.validation.Valid;
-import kr.texturized.muus.application.service.UserSignUpService;
+import kr.texturized.muus.application.service.SignInOutService;
+import kr.texturized.muus.application.service.UserService;
 import kr.texturized.muus.common.error.exception.BusinessException;
 import kr.texturized.muus.common.error.exception.ErrorCode;
+import kr.texturized.muus.common.util.CurrentAccountId;
+import kr.texturized.muus.common.util.SignInCheck;
 import kr.texturized.muus.common.util.ValidationConstants;
-import kr.texturized.muus.domain.vo.SignInResultVo;
+import kr.texturized.muus.domain.entity.UserTypeEnum;
+import kr.texturized.muus.domain.vo.AccountVo;
 import kr.texturized.muus.domain.vo.SignInVo;
 import kr.texturized.muus.domain.vo.SignUpResultVo;
 import kr.texturized.muus.domain.vo.SignUpVo;
 import kr.texturized.muus.presentation.api.request.SignInRequest;
 import kr.texturized.muus.presentation.api.request.SignUpRequest;
+import kr.texturized.muus.presentation.api.response.SignInResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +35,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserSignUpService userSignUpService;
+    private final UserService userService;
+    private final SignInOutService signInOutService;
 
     /**
      * API for validation of account id.
@@ -39,14 +46,12 @@ public class UserController {
      */
     @GetMapping("/validate/account")
     public ResponseEntity<String> validateAccount(@RequestParam final String accountId) {
-        if (null == accountId || !accountId.matches(ValidationConstants.ACCOUNT_PATTERN)) {
-            throw new BusinessException(
-                ValidationConstants.ACCOUNT_PATTERN_INVALID_MESSAGE,
-                ErrorCode.INVALID_INPUT_VALUE
-            );
-        }
-
-        userSignUpService.checkDuplicatedAccountId(accountId);
+        validatePattern(
+            accountId,
+            ValidationConstants.ACCOUNT_PATTERN,
+            ValidationConstants.ACCOUNT_PATTERN_INVALID_MESSAGE
+        );
+        userService.checkDuplicatedAccountId(accountId);
 
         return ResponseEntity.status(HttpStatus.OK).body("사용 가능해요.");
     }
@@ -59,12 +64,11 @@ public class UserController {
      */
     @GetMapping("/validate/password")
     public ResponseEntity<String> validatePassword(@RequestParam final String password) {
-        if (null == password || !password.matches(ValidationConstants.PASSWORD_PATTERN)) {
-            throw new BusinessException(
-                ValidationConstants.PASSWORD_PATTERN_INVALID_MESSAGE,
-                ErrorCode.INVALID_INPUT_VALUE
-            );
-        }
+        validatePattern(
+            password,
+            ValidationConstants.PASSWORD_PATTERN,
+            ValidationConstants.PASSWORD_PATTERN_INVALID_MESSAGE
+        );
 
         return ResponseEntity.status(HttpStatus.OK).body("사용 가능해요.");
     }
@@ -77,12 +81,12 @@ public class UserController {
      */
     @GetMapping("/validate/nickname")
     public ResponseEntity<String> validateNickname(@RequestParam final String nickname) {
-        if (null == nickname || !nickname.matches(ValidationConstants.NICKNAME_PATTERN)) {
-            throw new BusinessException(
-                ValidationConstants.NICKNAME_PATTERN_INVALID_MESSAGE,
-                ErrorCode.INVALID_INPUT_VALUE
-            );
-        }
+        validatePattern(
+            nickname,
+            ValidationConstants.NICKNAME_PATTERN,
+            ValidationConstants.NICKNAME_PATTERN_INVALID_MESSAGE
+        );
+        userService.checkDuplicatedNickname(nickname);
 
         return ResponseEntity.status(HttpStatus.OK).body("사용 가능해요.");
     }
@@ -94,10 +98,10 @@ public class UserController {
      * @return DB identical id of signed-up account
      */
     @PostMapping("/sign-up")
-    public ResponseEntity<SignUpResultVo> signUp(@RequestBody @Valid final SignUpRequest request) {
+    public ResponseEntity<String> signUp(@RequestBody @Valid final SignUpRequest request) {
         final SignUpVo dto = request.toDto();
-        final SignUpResultVo vo = userSignUpService.signUp(dto);
-        return ResponseEntity.status(HttpStatus.OK).body(vo);
+        final SignUpResultVo vo = userService.signUp(dto);
+        return ResponseEntity.status(HttpStatus.OK).body("Sign-up");
     }
 
     /**
@@ -111,10 +115,56 @@ public class UserController {
      * @return DB identical id of signed-in account
      */
     @PostMapping("/sign-in")
-    public ResponseEntity<SignInResultVo> signIn(@RequestBody final SignInRequest request) {
+    public ResponseEntity<SignInResponse> signIn(@RequestBody final SignInRequest request) {
         final SignInVo dto = request.toDto();
-        final SignInResultVo vo = userSignUpService.signIn(dto);
-        return ResponseEntity.status(HttpStatus.OK).body(vo);
+        final AccountVo vo = userService.getAccount(dto);
+        final String result = signInOutService.signIn(vo.accountId());
+        return ResponseEntity.status(HttpStatus.OK).body(new SignInResponse(result, vo.userType()));
     }
 
+    @PostMapping("/sign-out")
+    public ResponseEntity<String> signOut() {
+        signInOutService.signOut();
+        return ResponseEntity.status(HttpStatus.OK).body("Sign-out");
+    }
+
+    @PatchMapping("/change/password")
+    @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
+    public ResponseEntity<String> changeAccountPassword(
+        @CurrentAccountId final String accountId,
+        final String password
+    ) {
+        validatePattern(
+            password,
+            ValidationConstants.PASSWORD_PATTERN,
+            ValidationConstants.PASSWORD_PATTERN_INVALID_MESSAGE
+        );
+
+        userService.changePassword(accountId, password);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Password changed");
+    }
+
+    @PatchMapping("/change/nickname")
+    @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
+    public ResponseEntity<String> changeAccountNickname(
+        @CurrentAccountId final String accountId,
+        final String nickname
+    ) {
+        validatePattern(
+            nickname,
+            ValidationConstants.NICKNAME_PATTERN,
+            ValidationConstants.NICKNAME_PATTERN_INVALID_MESSAGE
+        );
+
+        userService.changeNickname(accountId, nickname);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Password changed");
+    }
+
+    private void validatePattern(final String value, final String pattern, final String invalidMessage) {
+        if (null == value || !value.matches(pattern)) {
+            throw new BusinessException(invalidMessage, ErrorCode.INVALID_INPUT_VALUE);
+        }
+    }
 }

@@ -19,8 +19,9 @@ spring:
   devtools:
     add-properties: true
   redis:
-    host: ${REDIS_HOST:localhost}
-    port: ${REDIS_PORT:6379}
+    session:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
 cloud:
   credentials:
     access-key: ${NCP_ACCESS_KEY}
