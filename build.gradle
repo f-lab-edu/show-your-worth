@@ -26,6 +26,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.session:spring-session-data-redis'
 
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
 
@@ -48,6 +49,15 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
+
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	testImplementation( 'org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
+	testImplementation 'org.hibernate.validator:hibernate-validator:6.0.21.Final'
+
 	// Since there is no update for 3-year, Many people use it Forking from kstyrc.embedded-redis
 	// The latest update of it.ozimov is 20-06, it's outdated too.
 	// see: https://loosie.tistory.com/813
@@ -57,15 +67,10 @@ dependencies {
 		exclude group: "org.slf4j", module: "slf4j-simple"
 	}*/
 	// So let's use TestContainers Instead.
-	implementation 'org.testcontainers:testcontainers:1.17.6'
-
-	testCompileOnly 'org.projectlombok:lombok'
-	testAnnotationProcessor 'org.projectlombok:lombok'
-	testImplementation( 'org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
-	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
-	testImplementation 'org.hibernate.validator:hibernate-validator:6.0.21.Final'
+	// NOTE: Check "Allow the default Docker socket to be used" when using Docker Desktop in Mac M1
+	// Ref: https://stackoverflow.com/questions/61108655/test-container-test-cases-are-failing-due-to-could-not-find-a-valid-docker-envi
+	testImplementation "org.testcontainers:testcontainers:1.16.3"
+	testImplementation "org.testcontainers:junit-jupiter:1.16.3"
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
