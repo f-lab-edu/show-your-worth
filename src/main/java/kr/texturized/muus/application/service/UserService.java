@@ -80,13 +80,11 @@ public class UserService {
         final String password
     ) {
         final User user = getUser(accountId).orElseThrow(InvalidAccountException::new);
-
         user.update(
             password,
             user.getNickname(),
             user.getProfileImagePath()
         );
-        userRepository.update(user);
     }
 
     @Transactional
@@ -100,7 +98,6 @@ public class UserService {
             nickname,
             user.getProfileImagePath()
         );
-        userRepository.update(user);
     }
 
     private Optional<User> getUser(final String accountId) {
