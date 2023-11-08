@@ -143,7 +143,7 @@ public class UserController {
      */
     @GetMapping("/change/check/password")
     @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
-    public ResponseEntity<String> checkPasswordBeforeChange(final String password) {
+    public ResponseEntity<String> checkPasswordBeforeChange(@RequestParam final String password) {
         final String accountId = signInOutService.getCurrentAccountId();
         userService.passwordMatches(accountId, password);
 
@@ -158,7 +158,7 @@ public class UserController {
      */
     @PatchMapping("/change/password")
     @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
-    public ResponseEntity<String> changePassword(final String password) {
+    public ResponseEntity<String> changePassword(@RequestParam final String password) {
         final String accountId = signInOutService.getCurrentAccountId();
         validatePattern(
             password,
@@ -178,7 +178,7 @@ public class UserController {
      */
     @GetMapping("/change/check/nickname")
     @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
-    public ResponseEntity<String> checkNicknameBeforeChange(final String nickname) {
+    public ResponseEntity<String> checkNicknameBeforeChange(@RequestParam final String nickname) {
         signInOutService.getCurrentAccountId();     // Use for authorization
         validatePattern(
             nickname,
@@ -198,7 +198,7 @@ public class UserController {
      */
     @PatchMapping("/change/nickname")
     @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
-    public ResponseEntity<String> changeAccountNickname(final String nickname) {
+    public ResponseEntity<String> changeAccountNickname(@RequestParam final String nickname) {
         final String accountId = signInOutService.getCurrentAccountId();
         validatePattern(
             nickname,

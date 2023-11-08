@@ -7,13 +7,17 @@ import kr.texturized.muus.test.IntegrationTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpSession;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 
 @Slf4j
 public class UserControllerTest extends IntegrationTest {
+
 
     @Test
     void whenInvalidAccountIdThenReturnException() throws Exception {
@@ -114,4 +118,54 @@ public class UserControllerTest extends IntegrationTest {
             .andExpect(status().isOk());
     }
 
+
+    @Test
+    void withoutSignInThenChangeNicknameAndPassword() throws Exception {
+        final MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+        map.add("password", "qwer1234");
+        getMethod("/users/change/check/password",  map,  ErrorCode.HANDLE_ACCESS_DENIED);
+        patchMethod("/users/change/password", map, ErrorCode.HANDLE_ACCESS_DENIED);
+        map.clear();
+        map.add("nickname", "nickname");
+        getMethod("/users/change/check/password", map, ErrorCode.HANDLE_ACCESS_DENIED);
+        patchMethod("/users/change/password", map, ErrorCode.HANDLE_ACCESS_DENIED);
+    }
+
+    private void getMethod(
+        final String url,
+        final MultiValueMap<String, String> map,
+        final ErrorCode errorCode
+    ) throws Exception {
+        final ResultActions resultActions = mvc.perform(get(url)
+                .contentType(MediaType.APPLICATION_JSON)
+                .params(map))
+            .andDo(print());
+        if(null != errorCode) {
+            resultActions
+                .andExpect(jsonPath("message").value(errorCode.getMessage()))
+                .andExpect(jsonPath("status").value(errorCode.getStatus()))
+                .andExpect(jsonPath("code").value(errorCode.getCode()));
+        } else {
+            resultActions.andExpect(status().isOk());
+        }
+    }
+
+    private void patchMethod(
+        final String url,
+        final MultiValueMap<String, String> map,
+        final ErrorCode errorCode
+    ) throws Exception {
+        final ResultActions resultActions = mvc.perform(patch(url)
+                .contentType(MediaType.APPLICATION_JSON)
+                .params(map))
+            .andDo(print());
+        if(null != errorCode) {
+            resultActions
+                .andExpect(jsonPath("message").value(errorCode.getMessage()))
+                .andExpect(jsonPath("status").value(errorCode.getStatus()))
+                .andExpect(jsonPath("code").value(errorCode.getCode()));
+        } else {
+            resultActions.andExpect(status().isOk());
+        }
+    }
 }
