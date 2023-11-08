@@ -101,6 +101,7 @@ public class UserController {
     public ResponseEntity<String> signUp(@RequestBody @Valid final SignUpRequest request) {
         final SignUpVo dto = request.toDto();
         final SignUpResultVo vo = userService.signUp(dto);
+
         return ResponseEntity.status(HttpStatus.OK).body("Sign-up");
     }
 
@@ -112,25 +113,57 @@ public class UserController {
      * Let it log-in just checking information in DB.
      *
      * @param request request including information for sign-in
-     * @return DB identical id of signed-in account
+     * @return result(Could be token) and user type
      */
     @PostMapping("/sign-in")
     public ResponseEntity<SignInResponse> signIn(@RequestBody final SignInRequest request) {
         final SignInVo dto = request.toDto();
         final AccountVo vo = userService.getAccount(dto);
         final String result = signInOutService.signIn(vo.accountId());
+
         return ResponseEntity.status(HttpStatus.OK).body(new SignInResponse(result, vo.userType()));
     }
 
+    /**
+     * Sign-out.
+     *
+     * @return Message for success
+     */
     @PostMapping("/sign-out")
     public ResponseEntity<String> signOut() {
         signInOutService.signOut();
+
         return ResponseEntity.status(HttpStatus.OK).body("Sign-out");
     }
 
+    /**
+     * Check password matches before change.
+     *
+     * @param accountId Account ID
+     * @param password Current password
+     * @return Message for valid
+     */
+    @GetMapping("/change/check/password")
+    @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
+    public ResponseEntity<String> checkPasswordBeforeChange(
+        @CurrentAccountId final String accountId,
+        final String password
+    ) {
+        userService.passwordMatches(accountId, password);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Password matches");
+    }
+
+    /**
+     * Change password.
+     *
+     * @param accountId Account ID
+     * @param password Password
+     * @return Message for change success
+     */
     @PatchMapping("/change/password")
     @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
-    public ResponseEntity<String> changeAccountPassword(
+    public ResponseEntity<String> changePassword(
         @CurrentAccountId final String accountId,
         final String password
     ) {
@@ -139,12 +172,41 @@ public class UserController {
             ValidationConstants.PASSWORD_PATTERN,
             ValidationConstants.PASSWORD_PATTERN_INVALID_MESSAGE
         );
-
         userService.changePassword(accountId, password);
 
         return ResponseEntity.status(HttpStatus.OK).body("Password changed");
     }
 
+    /**
+     * Check nickname validation and duplication before change.
+     *
+     * @param accountId Account ID
+     * @param nickname Nickname to check
+     * @return Message for valid
+     */
+    @GetMapping("/change/check/nickname")
+    @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
+    public ResponseEntity<String> checkNicknameBeforeChange(
+        @CurrentAccountId final String accountId,
+        final String nickname
+    ) {
+        validatePattern(
+            nickname,
+            ValidationConstants.NICKNAME_PATTERN,
+            ValidationConstants.NICKNAME_PATTERN_INVALID_MESSAGE
+        );
+        userService.checkDuplicatedNickname(nickname);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Nickname may change");
+    }
+
+    /**
+     * Change account's nickname.
+     *
+     * @param accountId Account ID
+     * @param nickname Nickname
+     * @return Message for change success
+     */
     @PatchMapping("/change/nickname")
     @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
     public ResponseEntity<String> changeAccountNickname(
@@ -156,12 +218,19 @@ public class UserController {
             ValidationConstants.NICKNAME_PATTERN,
             ValidationConstants.NICKNAME_PATTERN_INVALID_MESSAGE
         );
-
+        userService.checkDuplicatedNickname(nickname);
         userService.changeNickname(accountId, nickname);
 
         return ResponseEntity.status(HttpStatus.OK).body("Password changed");
     }
 
+    /**
+     * Validate pattern.
+     *
+     * @param value value to check validation
+     * @param pattern Value Pattern
+     * @param invalidMessage Message for invalidation
+     */
     private void validatePattern(final String value, final String pattern, final String invalidMessage) {
         if (null == value || !value.matches(pattern)) {
             throw new BusinessException(invalidMessage, ErrorCode.INVALID_INPUT_VALUE);

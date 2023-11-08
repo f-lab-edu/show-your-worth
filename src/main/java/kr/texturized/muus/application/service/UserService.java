@@ -74,6 +74,24 @@ public class UserService {
         return new AccountVo(signInUser.getAccountId(), signInUser.getUserType());
     }
 
+    /**
+     * Check Account ID and password matched.
+     *
+     * @param accountId Account ID to check
+     * @param password Current password
+     */
+    public void passwordMatches(final String accountId, final String password) {
+        getUser(accountId)
+            .filter(user -> PasswordEncryptor.matches(password, user.getPassword()))
+            .orElseThrow(InvalidAccountException::new);
+    }
+
+    /**
+     * Change password.
+     *
+     * @param accountId Account ID to change
+     * @param password Password to change
+     */
     @Transactional
     public void changePassword(
         final String accountId,
@@ -87,6 +105,12 @@ public class UserService {
         );
     }
 
+    /**
+     * Change nickname.
+     *
+     * @param accountId Account ID to change
+     * @param nickname Nickname to change
+     */
     @Transactional
     public void changeNickname(
         final String accountId,
@@ -100,6 +124,12 @@ public class UserService {
         );
     }
 
+    /**
+     * Get User Entity from DB.
+     *
+     * @param accountId Account ID
+     * @return User Entity
+     */
     private Optional<User> getUser(final String accountId) {
         return userViewMapper.findByAccountId(accountId);
     }
@@ -133,7 +163,6 @@ public class UserService {
      * @return User Type
      */
     public UserTypeEnum getAccountIdUserType(String accountId) {
-        final UserTypeEnum userType = userViewMapper.findUserTypeByAccountId(accountId);
-        return userType;
+        return userViewMapper.findUserTypeByAccountId(accountId);
     }
 }
