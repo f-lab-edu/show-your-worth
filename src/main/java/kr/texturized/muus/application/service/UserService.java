@@ -103,6 +103,7 @@ public class UserService {
             user.getNickname(),
             user.getProfileImagePath()
         );
+        userRepository.save(user);
     }
 
     /**
@@ -122,6 +123,7 @@ public class UserService {
             nickname,
             user.getProfileImagePath()
         );
+        userRepository.save(user);
     }
 
     /**

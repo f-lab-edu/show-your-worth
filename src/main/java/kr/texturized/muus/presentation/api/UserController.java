@@ -5,7 +5,6 @@ import kr.texturized.muus.application.service.SignInOutService;
 import kr.texturized.muus.application.service.UserService;
 import kr.texturized.muus.common.error.exception.BusinessException;
 import kr.texturized.muus.common.error.exception.ErrorCode;
-import kr.texturized.muus.common.util.CurrentAccountId;
 import kr.texturized.muus.common.util.SignInCheck;
 import kr.texturized.muus.common.util.ValidationConstants;
 import kr.texturized.muus.domain.entity.UserTypeEnum;
@@ -139,16 +138,13 @@ public class UserController {
     /**
      * Check password matches before change.
      *
-     * @param accountId Account ID
      * @param password Current password
      * @return Message for valid
      */
     @GetMapping("/change/check/password")
     @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
-    public ResponseEntity<String> checkPasswordBeforeChange(
-        @CurrentAccountId final String accountId,
-        final String password
-    ) {
+    public ResponseEntity<String> checkPasswordBeforeChange(final String password) {
+        final String accountId = signInOutService.getCurrentAccountId();
         userService.passwordMatches(accountId, password);
 
         return ResponseEntity.status(HttpStatus.OK).body("Password matches");
@@ -157,16 +153,13 @@ public class UserController {
     /**
      * Change password.
      *
-     * @param accountId Account ID
      * @param password Password
      * @return Message for change success
      */
     @PatchMapping("/change/password")
     @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
-    public ResponseEntity<String> changePassword(
-        @CurrentAccountId final String accountId,
-        final String password
-    ) {
+    public ResponseEntity<String> changePassword(final String password) {
+        final String accountId = signInOutService.getCurrentAccountId();
         validatePattern(
             password,
             ValidationConstants.PASSWORD_PATTERN,
@@ -180,16 +173,13 @@ public class UserController {
     /**
      * Check nickname validation and duplication before change.
      *
-     * @param accountId Account ID
      * @param nickname Nickname to check
      * @return Message for valid
      */
     @GetMapping("/change/check/nickname")
     @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
-    public ResponseEntity<String> checkNicknameBeforeChange(
-        @CurrentAccountId final String accountId,
-        final String nickname
-    ) {
+    public ResponseEntity<String> checkNicknameBeforeChange(final String nickname) {
+        signInOutService.getCurrentAccountId();     // Use for authorization
         validatePattern(
             nickname,
             ValidationConstants.NICKNAME_PATTERN,
@@ -203,16 +193,13 @@ public class UserController {
     /**
      * Change account's nickname.
      *
-     * @param accountId Account ID
      * @param nickname Nickname
      * @return Message for change success
      */
     @PatchMapping("/change/nickname")
     @SignInCheck(userType = {UserTypeEnum.USER, UserTypeEnum.ADMIN})
-    public ResponseEntity<String> changeAccountNickname(
-        @CurrentAccountId final String accountId,
-        final String nickname
-    ) {
+    public ResponseEntity<String> changeAccountNickname(final String nickname) {
+        final String accountId = signInOutService.getCurrentAccountId();
         validatePattern(
             nickname,
             ValidationConstants.NICKNAME_PATTERN,

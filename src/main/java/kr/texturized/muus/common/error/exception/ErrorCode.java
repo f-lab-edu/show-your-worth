@@ -26,7 +26,6 @@ public enum ErrorCode {
     INVALID_ACCOUNT(401, "C104", " 잘못된 회원정보에요"),
     FAILED_TO_SIGNIN(401, "C105", "로그인에 실패했어요"),
     FAILED_TO_SIGNOUT(401, "C106", "로그아웃에 실패했어요"),
-    UNATHORIZED(403, "C107", "권한이 없어요"),
 
     // Busking
     COORDINATE_IS_OUT_OF_RANGE(400, "C201", " 범위를 넘어섰어요")
