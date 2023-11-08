@@ -98,8 +98,9 @@ public class UserService {
         final String password
     ) {
         final User user = getUser(accountId).orElseThrow(InvalidAccountException::new);
+        final String encodedPassword = PasswordEncryptor.encrypt(password);
         user.update(
-            password,
+            encodedPassword,
             user.getNickname(),
             user.getProfileImagePath()
         );

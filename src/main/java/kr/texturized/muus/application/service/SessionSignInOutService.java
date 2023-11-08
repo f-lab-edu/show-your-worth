@@ -48,7 +48,7 @@ public class SessionSignInOutService implements SignInOutService {
     @Override
     public String getCurrentAccountId() {
         return Optional.ofNullable(httpSession.getAttribute(ACCOUNT_ID))
-            .map(attr -> (String)attr)
+            .map(Object::toString)
             .orElseThrow(() -> new HttpClientErrorException(HttpStatus.UNAUTHORIZED));
     }
 }
