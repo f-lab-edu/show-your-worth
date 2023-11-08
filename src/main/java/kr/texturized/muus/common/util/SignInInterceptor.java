@@ -5,12 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import kr.texturized.muus.application.service.SignInOutService;
 import kr.texturized.muus.application.service.UserService;
+import kr.texturized.muus.application.service.exception.AuthorizationException;
 import kr.texturized.muus.domain.entity.UserTypeEnum;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -33,7 +32,7 @@ public class SignInInterceptor implements HandlerInterceptor {
             final String currentAccountId = signInOutService.getCurrentAccountId();
             UserTypeEnum userType = userService.getAccountIdUserType(currentAccountId);
             if (!Arrays.stream(signInCheck.userType()).anyMatch(type -> type == userType)) {
-                throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED);
+                throw new AuthorizationException();
             }
         }
 

@@ -3,12 +3,11 @@ package kr.texturized.muus.application.service;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import kr.texturized.muus.application.service.exception.AlreadySignoutException;
+import kr.texturized.muus.application.service.exception.AuthorizationException;
 import kr.texturized.muus.application.service.exception.SiginFailedException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 /**
  * It manages session by HttpSession DI.
@@ -49,6 +48,6 @@ public class SessionSignInOutService implements SignInOutService {
     public String getCurrentAccountId() {
         return Optional.ofNullable(httpSession.getAttribute(ACCOUNT_ID))
             .map(Object::toString)
-            .orElseThrow(() -> new HttpClientErrorException(HttpStatus.UNAUTHORIZED));
+            .orElseThrow(AuthorizationException::new);
     }
 }
