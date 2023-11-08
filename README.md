@@ -182,7 +182,7 @@
 
 # 📄 ERD
 
-![µ'us - ERD](https://github.com/f-lab-edu/show-your-worth/assets/11500877/111618b0-14a8-4182-bdc0-55c718c68475)
+![µ'us - ERD](https://github.com/f-lab-edu/show-your-worth/assets/11500877/531983eb-b1f2-45ca-87d7-438bf53d2e17)
 
 # 🌲 Git Branch Strategy
 

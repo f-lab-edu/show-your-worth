@@ -22,9 +22,9 @@ public class UserRepositoryTest extends IntegrationTest {
                 .accountId("Overlap")
                 .password("asdf")
                 .nickname("Unoverlap")
-                .email("unoverlapMail@naver.com")
+                //.email("unoverlapMail@naver.com")
                 .userType(UserTypeEnum.USER)
-                .profileImage("")
+                .profileImagePath("")
                 .build();
             userRepository.save(user1);
 
@@ -32,8 +32,8 @@ public class UserRepositoryTest extends IntegrationTest {
                 .accountId("Overlap")
                 .password("asdf")
                 .nickname("Unoverlap1")
-                .email("unoverlapMail1@naver.com")
-                .profileImage("")
+                //.email("unoverlapMail1@naver.com")
+                .profileImagePath("")
                 .userType(UserTypeEnum.USER)
                 .build();
             userRepository.save(user2);
@@ -48,9 +48,9 @@ public class UserRepositoryTest extends IntegrationTest {
                 .accountId("unoverlap1")
                 .password("asdf")
                 .nickname("overlap")
-                .email("unoverlapMail@naver.com")
+                //.email("unoverlapMail@naver.com")
                 .userType(UserTypeEnum.USER)
-                .profileImage("")
+                .profileImagePath("")
                 .build();
             userRepository.save(user1);
 
@@ -58,34 +58,8 @@ public class UserRepositoryTest extends IntegrationTest {
                 .accountId("unoverlap2")
                 .password("asdf")
                 .nickname("overlap")
-                .email("unoverlapMail1@naver.com")
-                .profileImage("")
-                .userType(UserTypeEnum.USER)
-                .build();
-            userRepository.save(user2);
-            fail();
-        } catch (Exception e) {
-        }
-    }
-    @Test
-    void whenAddDuplicatedEmailUserThenReturnError() {
-        try {
-            User user1 = User.builder()
-                .accountId("unoverlapUser1")
-                .password("asdf")
-                .nickname("unoverlap1")
-                .email("overlapMail@naver.com")
-                .userType(UserTypeEnum.USER)
-                .profileImage("")
-                .build();
-            userRepository.save(user1);
-
-            User user2 = User.builder()
-                .accountId("unoverlap2")
-                .password("asdf")
-                .nickname("unoverlapNickname2")
-                .email("overlapMail@naver.com")
-                .profileImage("")
+                //.email("unoverlapMail1@naver.com")
+                .profileImagePath("")
                 .userType(UserTypeEnum.USER)
                 .build();
             userRepository.save(user2);

@@ -19,40 +19,37 @@
     );
   </select>
 
-  <select id="existsByEmail" parameterType="String" resultType="boolean">
-    select exists (
-      select users.id
-      from users
-      where users.email_account = #{email}
-    );
-  </select>
-
   <select id="findByAccountId" parameterType="String" resultType="kr.texturized.muus.domain.entity.User">
     select
       id,
-      account_id as accountId,
-      password as password,
-      nickname as nickname,
-      email_account as email,
-      profile_image_path as profileImage,
-      category_id as userType,
-      create_time as createTime
+      account_id,
+      password,
+      nickname,
+      profile_image_path,
+      user_type,
+      create_time
     from users
     where users.account_id = #{accountId}
   </select>
 
   <select id="findById" parameterType="Long" resultType="kr.texturized.muus.domain.entity.User">
     select
-      id as id,
-      account_id as accountId,
-      password as password,
-      nickname as nickname,
-      email_account as email,
-      profile_image_path as profileImage,
-      category_id as userType,
+      id,
+      account_id,
+      password,
+      nickname,
+      profile_image_path,
+      user_type,
       create_time as createTime
     from users
     where users.id = #{id}
+  </select>
+
+  <select id="findUserTypeByAccountId" parameterType="String" resultType="kr.texturized.muus.domain.entity.UserTypeEnum">
+    select
+        user_type
+    from users
+    where users.account_id = #{accountId}
   </select>
 
 </mapper>

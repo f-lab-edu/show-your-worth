@@ -35,7 +35,7 @@ class BuskingViewMapperTest extends IntegrationTest {
                 .accountId("redgem92")
                 .password("asdfqwerzxcv")
                 .nickname("HoneyFist")
-                .email("redgem92@gmail.com")
+                //.email("redgem92@gmail.com")
                 .userType(UserTypeEnum.USER)
             .build());
 

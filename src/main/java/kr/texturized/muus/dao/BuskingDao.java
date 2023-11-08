@@ -69,7 +69,7 @@ public class BuskingDao {
             Image entity = imageRepository.save(Image.builder()
                     .id(ImageFk.builder()
                         .postId(busking.getId())
-                        .category(PostCategoryEnum.BUSKING)
+                        .postType(PostCategoryEnum.BUSKING)
                         .uploadOrder(order)
                         .build())
                     .path(vo.imagePaths().get(order))

@@ -23,13 +23,17 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.session:spring-session-data-redis'
+
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
+
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.7.1'
 	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.7'
-	implementation 'org.hibernate.validator:hibernate-validator:6.0.21.Final'
+
 	implementation 'org.glassfish:jakarta.el:3.0.4'
 	implementation 'com.google.guava:guava:32.1.1-jre'
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 	implementation platform('com.amazonaws:aws-java-sdk-bom:1.12.529')
 	implementation 'com.amazonaws:aws-java-sdk-s3'
@@ -39,10 +43,13 @@ dependencies {
 	// [참고] : https://bcp0109.tistory.com/326, https://colabear754.tistory.com/99
 	/*implementation "io.springfox.springfox-swagger2:3.52.5"
 	implementation "io.springfox.springfox-swagger-ui:3.52.5"*/
-	implementation "org.springdoc:springdoc-openapi-ui:1.6.11"
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
+
+	implementation 'org.mindrot:jbcrypt:0.4'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
 
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
@@ -50,6 +57,21 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
+	testImplementation 'org.hibernate.validator:hibernate-validator:6.0.21.Final'
+
+	// Since there is no update for 3-year, Many people use it Forking from kstyrc.embedded-redis
+	// The latest update of it.ozimov is 20-06, it's outdated too.
+	// see: https://loosie.tistory.com/813
+	/*compileOnly ('it.ozimov:embedded-redis:0.7.3') {
+		// Issue for overalapping download for slf4j
+		// [Ref] https://github.com/ozimov/embedded-redis/pull/18
+		exclude group: "org.slf4j", module: "slf4j-simple"
+	}*/
+	// So let's use TestContainers Instead.
+	// NOTE: Check "Allow the default Docker socket to be used" when using Docker Desktop in Mac M1
+	// Ref: https://stackoverflow.com/questions/61108655/test-container-test-cases-are-failing-due-to-could-not-find-a-valid-docker-envi
+	testImplementation "org.testcontainers:testcontainers:1.16.3"
+	testImplementation "org.testcontainers:junit-jupiter:1.16.3"
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 

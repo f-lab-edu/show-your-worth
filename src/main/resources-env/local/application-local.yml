@@ -18,6 +18,10 @@ spring:
         use_sql_comments: true
   devtools:
     add-properties: true
+  redis:
+    session:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
 cloud:
   credentials:
     access-key: ${NCP_ACCESS_KEY}

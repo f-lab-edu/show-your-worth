@@ -1,13 +1,10 @@
 package kr.texturized.muus.application;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import kr.texturized.muus.application.service.UserSignUpService;
-import kr.texturized.muus.application.service.exception.AlreadySignedUpEmailException;
+import kr.texturized.muus.application.service.UserService;
 import kr.texturized.muus.application.service.exception.DuplicatedAccountIdException;
 import kr.texturized.muus.application.service.exception.DuplicatedNicknameException;
-import kr.texturized.muus.application.service.exception.InvalidAccountException;
 import kr.texturized.muus.domain.entity.User;
 import kr.texturized.muus.domain.entity.UserTypeEnum;
 import kr.texturized.muus.infrastructure.repository.UserRepository;
@@ -20,20 +17,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UserSignUpServiceTest extends IntegrationTest {
 
     @Autowired
-    private UserSignUpService userSignUpService;
+    private UserService userSignUpService;
 
     @Autowired
     private UserRepository userRepository;
 
     @BeforeEach
     void initTestUser() {
-        userRepository.save(User.builder()
-                .accountId("accountId")
-                .password("password")
-                .nickname("nickname")
-                .email("email@f-lab.kr")
-                .userType(UserTypeEnum.USER)
-            .build());
+        User user = User.builder()
+            .accountId("accountId")
+            .password("password")
+            .nickname("nickname12")
+            .userType(UserTypeEnum.USER)
+            .build();
+        userRepository.save(user);
     }
 
     @AfterEach
@@ -44,7 +41,7 @@ public class UserSignUpServiceTest extends IntegrationTest {
     @Test
     void overlappedAccountIdReturnException() {
         try {
-            userSignUpService.validateAccountId("accountId");
+            userSignUpService.checkDuplicatedAccountId("accountId");
             fail();
         } catch (DuplicatedAccountIdException e) {
         }
@@ -53,45 +50,9 @@ public class UserSignUpServiceTest extends IntegrationTest {
     @Test
     void overlappedNicknameReturnException() {
         try {
-            userSignUpService.validateNickname("nickname");
+            userSignUpService.checkDuplicatedNickname("nickname12");
             fail();
         } catch (DuplicatedNicknameException e) {
         }
-    }
-
-    @Test
-    void overlappedEmailReturnException() {
-        try {
-            userSignUpService.validateEmail("email@f-lab.kr");
-            fail();
-        } catch (AlreadySignedUpEmailException e) {
-        }
-    }
-
-    @Test
-    void signUpThenSignInInVariableCondition() {
-        User signUpUser = userSignUpService.signUp(
-            "redgem92",
-            "wjd1xhd!",
-            "vvVic",
-            "redgem92@f-lab.kr");
-        assertThat(signUpUser).isNotNull();
-
-        // No such Account
-        try {
-            userSignUpService.signIn("redgem91", "asdf");
-            fail();
-        } catch (InvalidAccountException e) {
-
-        }
-        // Wrong password
-        try {
-            userSignUpService.signIn("redgem92", "asdf");
-            fail();
-        } catch (InvalidAccountException e) {
-        }
-        // Sign-in successfully
-        User signInUser = userSignUpService.signIn("redgem92", "wjd1xhd!");
-        assertThat(signInUser.getId()).isEqualTo(signUpUser.getId());
     }
 }

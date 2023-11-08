@@ -23,8 +23,8 @@ public class UserViewMapperTest extends IntegrationTest {
         User signUp = userRepository.save(User.builder()
                 .accountId("accountId")
                 .password("password")
-                .nickname("nickname")
-                .email("email@f-lab.kr")
+                .nickname("mynickname")
+                //.email("email@f-lab.kr")
                 .userType(UserTypeEnum.USER)
             .build());
 
@@ -34,8 +34,8 @@ public class UserViewMapperTest extends IntegrationTest {
         assertThat(signIn.get().getPassword()).isEqualTo(signUp.getPassword());
         assertThat(signIn.get().getNickname()).isEqualTo(signUp.getNickname());
         assertThat(signIn.get().getUserType()).isEqualTo(signUp.getUserType());
-        assertThat(signIn.get().getProfileImage()).isEqualTo(signUp.getProfileImage());
-        assertThat(signIn.get().getEmail()).isEqualTo(signUp.getEmail());
+        assertThat(signIn.get().getProfileImagePath()).isEqualTo(signUp.getProfileImagePath());
+        //assertThat(signIn.get().getEmail()).isEqualTo(signUp.getEmail());
     }
 
 }
