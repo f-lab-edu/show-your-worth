@@ -24,7 +24,7 @@
 `HOST`는 `버스킹`을 한 번 개설한 적이 있는 `USER`로, `HOST` 검색 시 노출됩니다.
 `ADMIN`은 관리자로, 서비스를 관리합니다.
 
-# 시스템 구성도
+# 📑 시스템 구성도
 
 ![µ'us - system architecture](https://github.com/f-lab-edu/show-your-worth/assets/11500877/eeb99b27-677a-4a5f-8f73-53199965b89e)
 
@@ -38,6 +38,7 @@
 - ![MySQL](https://img.shields.io/badge/MySQL-8.0.33-4479A1?logo=mysql&logoColor=4479A1)
 - ![Gradle](https://img.shields.io/badge/Gradle-7.4-02303A?logo=gradle&logoColor=02303A)
 - ![IntelliJ](https://img.shields.io/badge/IntelliJ-2023.1-000000?logo=intellijidea&logoColor=000000)
+- ![Redis](https://img.shields.io/badge/Redis-%23DD0031.svg?logo=redis&logoColor=white) ![AWS](https://img.shields.io/badge/Amazon&nbsp;Web&nbsp;Service-232F3E.svg?logo=amazonaws&logoColor=white)
 
 # 🎭 Use Case / 유저 시나리오
 
