@@ -32,4 +32,7 @@ cloud:
 logging:
   level:
     root: info
+    org:
+      hibernate:
+        type: trace
 
