@@ -47,17 +47,6 @@ dependencies {
 
 	implementation 'org.mindrot:jbcrypt:0.4'
 
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-
-
-	testCompileOnly 'org.projectlombok:lombok'
-	testAnnotationProcessor 'org.projectlombok:lombok'
-	testImplementation( 'org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
-	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
-	testImplementation 'org.hibernate.validator:hibernate-validator:6.0.21.Final'
 
 	// Since there is no update for 3-year, Many people use it Forking from kstyrc.embedded-redis
 	// The latest update of it.ozimov is 20-06, it's outdated too.
@@ -70,8 +59,21 @@ dependencies {
 	// So let's use TestContainers Instead.
 	// NOTE: Check "Allow the default Docker socket to be used" when using Docker Desktop in Mac M1
 	// Ref: https://stackoverflow.com/questions/61108655/test-container-test-cases-are-failing-due-to-could-not-find-a-valid-docker-envi
-	testImplementation "org.testcontainers:testcontainers:1.16.3"
-	testImplementation "org.testcontainers:junit-jupiter:1.16.3"
+	implementation "org.testcontainers:testcontainers:1.16.3"
+	implementation "org.testcontainers:junit-jupiter:1.16.3"
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	testImplementation( 'org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
+	testImplementation 'org.hibernate.validator:hibernate-validator:6.0.21.Final'
+
 
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
