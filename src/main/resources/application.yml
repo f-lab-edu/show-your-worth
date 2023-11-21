@@ -27,6 +27,7 @@ mybatis:
     map-underscore-to-camel-case: true
     jdbc-type-for-null: varchar
   type-handlers-package: kr.texturized.muus.infrastructure.mapper.handler.type
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
 
 server:
   port: 10023
