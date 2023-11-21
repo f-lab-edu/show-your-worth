@@ -21,7 +21,7 @@ jobs:
 
       - name: Test
         run: ./gradlew test
-  Build:
+  ApplicationBuild:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
