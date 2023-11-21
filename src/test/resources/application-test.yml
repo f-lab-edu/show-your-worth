@@ -17,9 +17,11 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
         format_sql: true
         use_sql_comments: true
+  session:
+    store-type: none
 logging:
   level:
-    root: debug
+    root: info
     org:
       hibernate:
         type: trace

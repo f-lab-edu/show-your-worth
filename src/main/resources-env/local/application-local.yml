@@ -18,6 +18,20 @@ spring:
         use_sql_comments: true
   devtools:
     add-properties: true
+  session:
+    store-type: redis
+
+logging:
+  level:
+    root: info
+    org:
+      hibernate:
+        type: trace
+
+redis:
+  session:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
 
 cloud:
   credentials:
@@ -29,10 +43,4 @@ cloud:
       static: ${STORAGE_REGION}
     bucket-name: ${STORAGE_BUCKET_NAME}
 
-logging:
-  level:
-    root: info
-    org:
-      hibernate:
-        type: trace
 

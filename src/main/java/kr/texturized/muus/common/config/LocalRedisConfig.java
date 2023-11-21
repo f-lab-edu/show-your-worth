@@ -13,10 +13,10 @@ import org.testcontainers.utility.DockerImageName;
 @Configuration
 public class LocalRedisConfig {
 
-    @Value("${spring.redis.session.host}")
+    @Value("${redis.session.host}")
     private String redisSessionHost;
 
-    @Value("${spring.redis.session.port}")
+    @Value("${redis.session.port}")
     private int redisSessionPort;
 
     private static final String REDIS_IMAGE = "redis:7.2.2-alpine3.18";
@@ -30,8 +30,8 @@ public class LocalRedisConfig {
 
         REDIS_CONTAINER.start();
 
-        System.setProperty("spring.redis.session.host", REDIS_CONTAINER.getHost());
-        System.setProperty("spring.redis.session.port", REDIS_CONTAINER.getMappedPort(6379).toString());
+        System.setProperty("redis.session.host", REDIS_CONTAINER.getHost());
+        System.setProperty("redis.session.port", REDIS_CONTAINER.getMappedPort(6379).toString());
     }
 
     @Bean

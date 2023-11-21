@@ -10,9 +10,12 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
  * It creates bean for filter named 'springSesionRepositoryFilter'.
  * springSesionRepositoryFilter changes HttpSession to customized concretion supported by spring session.
  * Redis suppports spring session where its annotation declared.
+ *
+ * Since its annotation activates not only test profile, test case doesn't work well.
+ * Set this property in application.yml(spring.session.store-type)(It works same as annotation).
  */
 @SpringBootApplication
-@EnableRedisHttpSession
+//@EnableRedisHttpSession
 public class Main {
 
 	public static void main(String[] args) {
