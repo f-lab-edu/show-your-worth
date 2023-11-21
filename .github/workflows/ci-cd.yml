@@ -65,5 +65,14 @@ jobs:
     steps:
       - name: Run
         run: echo "complete"
+
+      - name: Send slack
+        if: ${{ always() }}
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took,pullRequest
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       
     
